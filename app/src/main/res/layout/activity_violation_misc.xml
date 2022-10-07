@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/page_back"
+    tools:context=".activities.ActivityViolationMisc">
+
+    <include
+        layout="@layout/header"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/violationmisc_scroll">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="5dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:background="@drawable/white_line_back"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:background="@drawable/oval_blue_btn">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_right_click"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:gravity="center"
+                        android:background="@drawable/oval_blue_btn">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_right_click"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/oval_blue_btn"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_right_click"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:gravity="center"
+                        android:background="@drawable/oval_blue_btn">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_right_click"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/oval_blue_btn">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/number5"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/opensans_bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/issue_date"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:text="@string/issue_date"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:background="@null"
+                        android:id="@+id/issuedate"
+                        android:inputType="number"
+                        android:textSize="14sp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:text="@string/time"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:background="@null"
+                        android:id="@+id/time"
+                        android:inputType="number"
+                        android:textSize="14sp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ampm"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/ampm"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:background="@null"
+                        android:id="@+id/ampm_txt"
+                        android:inputType="number"
+                        android:textSize="14sp"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/ampm"
+                        android:gravity="center|start"
+                        android:visibility="gone"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@null" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:layout_gravity="right"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_down_btn"/>
+
+
+                </FrameLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/school_zone"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/schoolzone"
+                        >
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:id="@+id/rb_schoolzone_yes"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:id="@+id/rb_schoolzone_no"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/violationcity"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/violationcity_txt"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:gravity="center|start"
+                        android:hint="@string/violationcity"
+                        />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/violationcity"
+                        android:gravity="center|start"
+                        android:visibility="gone"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@null" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:visibility="gone"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_down_btn"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/violationst"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:hint="@string/violationst"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:background="@null"
+                        android:maxLength="12"
+                        android:singleLine="true"
+                        android:inputType="text"
+                        android:id="@+id/violationst"
+                        android:textSize="14sp"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/violationsttyp"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/violationsttyp"
+                        android:gravity="center|start"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@null" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_down_btn"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/violationcst"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:hint="@string/violationcst"
+                        android:singleLine="true"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:background="@null"
+                        android:maxLength="12"
+                        android:inputType="text"
+                        android:id="@+id/violationcst"
+                        android:textSize="14sp"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/violationcsttyp"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/violationcsttyp"
+                        android:gravity="center|start"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@null" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_down_btn"/>
+
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/appeardate"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:text="@string/appeardate"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:background="@null"
+                        android:id="@+id/appeardate"
+                        android:textSize="14sp"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/courttime"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:hint="@string/courttime"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:id="@+id/courttime"
+                        android:textSize="14sp"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/offbadgeno"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:hint="@string/offbadgeno"
+                        android:singleLine="true"
+                        android:maxLength="30"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:id="@+id/offbadgeno"
+                        android:textSize="14sp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/offlname"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:hint="@string/offlname"
+                        android:gravity="center|start"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:maxLength="120"
+                        android:id="@+id/offlname"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/areacode"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/areacode"
+                        android:gravity="center|start"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@null" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_down_btn"/>
+
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/division"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/division_txt"
+                        android:textSize="14sp"
+                        android:singleLine="true"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textColor="@color/text_color"
+                        android:gravity="center|start"
+                        android:hint="@string/division"
+                        />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/division"
+                        android:gravity="center|start"
+                        android:theme="@style/SpinnerTheme"
+                        android:visibility="gone"
+                        android:background="@null" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:visibility="gone"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_down_btn"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/detail"
+                        android:gravity="center|start"
+                        android:theme="@style/SpinnerTheme"
+                        android:background="@null" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="7dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_down_btn"/>
+
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/night_court"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/night_court"
+                        >
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:id="@+id/rb_nightcourt_yes"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:id="@+id/rb_nightcourt_no"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ca_tobenotified"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/ca_tobenotified"
+                        >
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:id="@+id/rb_ca_notified_yes"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:id="@+id/rb_ca_notified_no"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ca_citenotsignedbydriver"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/ca_citenotsignedbydriver_lay"
+                    android:orientation="horizontal">
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/ca_citenotsignedbydriver"
+                        >
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:id="@+id/rb_ca_cite_yes"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:id="@+id/rb_ca_cite_no"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/opensans_regular"
+                            android:textSize="14sp"/>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="60dp"
+                    android:paddingLeft="60dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:text="@string/preview"
+                    android:background="@drawable/round_blue_btn"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:gravity="center|bottom"
+                    android:id="@+id/preview_btn"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "277251255284",
+    "project_id": "edatasolutions-d283c",
+    "storage_bucket": "edatasolutions-d283c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277251255284:android:c833e4cb1eaff9ba3ce7a1",
+        "android_client_info": {
+          "package_name": "com.edatasolutions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277251255284-ka7vi9lj4gojhb23isorjd3k840j0t1l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edatasolutions",
+            "certificate_hash": "be617a8c1eaaacfd1a0d5acf40014a5fca1bd0a8"
+          }
+        },
+        {
+          "client_id": "277251255284-lak2c5k0srgks5g7j5n3qhslv50o6tv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb7uB34w1i_Htrf_7gcmHINxAdF4G2Qcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277251255284-lak2c5k0srgks5g7j5n3qhslv50o6tv8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

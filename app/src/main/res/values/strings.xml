@@ -1,0 +1,251 @@
+<resources>
+    <string name="app_name">EdataSolutions</string>
+    <string name="app_version_code">1</string>
+    <string name="app_notification_description">Edata is working in background</string>
+
+
+    <string name="first_name_not_found">First name not found in database</string>
+    <string name="last_name_not_found">Last name not found in database</string>
+    <string name="first_and_last_name_not_found">First and Last name not found in database</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="email">Email</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="username">Username</string>
+    <string name="username_hint">Enter Username</string>
+    <string name="password">Password</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="select_type">Select Type</string>
+    <string name="select_role">Select Role</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="save">Save</string>
+    <string name="data_entry_text">Please go through the below section and add mandatory inputs to create and print data entry</string>
+    <string name="create_data_entry">Create a data entry</string>
+    <string name="number1">1</string>
+    <string name="number2">2</string>
+    <string name="number3">3</string>
+    <string name="number4">4</string>
+    <string name="number5">5</string>
+
+    <string name="number01">01</string>
+    <string name="number02">02</string>
+    <string name="number03">03</string>
+    <string name="number04">04</string>
+    <string name="number05">05</string>
+
+    <string name="header">Header</string>
+    <string name="driver">Driver</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="violation">Violation</string>
+    <string name="violation_misc">Violation Misc</string>
+    <string name="please_confirm">Please confirm</string>
+    <string name="citation_number">Citation Number</string>
+    <string name="citation_number_caps">CITATION NUMBER</string>
+
+    <string name="required_field"> *</string>
+    <string name="dash">-</string>
+    <string name="StartScanning">Start Scanning</string>
+    <string name="UseWith">Use with</string>
+
+    <string name="or">OR</string>
+    <string name="owner_responsibility">OWNER RESPONSIBILITY</string>
+    <string name="traffic">TRAFFIC</string>
+    <string name="non_traffic">NONTRAFFIC</string>
+    <string name="ped">PED</string>
+    <string name="court_code">COURT CODE</string>
+    <string name="lea">LEA</string>
+
+    <string name="done">Done</string>
+    <string name="failed">Failed</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="preview">Preview</string>
+    <string name="signature">Signature</string>
+    <string name="new_signature">New Signature</string>
+    <string name="clear">Clear</string>
+    <string name="sign_here">Sign here</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="done_data1">Your data submit</string>
+    <string name="done_data2">successfully completed</string>
+    <string name="failed_data1">Your data submit</string>
+    <string name="failed_data2">is failed</string>
+    <string name="print_data">Print Data</string>
+
+
+    <string name="name">NAME</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="court_details">COURT DETAILS </string>
+    <string name="driver_details">DRIVER DETAILS </string>
+    <string name="vehicle_details">VEHICLE DETAILS</string>
+    <string name="violation_details">VIOLATION DETAILS</string>
+    <string name="first_name">FIRST NAME </string>
+    <string name="middle_name">MIDDLE NAME</string>
+    <string name="last_name">LAST NAME</string>
+    <string name="suffix">SUFFIX</string>
+    <string name="addressline1">ADDRESS LINE 1</string>
+    <string name="addressline2">ADDRESS LINE 2</string>
+    <string name="city">CITY</string>
+    <string name="state">STATE</string>
+    <string name="zipcode">ZIPCODE</string>
+    <string name="license_no">LICENSE NUMBER</string>
+    <string name="driver_license_no">DRIVERS LICENSE NUMBER</string>
+    <string name="driver_state">DRIVER STATE</string>
+    <string name="dob">DOB</string>
+    <string name="sex">SEX</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="hair">HAIR</string>
+    <string name="eyes">EYES</string>
+    <string name="height">HEIGHT (in)</string>
+    <string name="weight">WEIGHT (lbs)</string>
+    <string name="lic_type">LICENSE TYPE/CLASS</string>
+    <string name="license_type">DRIVERS LICENSE TYPE/CLASS</string>
+    <string name="descent">DESCENT/RACE</string>
+    <string name="ethncity">ETHNCITY</string>
+    <string name="comm_drivers_license">COMM DRIVERS LICENSE</string>
+
+    <string name="owner_name">Owner Name</string>
+    <string name="owner_first_name">OWNER FIRST NAME</string>
+    <string name="owner_middle_name">OWNER MIDDLE NAME</string>
+    <string name="owner_last_name">OWNER LAST NAME</string>
+    <string name="owner_suffix">OWNER SUFFIX</string>
+    <string name="owner_address">OWNER ADDRESS LINE 1</string>
+    <string name="owner_addressline2">OWNER ADDRESS LINE 2</string>
+    <string name="owner_city">OWNER CITY</string>
+    <string name="owner_state">OWNER STATE</string>
+    <string name="owner_zipcode">OWNER ZIPCODE</string>
+    <string name="vehyear">VEHYEAR</string>
+    <string name="vehname">VEHNAME</string>
+    <string name="vehmake">VEHMAKE</string>
+    <string name="vehmodel">VEHMODEL</string>
+    <string name="vehbody">VEHBODY</string>
+    <string name="vehcolor">VEHCOLOR</string>
+    <string name="vehtype">VEHTYPE</string>
+    <string name="commercial">COMMERCIAL</string>
+    <string name="vehno">VEHLICNO</string>
+    <string name="vehstate">VEHICLE STATE</string>
+    <string name="hazardous">HAZARDOUS</string>
+    <string name="overload">OVERLOAD</string>
+    <string name="policy_no">INSURANCE COMPANY POLICY NUMBER</string>
+
+    <string name="noresultfound">No result found</string>
+    <string name="search">Search</string>
+    <string name="violation_a">VIOLATION A- CHECKXASUFFIXA</string>
+    <string name="violation_b">VIOLATION B- CHECKXBSUFFIXB</string>
+    <string name="violation_c">VIOLATION C- CHECKXCSUFFIXC</string>
+    <string name="violation_d">VIOLATION D- CHECKXDSUFFIXD</string>
+    <string name="violation_e">VIOLATION E- CHECKXESUFFIXE</string>
+    <string name="violation_f">VIOLATION F- CHECKXFSUFFIXF</string>
+    <string name="violation_g">VIOLATION G- CHECKXGSUFFIXG</string>
+    <string name="violation_h">VIOLATION H- CHECKXHSUFFIXH</string>
+    <string name="vca">VCA</string>
+    <string name="vcb">VCB</string>
+    <string name="vcc">VCC</string>
+    <string name="vcd">VCD</string>
+    <string name="vce">VCE</string>
+    <string name="vcf">VCF</string>
+    <string name="vcg">VCG</string>
+    <string name="vch">VCH</string>
+    <string name="vehlimit">VEHLIMIT</string>
+    <string name="safespeed">SAFE SPEED</string>
+    <string name="animal1">ANIMAL1</string>
+    <string name="animal2">ANIMAL2</string>
+    <string name="animal3">ANIMAL3</string>
+    <string name="animal4">ANIMAL4</string>
+    <string name="animal5">ANIMAL5</string>
+    <string name="animal6">ANIMAL6</string>
+    <string name="animal7">ANIMAL7</string>
+    <string name="animal8">ANIMAL8</string>
+    <string name="night_court">NIGHT COURT</string>
+    <string name="ca_tobenotified">CATOBENOTIFIED</string>
+    <string name="ca_citenotsignedbydriver">CACiteNotSignedByDriver</string>
+
+    <string name="issue_date">ISSUE DATE</string>
+    <string name="issue_time">ISSUE TIME</string>
+    <string name="time">TIME</string>
+    <string name="ampm">AM/PM</string>
+    <string name="apprspeed">APPRSPEED</string>
+    <string name="pfspeed">PFSPEED</string>
+    <string name="school_zone">SCHOOL ZONE</string>
+    <string name="violationcity">VIOLATIONCITY</string>
+    <string name="violationst">VIOLATIONST</string>
+    <string name="violationsttyp">VIOLATIONSTTYP</string>
+    <string name="violationcst">VIOLATIONCST</string>
+    <string name="violationcsttyp">VIOLATIONCSTTYP</string>
+    <string name="appeardate">APPEARDATE</string>
+    <string name="courttime">COURTTIME</string>
+    <string name="offbadgeno">OFFBADGENO</string>
+    <string name="offlname">OFFLNAME</string>
+    <string name="areacode">OFFICER AREA</string>
+    <string name="division">DIVISION</string>
+    <string name="detail">DETAIL</string>
+    <string name="court_location">COURT LOCATION</string>
+    <string name="title_activity_home">ActivityHome</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+
+    <string name="lastsync_date">Date - </string>
+    <string name="lastsync_time">Time -</string>
+
+    <string name="admin">Admin</string>
+
+    <string name="zero1">0</string>
+    <string name="zero2">00</string>
+    <string name="zero3">000</string>
+    <string name="zero4">0000</string>
+
+    <string name="donotexit">Please do not leave the page while data is syncing</string>
+
+    <string name="same_as_driver">SAME AS DRIVER</string>
+
+    //printer strings
+    <!--    <string name="action_settings">Add a Printer</string>-->
+
+    <string name="zebra_technologies_corp">Zebra Technologies Corp.</string>
+    <string name="zebra_address_line_1"><b>ISV TEAM</b>, Lincolnshire IL, 60069.</string>
+    <string name="zebra_address_line_2">Visit <a href="https://developer.motorolasolutions.com/welcome">developer.zebra.com</a> for more support.</string>
+
+
+    <string name="print">Print</string>
+    <!--    <string name="cancel">Cancel</string>-->
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <string name="printer_status">Printer Status</string>
+    <string name="rotation_prompt">Choose a rotation</string>
+    <string name="image_selection">Select an Image</string>
+    <string name="sign_and_print">Sign &amp;\nPrint</string>
+    <!--    <string name="sign_here">Sign here:</string>-->
+
+    <string name="store_check">Check to store on printer</string>
+    <string name="path_hint">Path to store on printer</string>
+    <string name="printer_selection">Select a Printer</string>
+    <string name="discovered_printers">Discovered printers</string>
+    <string name="searching_for_printers">Searching for printers&#8230;</string>
+    <string name="connecting_to_printer">Connecting to printer&#8230;</string>
+    <string name="printer_connected">Printer connected</string>
+    <string name="printer_connection_failed">Printer connection failed</string>
+    <string name="connected_to_printer">Connected to printer:</string>
+    <string name="connection_error">Connection error</string>
+    <string name="print_successful">Print successful</string>
+    <string name="print_failed">Print failed:</string>
+    <string name="printer_paused">Printer paused</string>
+    <string name="head_open">Head open</string>
+    <string name="paper_out">Paper out</string>
+    <string name="cannot_print">Cannot print</string>
+    <string name="no_printers_found">No printers found</string>
+</resources>

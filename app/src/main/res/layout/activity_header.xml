@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/page_back"
+    tools:context=".activities.ActivityHeader">
+
+    <include layout="@layout/header" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header_scroll">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:background="@drawable/white_line_back"
+           />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/oval_blue_btn">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/number1"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:fontFamily="@font/opensans_bold"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/oval_white_btn">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/number2"
+                    android:textColor="@color/hint_color"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/oval_white_btn">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/number3"
+                    android:textColor="@color/hint_color"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/oval_white_btn">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/number4"
+                    android:textColor="@color/hint_color"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/oval_white_btn">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/number5"
+                    android:textColor="@color/hint_color"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_bold"/>
+            </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corner_blue_btn_4dp"
+            android:padding="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/opensans_semibold"
+                android:gravity="center|start"
+                android:text="@string/citation_number"
+                android:textColor="@color/text_color"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:text=""
+                android:gravity="center|end"
+                android:id="@+id/citation_no_txt"
+                android:fontFamily="@font/opensans_semibold"
+                android:textColor="@color/text_color"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"/>
+
+
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/owner_responsibility"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="12sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_blue_btn_4dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/or_lay"
+                android:layout_gravity="center"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/owner_responsibility"
+                    >
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/rb_or_yes"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="14sp"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+                        android:id="@+id/rb_or_no"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="14sp"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/traffic"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/required_field"
+                    android:textColor="@color/red"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_blue_btn_4dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/traffic_lay"
+                android:layout_gravity="center"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/traffic_radiogroup"
+                    >
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/rb_traffic_yes"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="14sp"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+                        android:id="@+id/rb_traffic_no"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="14sp"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/traffic"
+                android:visibility="gone"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="12sp"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_blue_btn_4dp"
+                android:paddingTop="15dp"
+                android:visibility="gone"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/traffic"
+                    android:gravity="center|start"
+                    android:theme="@style/SpinnerTheme"
+                    android:background="@null"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="7dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_down_btn"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/non_traffic"
+                android:visibility="gone"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="12sp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_blue_btn_4dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/nontraffic"
+                    android:gravity="center|start"
+                    android:theme="@style/SpinnerTheme"
+                    android:background="@null"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="7dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_down_btn"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ped"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/opensans_regular"
+                android:textSize="12sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_blue_btn_4dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/ped"
+                    >
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/rb_ped_yes"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="14sp"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+                        android:id="@+id/rb_ped_no"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="14sp"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/court_code"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/required_field"
+                    android:textColor="@color/red"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_blue_btn_4dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="10dp"
+                android:id="@+id/courtcode_lay"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/courtcode"
+                    android:gravity="center|start"
+                    android:theme="@style/SpinnerTheme"
+                    android:background="@null"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="7dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_down_btn"/>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lea"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/required_field"
+                    android:textColor="@color/red"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_blue_btn_4dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/lea_lay"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/lea_txt"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textColor="@color/text_color"
+                    android:gravity="center|start"
+                    android:hint="@string/lea"
+                    />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/lea"
+                    android:gravity="center|start"
+                    android:theme="@style/SpinnerTheme"
+                    android:background="@null"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="7dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_down_btn"/>
+
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="60dp"
+                android:paddingLeft="60dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:text="@string/next"
+                android:background="@drawable/round_blue_btn"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:gravity="center|bottom"
+                android:id="@+id/header_next_btn"
+                android:fontFamily="@font/opensans_regular"
+                android:textColor="@color/white"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

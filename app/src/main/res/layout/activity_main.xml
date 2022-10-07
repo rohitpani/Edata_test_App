@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/mainpage_lay"
+    android:background="@color/page_back"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
+
+
+    <include
+        layout="@layout/header"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="50dp"
+        >
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:src="@drawable/sync"
+            android:id="@+id/sync_"
+            android:visibility="gone"
+            android:padding="18dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_sync_btn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/oval_blue_btn"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_sync"
+                android:id="@+id/sync_btn"
+                android:padding="18dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sync"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/opensans_semibold"
+                android:textColor="@color/text_color"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/sync_percent"
+                android:fontFamily="@font/opensans_semibold"
+                android:textColor="@color/text_color"
+                />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:progressDrawable="@drawable/custom_progress_bg"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_blue"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:visibility="gone"
+            android:layout_marginRight="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastsync_lay"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last sync"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/opensans_regular"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lastsync_time"
+                        android:textSize="12sp"
+                        android:textColor="@color/hint_color"
+                        android:fontFamily="@font/opensans_regular"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/hint_color"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="12sp"
+                        android:id="@+id/last_sync_time"
+                        android:fontFamily="@font/opensans_regular"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lastsync_date"
+                        android:textSize="12sp"
+                        android:textColor="@color/hint_color"
+                        android:fontFamily="@font/opensans_regular"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/hint_color"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="12sp"
+                        android:id="@+id/last_sync_date"
+                        android:fontFamily="@font/opensans_regular"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="14sp"
+                android:gravity="center"
+                android:id="@+id/deviceno_txt"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/opensans_regular"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="14sp"
+                android:gravity="center"
+                android:id="@+id/pleasewait_txt"
+                android:fontFamily="@font/opensans_regular"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="bottom"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_gravity="bottom"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/donotexit"
+            android:textSize="14sp"
+            android:textColor="@color/dark_blue"
+            android:gravity="center"
+            android:id="@+id/donotexit_txt"
+            android:fontFamily="@font/opensans_regular"/>
+
+    </LinearLayout>
+</FrameLayout>

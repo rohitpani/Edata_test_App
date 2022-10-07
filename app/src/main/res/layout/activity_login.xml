@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/page_back"
+    tools:context=".activities.ActivityLogin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_login_img"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey_back"
+        android:layout_marginTop="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textSize="18sp"
+            android:fontFamily="@font/opensans_regular"
+            android:textColor="@color/text_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_corner_blue_btn">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/email_hint"
+            android:textColorHint="@color/hint_color"
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:id="@+id/login_username"
+            android:fontFamily="@font/opensans_regular"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/opensans_regular"
+            android:textColor="@color/text_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_corner_blue_btn">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/password_hint"
+                android:textColorHint="@color/hint_color"
+                android:textSize="14sp"
+                android:textColor="@color/text_color"
+                android:id="@+id/login_password"
+                android:inputType="textPassword"
+                android:fontFamily="@font/opensans_regular"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_type"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/selecttype_txt"
+            android:fontFamily="@font/opensans_regular"
+            android:textColor="@color/text_color"/>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/selecttype_lay"
+            android:background="@drawable/round_corner_blue_btn">
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/login_role"
+                android:gravity="center|start"
+                android:layout_gravity="center"
+                android:theme="@style/SpinnerTheme"
+                android:background="@null"
+                />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_down_btn"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="60dp">
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="50dp"
+                android:text="@string/login"
+                android:background="@drawable/round_blue_btn"
+                android:layout_marginRight="10dp"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:id="@+id/login_btn"
+                android:fontFamily="@font/opensans_regular"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="50dp"
+                android:text="@string/register"
+                android:background="@drawable/round_blue_bound_btn"
+                android:layout_marginLeft="10dp"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:fontFamily="@font/opensans_regular"
+                android:textColor="@color/dark_blue"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
