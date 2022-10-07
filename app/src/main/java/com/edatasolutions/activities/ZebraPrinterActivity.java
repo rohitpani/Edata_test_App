@@ -1587,7 +1587,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationA2 = "";
         if (pre_vioA.getText().toString().trim().length() > 32) {
             violationA1 = ll_vioA.getVisibility() == View.VISIBLE ? "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationA2 = ll_vioA.getVisibility() == View.VISIBLE ? pre_vioA.getText().toString().trim().substring(31) + "\n" : "";
+            violationA2 = ll_vioA.getVisibility() == View.VISIBLE ? "              " + pre_vioA.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationA1 = ll_vioA.getVisibility() == View.VISIBLE ? "VIOLATION A : " + pre_vioA.getText().toString().trim() + "\n" : "";
         }
@@ -1596,7 +1596,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationB2 = "";
         if (pre_vioB.getText().toString().trim().length() > 32) {
             violationB1 = ll_vioB.getVisibility() == View.VISIBLE ? "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationB2 = ll_vioB.getVisibility() == View.VISIBLE ? pre_vioB.getText().toString().trim().substring(31) + "\n" : "";
+            violationB2 = ll_vioB.getVisibility() == View.VISIBLE ? "              " + pre_vioB.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationB1 = ll_vioB.getVisibility() == View.VISIBLE ? "VIOLATION B : " + pre_vioB.getText().toString().trim() + "\n" : "";
         }
@@ -1605,7 +1605,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationC2 = "";
         if (pre_vioC.getText().toString().trim().length() > 32) {
             violationC1 = ll_vioC.getVisibility() == View.VISIBLE ? "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationC2 = ll_vioC.getVisibility() == View.VISIBLE ? pre_vioC.getText().toString().trim().substring(31) + "\n" : "";
+            violationC2 = ll_vioC.getVisibility() == View.VISIBLE ? "              " + pre_vioC.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationC1 = ll_vioC.getVisibility() == View.VISIBLE ? "VIOLATION C : " + pre_vioC.getText().toString().trim() + "\n" : "";
         }
@@ -1614,7 +1614,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationD2 = "";
         if (pre_vioD.getText().toString().trim().length() > 32) {
             violationD1 = ll_vioD.getVisibility() == View.VISIBLE ? "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationD2 = ll_vioD.getVisibility() == View.VISIBLE ? pre_vioD.getText().toString().trim().substring(31) + "\n" : "";
+            violationD2 = ll_vioD.getVisibility() == View.VISIBLE ? "              " + pre_vioD.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationD1 = ll_vioD.getVisibility() == View.VISIBLE ? "VIOLATION D : " + pre_vioD.getText().toString().trim() + "\n" : "";
         }
@@ -1623,7 +1623,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationE2 = "";
         if (pre_vioE.getText().toString().trim().length() > 32) {
             violationE1 = ll_vioE.getVisibility() == View.VISIBLE ? "VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationE2 = ll_vioE.getVisibility() == View.VISIBLE ? pre_vioE.getText().toString().trim().substring(31) + "\n" : "";
+            violationE2 = ll_vioE.getVisibility() == View.VISIBLE ? "              " + pre_vioE.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationE1 = ll_vioE.getVisibility() == View.VISIBLE ? "VIOLATION E : " + pre_vioE.getText().toString().trim() + "\n" : "";
         }
@@ -1631,7 +1631,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationF2 = "";
         if (pre_vioF.getText().toString().trim().length() > 32) {
             violationF1 = ll_vioF.getVisibility() == View.VISIBLE ? "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationF2 = ll_vioF.getVisibility() == View.VISIBLE ? pre_vioF.getText().toString().trim().substring(31) + "\n" : "";
+            violationF2 = ll_vioF.getVisibility() == View.VISIBLE ? "              " + pre_vioF.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationF1 = ll_vioF.getVisibility() == View.VISIBLE ? "VIOLATION F : " + pre_vioF.getText().toString().trim() + "\n" : "";
         }
@@ -1640,7 +1640,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationG2 = "";
         if (pre_vioG.getText().toString().trim().length() > 32) {
             violationG1 = ll_vioG.getVisibility() == View.VISIBLE ? "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationG2 = ll_vioG.getVisibility() == View.VISIBLE ? pre_vioG.getText().toString().trim().substring(31) + "\n" : "";
+            violationG2 = ll_vioG.getVisibility() == View.VISIBLE ? "              " + pre_vioG.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationG1 = ll_vioG.getVisibility() == View.VISIBLE ? "VIOLATION G : " + pre_vioG.getText().toString().trim() + "\n" : "";
         }
@@ -1649,7 +1649,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String violationH2 = "";
         if (pre_vioH.getText().toString().trim().length() > 32) {
             violationH1 = ll_vioH.getVisibility() == View.VISIBLE ? "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n" : "";
-            violationH2 = ll_vioH.getVisibility() == View.VISIBLE ? pre_vioH.getText().toString().trim().substring(31) + "\n" : "";
+            violationH2 = ll_vioH.getVisibility() == View.VISIBLE ? "              " + pre_vioH.getText().toString().trim().substring(32) + "\n" : "";
         } else {
             violationH1 = ll_vioH.getVisibility() == View.VISIBLE ? "VIOLATION H : " + pre_vioH.getText().toString().trim() + "\n" : "";
         }
