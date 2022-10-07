@@ -1583,14 +1583,76 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String hazardous = "HAZARDOUS : " + pre_hazardous.getText().toString().trim() + "\n";
         String overload = "OVERLOAD : " + pre_overload.getText().toString().trim() + "\n";
         String policy_no = "POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
-        String violationA = ll_vioA.getVisibility() == View.VISIBLE ? "VIOLATION A : " + pre_vioA.getText().toString().trim() + "\n" : "";
-        String violationB = ll_vioB.getVisibility() == View.VISIBLE ? "VIOLATION B : " + pre_vioB.getText().toString().trim() + "\n" : "";
-        String violationC = ll_vioC.getVisibility() == View.VISIBLE ? "VIOLATION C : " + pre_vioC.getText().toString().trim() + "\n" : "";
-        String violationD = ll_vioD.getVisibility() == View.VISIBLE ? "VIOLATION D : " + pre_vioD.getText().toString().trim() + "\n" : "";
-        String violationE = ll_vioE.getVisibility() == View.VISIBLE ? "VIOLATION E : " + pre_vioE.getText().toString().trim() + "\n" : "";
-        String violationF = ll_vioF.getVisibility() == View.VISIBLE ? "VIOLATION F : " + pre_vioF.getText().toString().trim() + "\n" : "";
-        String violationG = ll_vioG.getVisibility() == View.VISIBLE ? "VIOLATION G : " + pre_vioG.getText().toString().trim() + "\n" : "";
-        String violationH = ll_vioH.getVisibility() == View.VISIBLE ? "VIOLATION H : " + pre_vioH.getText().toString().trim() + "\n" : "";
+        String violationA1 = "";
+        String violationA2 = "";
+        if (pre_vioA.getText().toString().trim().length() > 32) {
+            violationA1 = ll_vioA.getVisibility() == View.VISIBLE ? "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationA2 = ll_vioA.getVisibility() == View.VISIBLE ? pre_vioA.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationA1 = ll_vioA.getVisibility() == View.VISIBLE ? "VIOLATION A : " + pre_vioA.getText().toString().trim() + "\n" : "";
+        }
+
+        String violationB1 = "";
+        String violationB2 = "";
+        if (pre_vioB.getText().toString().trim().length() > 32) {
+            violationB1 = ll_vioB.getVisibility() == View.VISIBLE ? "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationB2 = ll_vioB.getVisibility() == View.VISIBLE ? pre_vioB.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationB1 = ll_vioB.getVisibility() == View.VISIBLE ? "VIOLATION B : " + pre_vioB.getText().toString().trim() + "\n" : "";
+        }
+
+        String violationC1 = "";
+        String violationC2 = "";
+        if (pre_vioC.getText().toString().trim().length() > 32) {
+            violationC1 = ll_vioC.getVisibility() == View.VISIBLE ? "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationC2 = ll_vioC.getVisibility() == View.VISIBLE ? pre_vioC.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationC1 = ll_vioC.getVisibility() == View.VISIBLE ? "VIOLATION C : " + pre_vioC.getText().toString().trim() + "\n" : "";
+        }
+
+        String violationD1 = "";
+        String violationD2 = "";
+        if (pre_vioD.getText().toString().trim().length() > 32) {
+            violationD1 = ll_vioD.getVisibility() == View.VISIBLE ? "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationD2 = ll_vioD.getVisibility() == View.VISIBLE ? pre_vioD.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationD1 = ll_vioD.getVisibility() == View.VISIBLE ? "VIOLATION D : " + pre_vioD.getText().toString().trim() + "\n" : "";
+        }
+
+        String violationE1 = "";
+        String violationE2 = "";
+        if (pre_vioE.getText().toString().trim().length() > 32) {
+            violationE1 = ll_vioE.getVisibility() == View.VISIBLE ? "VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationE2 = ll_vioE.getVisibility() == View.VISIBLE ? pre_vioE.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationE1 = ll_vioE.getVisibility() == View.VISIBLE ? "VIOLATION E : " + pre_vioE.getText().toString().trim() + "\n" : "";
+        }
+        String violationF1 = "";
+        String violationF2 = "";
+        if (pre_vioF.getText().toString().trim().length() > 32) {
+            violationF1 = ll_vioF.getVisibility() == View.VISIBLE ? "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationF2 = ll_vioF.getVisibility() == View.VISIBLE ? pre_vioF.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationF1 = ll_vioF.getVisibility() == View.VISIBLE ? "VIOLATION F : " + pre_vioF.getText().toString().trim() + "\n" : "";
+        }
+
+        String violationG1 = "";
+        String violationG2 = "";
+        if (pre_vioG.getText().toString().trim().length() > 32) {
+            violationG1 = ll_vioG.getVisibility() == View.VISIBLE ? "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationG2 = ll_vioG.getVisibility() == View.VISIBLE ? pre_vioG.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationG1 = ll_vioG.getVisibility() == View.VISIBLE ? "VIOLATION G : " + pre_vioG.getText().toString().trim() + "\n" : "";
+        }
+
+        String violationH1 = "";
+        String violationH2 = "";
+        if (pre_vioH.getText().toString().trim().length() > 32) {
+            violationH1 = ll_vioH.getVisibility() == View.VISIBLE ? "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n" : "";
+            violationH2 = ll_vioH.getVisibility() == View.VISIBLE ? pre_vioH.getText().toString().trim().substring(31) + "\n" : "";
+        } else {
+            violationH1 = ll_vioH.getVisibility() == View.VISIBLE ? "VIOLATION H : " + pre_vioH.getText().toString().trim() + "\n" : "";
+        }
         String vca = ll_vca.getVisibility() == View.VISIBLE ? "VCA : " + pre_vca.getText().toString().trim() + "\n" : "";
         String vcb = ll_vcb.getVisibility() == View.VISIBLE ? "VCB : " + pre_vcb.getText().toString().trim() + "\n" : "";
         String vcc = ll_vcc.getVisibility() == View.VISIBLE ? "VCC : " + pre_vcc.getText().toString().trim() + "\n" : "";
@@ -1620,7 +1682,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
        /* StringBuffer sb = new StringBuffer("CITATION NUMBER : ");
         sb.append(citation_no_txt.getText().toString().trim()).append("\n")
                 .append("FIRST NAME : ").append(driver_firstname.getText().toString().trim()).append("\n");*/
-        String footer = String.format("! 0 200 200 3910 1\n" +
+        String footer = String.format("! 0 200 200 4310 1\n" +
                 "ML 47\n" +
                 "T 7 0 10 20 " +
                 citation +
@@ -1666,14 +1728,22 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 hazardous +
                 overload +
                 policy_no +
-                violationA +
-                violationB +
-                violationC +
-                violationD +
-                violationE +
-                violationF +
-                violationG +
-                violationH +
+                violationA1 +
+                violationA2 +
+                violationB1 +
+                violationB2 +
+                violationC1 +
+                violationC2 +
+                violationD1 +
+                violationD2 +
+                violationE1 +
+                violationE2 +
+                violationF1 +
+                violationF2 +
+                violationG1 +
+                violationG2 +
+                violationH1 +
+                violationH2 +
                 vca +
                 vcb +
                 vcc +
