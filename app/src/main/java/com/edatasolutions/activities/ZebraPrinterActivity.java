@@ -83,7 +83,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
     private Button testButton, print_data;
     private ZebraPrinter printer;
-    private TextView statusField;
+    //private TextView statusField;
     private LinearLayout ll_print_layout;
 
     //-----------------
@@ -129,7 +129,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         TextView t2 = (TextView) findViewById(R.id.launchpad_link);
         t2.setMovementMethod(LinkMovementMethod.getInstance());
 
-        statusField = (TextView) this.findViewById(R.id.statusText);
+        //statusField = (TextView) this.findViewById(R.id.statusText);
 
 
         btRadioButton = (RadioButton) this.findViewById(R.id.bluetoothRadio);
@@ -318,7 +318,8 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
     @SuppressLint({"ServiceCast", "HardwareIds"})
     public ZebraPrinter connect() {
-        setStatus("Connecting...", Color.YELLOW);
+        //setStatus("Connecting...", Color.YELLOW);
+        Log.e("TAG", "connect: Connecting..." );
         connection = null;
         if (isBluetoothSelected()) {
             try {
@@ -355,17 +356,20 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 SettingsHelper.saveIp(this, getTcpAddress());
                 SettingsHelper.savePort(this, getTcpPortNumber());
             } catch (NumberFormatException e) {
-                setStatus("Port Number Is Invalid", Color.RED);
+               // setStatus("Port Number Is Invalid", Color.RED);
+                Log.e("TAG", "connect: Port Number Is Invalid" );
                 return null;
             }
         }
 
         try {
             connection.open();
-            setStatus("Connected", Color.GREEN);
+            //setStatus("Connected", Color.GREEN);
+            Log.e("TAG", "connect: Connected" );
         } catch (ConnectionException e) {
             Toast.makeText(ZebraPrinterActivity.this, "ConnectionException: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            setStatus("Comm Error! Disconnecting", Color.RED);
+            //setStatus("Comm Error! Disconnecting", Color.RED);
+            Log.e("TAG", "connect: Comm Error! Disconnecting" );
             DemoSleeper.sleep(1000);
             disconnect();
         }
@@ -375,16 +379,20 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         if (connection.isConnected()) {
             try {
                 printer = ZebraPrinterFactory.getInstance(connection);
-                setStatus("Determining Printer Language", Color.YELLOW);
+                //setStatus("Determining Printer Language", Color.YELLOW);
+                Log.e("TAG", "connect: Determining Printer Language" );
                 String pl = SGD.GET("device.languages", connection);
-                setStatus("Printer Language " + pl, Color.BLUE);
+                //setStatus("Printer Language " + pl, Color.BLUE);
+                Log.e("TAG", "connect: Printer Language "+ pl );
             } catch (ConnectionException e) {
-                setStatus("Unknown Printer Language", Color.RED);
+              //  setStatus("Unknown Printer Language", Color.RED);
+                Log.e("TAG", "connect: Unknown Printer Language" );
                 printer = null;
                 DemoSleeper.sleep(1000);
                 disconnect();
             } catch (ZebraPrinterLanguageUnknownException e) {
-                setStatus("Unknown Printer Language", Color.RED);
+                //setStatus("Unknown Printer Language", Color.RED);
+                Log.e("TAG", "connect: Unknown Printer Language" );
                 printer = null;
                 DemoSleeper.sleep(1000);
                 disconnect();
@@ -396,19 +404,22 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
     public void disconnect() {
         try {
-            setStatus("Disconnecting", Color.RED);
+            //setStatus("Disconnecting", Color.RED);
+            Log.e("TAG", "Disconnecting" );
             if (connection != null) {
                 connection.close();
             }
-            setStatus("Not Connected", Color.RED);
+           // setStatus("Not Connected", Color.RED);
+            Log.e("TAG", "Not Connected" );
         } catch (ConnectionException e) {
-            setStatus("COMM Error! Disconnected", Color.RED);
+            //setStatus("COMM Error! Disconnected", Color.RED);
+            Log.e("TAG", "disconnect: COMM Error! Disconnected" );
         } finally {
             enableTestButton(true);
         }
     }
 
-    private void setStatus(final String statusMessage, final int color) {
+   /* private void setStatus(final String statusMessage, final int color) {
         runOnUiThread(new Runnable() {
             public void run() {
                 statusField.setBackgroundColor(color);
@@ -416,7 +427,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             }
         });
         DemoSleeper.sleep(1000);
-    }
+    }*/
 
 
     private void sendTestLabel() {
@@ -434,22 +445,25 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 //printer.printImage(zebraImageToPrint, 0, 0, -1, -1, false);
                 printer.printImage(zebraImageToPrint, 0, 0, 970, 11809, false);*/
                 //-----------------------//
-                setStatus("Sending Data", Color.BLUE);
+                //setStatus("Sending Data", Color.BLUE);
             } else if (printerStatus.isHeadOpen) {
-                setStatus("Printer Head Open", Color.RED);
+               // setStatus("Printer Head Open", Color.RED);
+                Log.e("sendTestLabel", "sendTestLabel: Printer Head Open" );
             } else if (printerStatus.isPaused) {
-                setStatus("Printer is Paused", Color.RED);
+               // setStatus("Printer is Paused", Color.RED);
+                Log.e("sendTestLabel", "sendTestLabel: Printer is Paused" );
             } else if (printerStatus.isPaperOut) {
-                setStatus("Printer Media Out", Color.RED);
+               // setStatus("Printer Media Out", Color.RED);
+                Log.e("sendTestLabel", "sendTestLabel: Printer Media Out" );
             }
             DemoSleeper.sleep(1500);
             if (connection instanceof BluetoothConnection) {
                 String friendlyName = ((BluetoothConnection) connection).getFriendlyName();
-                setStatus(friendlyName, Color.MAGENTA);
+               // setStatus(friendlyName, Color.MAGENTA);
                 DemoSleeper.sleep(500);
             }
         } catch (ConnectionException e) {
-            setStatus(e.getMessage(), Color.RED);
+           // setStatus(e.getMessage(), Color.RED);
         } finally {
             disconnect();
         }
@@ -1682,7 +1696,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
        /* StringBuffer sb = new StringBuffer("CITATION NUMBER : ");
         sb.append(citation_no_txt.getText().toString().trim()).append("\n")
                 .append("FIRST NAME : ").append(driver_firstname.getText().toString().trim()).append("\n");*/
-        String footer = String.format("! 0 200 200 4310 1\n" +
+        String footer = String.format("! 0 200 200 2000 1\n" +
                 "ML 47\n" +
                 "T 7 0 10 20 " +
                 citation +
