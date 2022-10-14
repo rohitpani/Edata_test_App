@@ -1696,7 +1696,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
        /* StringBuffer sb = new StringBuffer("CITATION NUMBER : ");
         sb.append(citation_no_txt.getText().toString().trim()).append("\n")
                 .append("FIRST NAME : ").append(driver_firstname.getText().toString().trim()).append("\n");*/
-        String footer = String.format("! 0 200 200 2000 1\n" +
+        String footer = String.format("! 0 200 200 2150 1\n" +
                 "ML 47\n" +
                 "T 7 0 10 20 " +
                 citation +
