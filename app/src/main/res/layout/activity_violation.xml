@@ -133,29 +133,29 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/violation_a"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/required_field"
-                        android:textColor="@color/red"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/vioa_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/round_corner_blue_btn_4dp"
                     android:orientation="horizontal"
-                    android:id="@+id/vioa_lay"
                     android:paddingLeft="20dp"
                     android:paddingTop="15dp"
                     android:paddingRight="20dp"
@@ -163,34 +163,32 @@
 
 
                     <TextView
+                        android:id="@+id/violation_a"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_a"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_a"
-                         />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationA"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationA"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null"
-                       />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
@@ -198,11 +196,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violation_b"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -216,44 +214,43 @@
                     android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/violation_b"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_b"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_b"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationB"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationB"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violation_c"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -267,44 +264,43 @@
                     android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/violation_c"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_c"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_c"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationC"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationC"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violation_d"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -319,44 +315,43 @@
 
 
                     <TextView
+                        android:id="@+id/violation_d"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_d"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_d"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationD"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationD"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violation_e"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -371,44 +366,44 @@
 
 
                     <TextView
+                        android:id="@+id/violation_e"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_e"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_e"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationE"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationE"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violation_f"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -421,33 +416,32 @@
                     android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/violation_f"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_f"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_f"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationF"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationF"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
@@ -455,11 +449,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violation_g"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -473,44 +467,43 @@
                     android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/violation_g"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_g"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_g"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationG"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationG"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/violation_h"
-                    android:textColor="@color/text_color"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:text="@string/violation_h"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -524,45 +517,44 @@
                     android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/violation_h"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violation_h"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violation_h"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationH"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationH"
+                        android:background="@null"
+                        android:dropDownWidth="wrap_content"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:dropDownWidth="wrap_content"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vca"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -576,31 +568,30 @@
                     android:paddingBottom="15dp">
 
 
-
                     <RadioGroup
+                        android:id="@+id/vca_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vca_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vca_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vca_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vca_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -609,11 +600,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vcb"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -627,31 +618,30 @@
                     android:paddingBottom="15dp">
 
 
-
                     <RadioGroup
+                        android:id="@+id/vcb_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vcb_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vcb_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vcb_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vcb_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -660,11 +650,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vcc"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -679,29 +669,29 @@
 
 
                     <RadioGroup
+                        android:id="@+id/vcc_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vcc_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vcc_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vcc_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vcc_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -710,11 +700,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vcd"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -729,29 +719,29 @@
 
 
                     <RadioGroup
+                        android:id="@+id/vcd_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vcd_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vcd_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vcd_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vcd_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -760,11 +750,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vce"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -778,31 +768,30 @@
                     android:paddingBottom="15dp">
 
 
-
                     <RadioGroup
+                        android:id="@+id/vce_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vce_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vce_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vce_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vce_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -811,11 +800,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vcf"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -830,29 +819,29 @@
 
 
                     <RadioGroup
+                        android:id="@+id/vcf_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vcf_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vcf_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vcf_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vcf_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -861,11 +850,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vcg"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -879,31 +868,30 @@
                     android:paddingBottom="15dp">
 
 
-
                     <RadioGroup
+                        android:id="@+id/vcg_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vcg_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vcg_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vcg_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vcg_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -912,11 +900,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vch"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -931,29 +919,29 @@
 
 
                     <RadioGroup
+                        android:id="@+id/vch_group"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/vch_group"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_vch_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_vch_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_vch_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -961,40 +949,40 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/apprspeed"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
+                    android:id="@+id/apprspeed_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:id="@+id/apprspeed_lay"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/apprspeed"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
-                        android:hint="@string/apprspeed"
-                        android:gravity="center|start"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/apprspeed"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:maxLength="3"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:id="@+id/apprspeed"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1002,38 +990,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/pfspeed"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="30dp"
-                        android:hint="@string/pfspeed"
-                        android:singleLine="true"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/hint_color"
-                        android:background="@null"
                         android:id="@+id/pfspeed"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/pfspeed"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:textSize="14sp"/>
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1041,39 +1030,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/vehlimit"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="30dp"
-                        android:hint="@string/vehlimit"
                         android:id="@+id/vehlimit"
-                        android:gravity="center|start"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/vehlimit"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:singleLine="true"
-                        android:maxLength="2"
-                        android:inputType="number"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1081,82 +1070,80 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/safespeed"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="30dp"
-                        android:hint="@string/safespeed"
-                        android:singleLine="true"
                         android:id="@+id/safespeed"
-                        android:inputType="number"
-                        android:gravity="center|start"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/safespeed"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:maxLength="2"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
 
 
-
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/animal1"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="30dp"
-                        android:hint="@string/animal1"
-                        android:singleLine="true"
                         android:id="@+id/animal1"
-                        android:gravity="center|start"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/animal1"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:maxLength="4"
-                        android:inputType="number"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1164,39 +1151,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/animal2"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/animal2"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:hint="@string/animal2"
                         android:inputType="number"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:id="@+id/animal2"
-                        android:singleLine="true"
-                        android:maxLength="4"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1204,39 +1191,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/animal3"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/animal3"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:hint="@string/animal3"
                         android:inputType="number"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:id="@+id/animal3"
-                        android:singleLine="true"
-                        android:maxLength="4"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1244,39 +1231,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/animal4"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/animal4"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
-                        android:hint="@string/animal4"
-                        android:gravity="center|start"
-                        android:inputType="number"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/animal4"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:id="@+id/animal4"
-                        android:singleLine="true"
-                        android:maxLength="4"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1284,39 +1271,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/animal5"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/animal5"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:hint="@string/animal5"
                         android:inputType="number"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:singleLine="true"
-                        android:id="@+id/animal5"
-                        android:maxLength="4"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1324,39 +1311,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/animal6"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/animal6"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:hint="@string/animal6"
                         android:inputType="number"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:id="@+id/animal6"
-                        android:singleLine="true"
-                        android:maxLength="4"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1364,39 +1351,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/animal7"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/animal7"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:hint="@string/animal7"
                         android:inputType="number"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:id="@+id/animal7"
-                        android:singleLine="true"
-                        android:maxLength="4"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -1404,42 +1391,43 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/animal8"
-                    android:textColor="@color/text_color"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:text="@string/animal8"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/animal8"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:hint="@string/animal8"
                         android:inputType="number"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
+                        android:maxLength="4"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:singleLine="true"
-                        android:id="@+id/animal8"
-                        android:maxLength="4"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
+
                 <Button
                     android:id="@+id/violation_next_btn"
                     android:layout_width="wrap_content"

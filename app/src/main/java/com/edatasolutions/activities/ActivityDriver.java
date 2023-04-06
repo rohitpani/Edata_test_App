@@ -48,6 +48,7 @@ import com.edatasolutions.utils.SessionManager;
 import com.edatasolutions.utils.Utils;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -84,6 +85,7 @@ public class ActivityDriver extends AppCompatActivity {
     private int mMonth;
     private int mDay;
     private String selected = "";
+    private ScrollView driver_scroll;
     private RadioButton rb_sex_m, rb_sex_f, rb_cdl_yes, rb_cdl_no;
     private String s_scannedheight="";
     private String L_city="", L_state="",L_haircolor="",L_eyecolor="", L_driverState="", L_height="",L_suffix="",L_driver_license_type="";
@@ -504,6 +506,7 @@ public class ActivityDriver extends AppCompatActivity {
         driverstate_txt = findViewById(R.id.driverstate_txt);
         city_txt = findViewById(R.id.city_txt);
 
+        driver_scroll = findViewById(R.id.driver_scroll);
 
         img_menu.setVisibility(View.GONE);
         header_text.setText(R.string.driver);
@@ -738,14 +741,15 @@ public class ActivityDriver extends AppCompatActivity {
         boolean valid = true;
         if ( TextUtils.isEmpty(s_driver_firstname) ) {
             firstname_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            firstname_lay.getParent().requestChildFocus(firstname_lay,firstname_lay);
             valid = false;
         }else {
-
             firstname_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
         }
 
         if ( TextUtils.isEmpty(s_driver_lastname) ) {
             lastname_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            lastname_lay.getParent().requestChildFocus(lastname_lay,lastname_lay);
             valid = false;
         }else {
             lastname_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -753,14 +757,17 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_driver_address1) ) {
             address_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            address_lay.getParent().requestChildFocus(address_lay,address_lay);
             valid = false;
         }else {
 
             if(s_driver_address1.startsWith("0")){
                 address_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                address_lay.getParent().requestChildFocus(address_lay,address_lay);
                 valid = false;
             }else if (s_driver_address1.length()<=4){
                 address_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                address_lay.getParent().requestChildFocus(address_lay,address_lay);
                 valid = false;
             }else {
                 address_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -770,6 +777,8 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_driver_city) ) {
             city_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            city_lay.getParent().requestChildFocus(city_lay,city_lay);
+
             valid = false;
         }else {
             city_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -777,6 +786,7 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_driver_state) ) {
             state_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            state_lay.getParent().requestChildFocus(state_lay,state_lay);
             valid = false;
         }else {
             state_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -785,6 +795,7 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_sex) ) {
             sex_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            sex_lay.getParent().requestChildFocus(sex_lay,sex_lay);
             valid = false;
         }else {
             sex_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -792,6 +803,7 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_hair) ) {
             hair_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            hair_lay.getParent().requestChildFocus(hair_lay,hair_lay);
             valid = false;
         }else {
             hair_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -799,6 +811,7 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_eyes) ) {
             eye_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            eye_lay.getParent().requestChildFocus(eye_lay,eye_lay);
             valid = false;
         }else {
             eye_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -806,6 +819,7 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_height) ) {
             height_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            height_lay.getParent().requestChildFocus(height_lay,height_lay);
             valid = false;
         }else {
             height_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -813,6 +827,7 @@ public class ActivityDriver extends AppCompatActivity {
 
         if ( TextUtils.isEmpty(s_weight) ) {
             weight_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            weight_lay.getParent().requestChildFocus(weight_lay,weight_lay);
             valid = false;
         }else {
             int weight = Integer.parseInt(s_weight);
@@ -820,6 +835,7 @@ public class ActivityDriver extends AppCompatActivity {
                 weight_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
             }else {
                 weight_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                weight_lay.getParent().requestChildFocus(weight_lay,weight_lay);
                 valid = false;
             }
 
@@ -829,6 +845,7 @@ public class ActivityDriver extends AppCompatActivity {
 
             if (s_driver_zipcode.length() < 5) {
                 zip_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                zip_lay.getParent().requestChildFocus(zip_lay,zip_lay);
                 valid = false;
                // Toast.makeText(ActivityDriver.this, "Please enter correct zipcode", Toast.LENGTH_SHORT).show();
             } else {
@@ -853,6 +870,7 @@ public class ActivityDriver extends AppCompatActivity {
                     int Digit = Integer.parseInt(s_driver_zipcode);
                     if (!(firstDigit(Digit) == 9)) {
                         zip_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                        zip_lay.getParent().requestChildFocus(zip_lay,zip_lay);
                         valid = false;
 
 
@@ -880,6 +898,7 @@ public class ActivityDriver extends AppCompatActivity {
             if (s_driver_statee.equals("CA")){
                 if (!license_response){
                     driver_license_no_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                    driver_license_no_lay.getParent().requestChildFocus(driver_license_no_lay,driver_license_no_lay);
                     valid = false;
                 }else {
                     driver_license_no_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -892,11 +911,31 @@ public class ActivityDriver extends AppCompatActivity {
             driver_license_no_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
         }
 
-
-        if (!s_dob.equals("DOB") ) {
-
+        if (!TextUtils.isEmpty(s_dob) ) {
             if (!dob_response){
                 dob_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                dob_lay.getParent().requestChildFocus(dob_lay,dob_lay);
+                SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+                try {
+                    Date parseddate = sdf.parse(s_dob);
+                    Calendar c2 = Calendar.getInstance();
+                    c2.add(Calendar.YEAR, -13);
+
+                    Calendar c3 = Calendar.getInstance();
+                    c3.add(Calendar.YEAR, -100);
+                    Date dateObj2 = new Date(System.currentTimeMillis());
+                    assert parseddate != null;
+                    if (parseddate.before(c2.getTime())) {
+                        Toast.makeText(getApplicationContext(),"Age is above 100 year",Toast.LENGTH_SHORT).show();
+                    }
+                    else if(parseddate.after(c3.getTime())){
+                        Toast.makeText(getApplicationContext(),"Age is under 13 year",Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 valid = false;
             }else {
                 dob_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -904,8 +943,13 @@ public class ActivityDriver extends AppCompatActivity {
 
         }else {
             dob_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            dob_lay.getParent().requestChildFocus(dob_lay,dob_lay);
+            valid = false;
         }
 
+        if(TextUtils.isEmpty(s_driver_firstname) && TextUtils.isEmpty(s_driver_lastname) && TextUtils.isEmpty(s_driver_address1) && TextUtils.isEmpty(s_driver_city) && TextUtils.isEmpty(s_sex) && TextUtils.isEmpty(s_hair) && TextUtils.isEmpty(s_eyes) && TextUtils.isEmpty(s_height) && TextUtils.isEmpty(s_weight) && TextUtils.isEmpty(s_dob)){
+            driver_scroll.fullScroll(View.FOCUS_UP);
+        }
 
             if ( valid ) {
 

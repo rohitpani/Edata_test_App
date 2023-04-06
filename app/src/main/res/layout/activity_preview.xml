@@ -66,11 +66,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_or"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_or"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -90,11 +90,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_traffic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_traffic"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -110,26 +110,26 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/opensans_semibold"
                         android:text="@string/non_traffic"
-                        android:visibility="gone"
                         android:textColor="@color/text_color"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:visibility="gone" />
 
                     <TextView
+                        android:id="@+id/pre_nontraffic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:visibility="gone"
-                        android:id="@+id/pre_nontraffic"
                         android:textColor="@color/hint_color"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:visibility="gone" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="10dp"
-                        android:visibility="gone"
-                        android:background="@color/light_blue" />
+                        android:background="@color/light_blue"
+                        android:visibility="gone" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -141,11 +141,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_ped"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_ped"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -165,11 +165,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_courtcode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_courtcode"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -190,11 +190,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_lea"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_lea"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -242,11 +242,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_firstname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_firstname"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -266,11 +266,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_middlename"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_middlename"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -290,11 +290,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_lastname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_lastname"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -314,11 +314,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_suffix"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_suffix"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -338,11 +338,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_address1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_address1"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -362,11 +362,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_address2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_address2"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -386,11 +386,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_city"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -410,11 +410,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_state"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -434,11 +434,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_zipcode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_zipcode"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -458,11 +458,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_license_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_license_no"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -483,11 +483,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_statee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_statee"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -507,11 +507,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_dob"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -531,11 +531,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_sex"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_sex"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -556,11 +556,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_hair"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_hair"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -580,11 +580,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_eyes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_eyes"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -604,11 +604,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_height"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_height"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -628,11 +628,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_weight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_weight"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -652,11 +652,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/license_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/license_type"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -676,11 +676,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_race"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_race"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -700,11 +700,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/driver_ethncity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/driver_ethncity"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -725,11 +725,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/comm_drivers_license"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/comm_drivers_license"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -777,11 +777,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_firstname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_firstname"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -803,11 +803,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_middlename"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_middlename"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -829,11 +829,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_lastname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_lastname"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -855,11 +855,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_suffix"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_suffix"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -881,11 +881,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_address1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_address1"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -907,11 +907,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_address2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_address2"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -933,11 +933,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_city"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -959,11 +959,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_state"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -985,11 +985,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_owner_zipcode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_owner_zipcode"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1010,11 +1010,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehyear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehyear"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1034,11 +1034,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehmake"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehmake"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1058,11 +1058,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehmodel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehmodel"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1082,11 +1082,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehbody"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehbody"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1106,11 +1106,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehcolor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehcolor"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1130,11 +1130,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehtype"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehtype"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1154,11 +1154,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_commercial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_commercial"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1178,11 +1178,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehno"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1202,11 +1202,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehstate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehstate"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1226,11 +1226,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_hazardous"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_hazardous"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1250,11 +1250,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_overload"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_overload"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1274,11 +1274,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_policyno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_policyno"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -1326,11 +1326,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vioA"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioA"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1352,11 +1352,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vioB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioB"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1378,11 +1378,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vioC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioC"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1404,11 +1404,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vioD"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioD"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1431,11 +1431,11 @@
 
 
                     <TextView
+                        android:id="@+id/pre_vioE"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioE"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1457,11 +1457,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vioF"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioF"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1483,11 +1483,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vioG"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioG"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1509,11 +1509,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vioH"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vioH"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1535,11 +1535,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vca"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vca"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1561,11 +1561,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vcb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vcb"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1587,11 +1587,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vcc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vcc"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1613,11 +1613,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vcd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vcd"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1639,11 +1639,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vce"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vce"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1665,11 +1665,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vcf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vcf"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1691,11 +1691,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vcg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vcg"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1717,11 +1717,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vch"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1742,11 +1742,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_vehlimit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_vehlimit"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1766,11 +1766,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_safespeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_safespeed"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1790,11 +1790,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_apprspeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_apprspeed"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1815,11 +1815,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_pfspeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_pfspeed"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1841,11 +1841,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal1"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1867,11 +1867,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal2"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1893,11 +1893,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal3"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1919,11 +1919,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal4"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1945,11 +1945,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal5"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1971,11 +1971,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal6"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -1997,11 +1997,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal7"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2023,11 +2023,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_animal8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_animal8"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -2074,11 +2074,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_issuedate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_issuedate"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2098,11 +2098,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_time"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2112,30 +2112,30 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/light_blue" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:fontFamily="@font/opensans_semibold"-->
-<!--                        android:text="@string/ampm"-->
-<!--                        android:textColor="@color/text_color"-->
-<!--                        android:textSize="14sp" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        android:fontFamily="@font/opensans_semibold"-->
+                    <!--                        android:text="@string/ampm"-->
+                    <!--                        android:textColor="@color/text_color"-->
+                    <!--                        android:textSize="14sp" />-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:fontFamily="@font/opensans_regular"-->
-<!--                        android:id="@+id/pre_ampm"-->
-<!--                        android:textColor="@color/hint_color"-->
-<!--                        android:textSize="14sp" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="5dp"-->
+                    <!--                        android:fontFamily="@font/opensans_regular"-->
+                    <!--                        android:id="@+id/pre_ampm"-->
+                    <!--                        android:textColor="@color/hint_color"-->
+                    <!--                        android:textSize="14sp" />-->
 
 
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="1dp"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:background="@color/light_blue" />-->
+                    <!--                    <View-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="1dp"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        android:background="@color/light_blue" />-->
 
                     <TextView
                         android:layout_width="match_parent"
@@ -2147,11 +2147,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_schoolzone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_schoolzone"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2172,11 +2172,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_violationcity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_violationcity"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2197,11 +2197,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_violationst"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_violationst"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2222,11 +2222,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_violationsttyp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_violationsttyp"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2247,11 +2247,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_violationcst"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_violationcst"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2272,11 +2272,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_violationscttyp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_violationscttyp"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2297,11 +2297,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_appeardate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_appeardate"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2322,11 +2322,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_courttime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_courttime"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2336,7 +2336,6 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="10dp"
                         android:background="@color/light_blue" />
-
 
 
                     <TextView
@@ -2349,11 +2348,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_offbadgeno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_offbadgeno"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2374,11 +2373,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_offlname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_offlname"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2399,11 +2398,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_areacode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_areacode"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2424,11 +2423,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_division"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_division"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2449,11 +2448,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_detail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_detail"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2473,11 +2472,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_nightcourt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_nightcourt"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2497,11 +2496,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_ca_tobenotified"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_ca_tobenotified"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 
@@ -2521,11 +2520,11 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/pre_ca_citenotsignedbydriver"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:id="@+id/pre_ca_citenotsignedbydriver"
                         android:textColor="@color/hint_color"
                         android:textSize="14sp" />
 

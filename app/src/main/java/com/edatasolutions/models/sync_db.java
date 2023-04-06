@@ -60,6 +60,4 @@ public class sync_db {
         this.device_no = device_no;
         this.is_new_user = is_new_user;
     }
-
-
 }

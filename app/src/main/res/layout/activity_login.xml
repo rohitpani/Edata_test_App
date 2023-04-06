@@ -73,7 +73,7 @@
             android:fontFamily="@font/opensans_regular"
             android:textColor="@color/text_color"/>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="15dp"
@@ -89,12 +89,24 @@
                 android:hint="@string/password_hint"
                 android:textColorHint="@color/hint_color"
                 android:textSize="14sp"
+                android:gravity="center|start"
+                android:layout_gravity="center"
                 android:textColor="@color/text_color"
                 android:id="@+id/login_password"
                 android:inputType="textPassword"
                 android:fontFamily="@font/opensans_regular"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_visibility_off"
+                android:id="@+id/imgbtn"
+                android:tag="1"
+                android:padding="1.5dp"
+                android:background="@color/transparent"
+                android:layout_gravity="right"
+                android:visibility="gone"/>
 
-        </LinearLayout>
+        </FrameLayout>
 
         <TextView
             android:layout_width="wrap_content"

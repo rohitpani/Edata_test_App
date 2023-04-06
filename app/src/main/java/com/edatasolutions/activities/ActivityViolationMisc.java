@@ -4,7 +4,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -38,6 +37,7 @@ import com.edatasolutions.R;
 import com.edatasolutions.database.DatabaseAccess;
 import com.edatasolutions.utils.SessionManager;
 import com.edatasolutions.utils.Utils;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -49,16 +49,16 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.TimeZone;
 
-public class ActivityViolationMisc extends AppCompatActivity {
+public class ActivityViolationMisc extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
-    private TextView header_text,appeardate,violationcity_txt,division_txt;
+    private TextView header_text,violationcity_txt,division_txt;
     private Button preview_btn;
     private ImageView img_menu, img_back;
     private SessionManager sessionManager;
     private RadioGroup schoolzone,night_court,ca_tobenotified,ca_citenotsignedbydriver;
     private RadioButton r_schoolzone, r_night_court,r_ca_tobenotified,r_ca_citenotsignedbydriver;
     private String seleced_appeardate="",seleced_time="",selected_issuedate="",selected_issuetime="";
-    private TextView issuedate, time, courttime,ampm_txt;
+    private TextView issuedate, time, courttime,appeardate,ampm_txt;
     private EditText offbadgeno, offlname,violationst,violationcst;
     private Spinner violationcity, violationsttyp,ampm,areacode,violationcsttyp,detail,division;
     private String s_schoolzone="N",s_night_court="N",s_ca_tobenotified="N",s_ca_citenotsignedbydriver="N", s_violationcity="",s_violationcityid="",s_violationsttyp="",s_violationsttypid="",s_violationcsttypid="",s_violationst="",s_violationcst="",s_violationcsttyp="";
@@ -69,7 +69,7 @@ public class ActivityViolationMisc extends AppCompatActivity {
     private ArrayList<String> violationcsttypList = new ArrayList<>();
     private ArrayList<String> areacodeList = new ArrayList<>();
     private ArrayList<String> divisionList = new ArrayList<>();
-    private LinearLayout ca_citenotsignedbydriver_lay;
+    private LinearLayout ca_citenotsignedbydriver_lay,appeardate_lay;
     private int mYear;
     private int mMonth;
     private int mDay;
@@ -78,6 +78,8 @@ public class ActivityViolationMisc extends AppCompatActivity {
     private ScrollView violationmisc_scroll;
     private RadioButton rb_ca_cite_yes, rb_ca_cite_no, rb_ca_notified_yes, rb_ca_notified_no,rb_nightcourt_yes,rb_nightcourt_no,rb_schoolzone_yes,rb_schoolzone_no;
     private ArrayAdapter<String> adapter;
+    private DatePickerDialog mDatePicker;
+    private ImageView cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,12 +102,80 @@ public class ActivityViolationMisc extends AppCompatActivity {
 
         appeardate.setOnClickListener(new View.OnClickListener() {
             @Override
+            public void onClick(View view) {
+                Calendar mcurrentDate = Calendar.getInstance(TimeZone.getTimeZone("GMT-07:00"));
+                mYear = mcurrentDate.get(Calendar.YEAR);
+                mMonth = mcurrentDate.get(Calendar.MONTH);
+                mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+                mDatePicker = DatePickerDialog.newInstance((DatePickerDialog.OnDateSetListener) ActivityViolationMisc.this,mYear,mMonth,mDay);
+
+                // Setting Min Date to today date
+                Calendar min_date_c = Calendar.getInstance();
+                mDatePicker.setMinDate(min_date_c);
+
+
+
+                // Setting Max Date to next 5 years
+                Calendar max_date_c = Calendar.getInstance();
+                max_date_c.set(Calendar.YEAR, mYear+5);
+                mDatePicker.setMaxDate(max_date_c);
+
+                //Disable all SUNDAYS and SATURDAYS between Min and Max Dates
+                for (Calendar loopdate = min_date_c; min_date_c.before(max_date_c); min_date_c.add(Calendar.DATE, 1), loopdate = min_date_c) {
+                    int dayOfWeek = loopdate.get(Calendar.DAY_OF_WEEK);
+                    if (dayOfWeek == Calendar.SUNDAY) {
+                        Calendar[] disabledDays =  new Calendar[1];
+                        disabledDays[0] = loopdate;
+                        mDatePicker.setDisabledDays(disabledDays);
+                    }
+                }
+                mDatePicker.show(getSupportFragmentManager(), "");
+            }
+        });
+
+        /*appeardate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar mcurrentDate = Calendar.getInstance(TimeZone.getTimeZone("GMT-07:00"));
+                mYear = mcurrentDate.get(Calendar.YEAR);
+                mMonth = mcurrentDate.get(Calendar.MONTH);
+                mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+                mDatePicker = DatePickerDialog.newInstance((DatePickerDialog.OnDateSetListener) ActivityViolationMisc.this,mYear,mMonth,mDay);
+
+                // Setting Min Date to today date
+                Calendar min_date_c = Calendar.getInstance();
+                mDatePicker.setMinDate(min_date_c);
+
+
+
+                // Setting Max Date to next 5 years
+                Calendar max_date_c = Calendar.getInstance();
+                max_date_c.set(Calendar.YEAR, mYear+5);
+                mDatePicker.setMaxDate(max_date_c);
+
+                //Disable all SUNDAYS and SATURDAYS between Min and Max Dates
+                for (Calendar loopdate = min_date_c; min_date_c.before(max_date_c); min_date_c.add(Calendar.DATE, 1), loopdate = min_date_c) {
+                    int dayOfWeek = loopdate.get(Calendar.DAY_OF_WEEK);
+                    if (dayOfWeek == Calendar.SUNDAY) {
+                        Calendar[] disabledDays =  new Calendar[1];
+                        disabledDays[0] = loopdate;
+                        mDatePicker.setDisabledDays(disabledDays);
+                    }
+                }
+                mDatePicker.show(getSupportFragmentManager(), "");
+            }
+        });*/
+        /*appeardate.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 Calendar mcurrentDate = Calendar.getInstance(TimeZone.getTimeZone("GMT-07:00"));
                 mYear = mcurrentDate.get(Calendar.YEAR);
                 mMonth = mcurrentDate.get(Calendar.MONTH);
                 mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
                 //      mcurrentDate.add(Calendar.DAY_OF_MONTH, mDay+1);
+
 
                 DatePickerDialog mDatePicker = new DatePickerDialog(ActivityViolationMisc.this, new DatePickerDialog.OnDateSetListener() {
                     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -146,15 +216,17 @@ public class ActivityViolationMisc extends AppCompatActivity {
 
                         }else if (sdf3.format(myCalendar.getTime()).equals("Sun")||sdf3.format(myCalendar.getTime()).equals("Sat")){
 
-                            seleced_appeardate = sdf2.format(myCalendar.getTime());
-                            appeardate.setText(sdf.format(myCalendar.getTime()));
-                            appeardate.setTextColor(Color.parseColor("#444444"));
+                            //seleced_appeardate = sdf.format(myCalendar.getTime());
+                            //appeardate.setText(sdf.format(myCalendar.getTime()));
+                            appeardate.setText("APPEARDATE");
+                            //appeardate.setTextColor(Color.parseColor("#444444"));
 //                            appeardate.setText("APPEARDATE");
                             Toast.makeText(ActivityViolationMisc.this,"Its a weekend",Toast.LENGTH_SHORT).show();
 
                         }else {
+                            //Change by Rohit from sdf2 to sdf
 
-                            seleced_appeardate = sdf2.format(myCalendar.getTime());
+                            seleced_appeardate = sdf.format(myCalendar.getTime());
                             appeardate.setText(sdf.format(myCalendar.getTime()));
                             appeardate.setTextColor(Color.parseColor("#444444"));
                         }
@@ -174,8 +246,9 @@ public class ActivityViolationMisc extends AppCompatActivity {
                 mDatePicker.getDatePicker().setMinDate(millis);
                 mDatePicker.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis());
                 mDatePicker.show();
+
             }
-        });
+        });*/
 
         courttime.setOnClickListener(new View.OnClickListener() {
 
@@ -377,6 +450,14 @@ public class ActivityViolationMisc extends AppCompatActivity {
 
             }
         });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                appeardate.setText("");
+                cancel.setVisibility(View.GONE);
+            }
+        });
     }
 
 
@@ -416,10 +497,12 @@ public class ActivityViolationMisc extends AppCompatActivity {
         rb_schoolzone_yes = findViewById(R.id.rb_schoolzone_yes);
         rb_schoolzone_no = findViewById(R.id.rb_schoolzone_no);
         ca_citenotsignedbydriver_lay = findViewById(R.id.ca_citenotsignedbydriver_lay);
+        appeardate_lay = findViewById(R.id.appeardate_lay);
         violationmisc_scroll = findViewById(R.id.violationmisc_scroll);
         violationcity_txt = findViewById(R.id.violationcity_txt);
         division_txt = findViewById(R.id.division_txt);
         ampm_txt = findViewById(R.id.ampm_txt);
+        cancel = findViewById(R.id.cancel_btn);
 
         String session_schoolzone = sessionManager.getViolationMiscSession().get(SessionManager.SCHOOL_ZONE);
         String session_cacite = sessionManager.getViolationMiscSession().get(SessionManager.CA_CITENOTSIGNEDBYDRIVER);
@@ -492,7 +575,7 @@ public class ActivityViolationMisc extends AppCompatActivity {
 //        }
         assert session_appeardate != null;
         if (session_appeardate.equals("")||session_appeardate.equals("999999")){
-            appeardate.setText(getResources().getString(R.string.appeardate));
+            appeardate.setText("");
         }else {
             appeardate.setText(session_appeardate);
         }
@@ -569,9 +652,9 @@ public class ActivityViolationMisc extends AppCompatActivity {
         SimpleDateFormat timeformat2 = new SimpleDateFormat("hh:mm", Locale.getDefault());
         SimpleDateFormat timeformat3 = new SimpleDateFormat("a", Locale.getDefault());
 
-        timeformat1.setTimeZone(TimeZone.getTimeZone("GMT-07:00"));
-        timeformat2.setTimeZone(TimeZone.getTimeZone("GMT-07:00"));
-        timeformat3.setTimeZone(TimeZone.getTimeZone("GMT-07:00"));
+        timeformat1.setTimeZone(TimeZone.getTimeZone("GMT-08:00"));
+        timeformat2.setTimeZone(TimeZone.getTimeZone("GMT-08:00"));
+        timeformat3.setTimeZone(TimeZone.getTimeZone("GMT-08:00"));
 
         String localTime = timeformat1.format(calendar.getTime());
         String localTime2 = timeformat2.format(calendar.getTime());
@@ -881,17 +964,10 @@ public class ActivityViolationMisc extends AppCompatActivity {
         }
 
 
-        if (appeardate.getText().toString().trim().equals("APPEARDATE")){
+        if (appeardate.getText().toString().trim().equals("")){
             s_appeardate= "999999";
         }else {
-
-            if (seleced_appeardate.equals("")){
-                s_appeardate=appeardate.getText().toString().trim();
-            }else {
-                s_appeardate = seleced_appeardate;
-            }
-
-
+            s_appeardate = seleced_appeardate;
         }
 
 //        boolean selected_Date = Utils.isWeekend(appeardate.getText().toString().trim());
@@ -908,8 +984,7 @@ public class ActivityViolationMisc extends AppCompatActivity {
 //            Toast.makeText(ActivityViolationMisc.this, "Please verify your selected date", Toast.LENGTH_SHORT).show();
         }else {
 
-
-            if (s_ampm.equals("AM")){
+            if (s_ampm.equals("am")){
                 s_ampm="A";
             }else {
                 s_ampm="P";
@@ -1001,4 +1076,68 @@ public class ActivityViolationMisc extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onDateSet(DatePickerDialog view, int selectedyear, int selectedmonth, int selectedday) {
+
+        s_datepicker = new DatePicker(ActivityViolationMisc.this);
+        Calendar myCalendar = Calendar.getInstance();
+
+
+        myCalendar.set(Calendar.YEAR, selectedyear);
+        myCalendar.set(Calendar.MONTH, selectedmonth);
+        myCalendar.set(Calendar.DAY_OF_MONTH, selectedday);
+
+        Date today = new Date();
+        String myFormat = "MM-dd-yyyy"; //Change as you need
+        String myFormat2 = "MMddyy";
+        String myFormat3 = "EEE";
+        String myFormat4 = "dd";
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf2 = new SimpleDateFormat(myFormat2);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf3 = new SimpleDateFormat(myFormat3);
+        SimpleDateFormat sdf4 = new SimpleDateFormat(myFormat4, Locale.getDefault());
+
+
+        String selectedDate="" ;
+        if (selectedday<10){
+            selectedDate = "0"+String.valueOf(selectedday);
+        }else {
+            selectedDate = String.valueOf(selectedday);
+        }
+
+
+        if (sdf.format(today).equals(sdf.format(myCalendar.getTime()))){
+
+            appeardate.setText("");
+            if(cancel.getVisibility() == View.VISIBLE){
+                cancel.setVisibility(View.GONE);
+            }
+            Toast.makeText(ActivityViolationMisc.this,"Please select future date",Toast.LENGTH_SHORT).show();
+        }else if (sdf3.format(myCalendar.getTime()).equals("Sat")){
+
+            //seleced_appeardate = sdf.format(myCalendar.getTime());
+            //appeardate.setText(sdf.format(myCalendar.getTime()));
+            appeardate.setText("");
+            //appeardate.setTextColor(Color.parseColor("#444444"));
+//                            appeardate.setText("APPEARDATE");
+            if(cancel.getVisibility() == View.VISIBLE){
+                cancel.setVisibility(View.GONE);
+            }
+            Toast.makeText(ActivityViolationMisc.this,"Its a weekend",Toast.LENGTH_SHORT).show();
+
+        }else {
+            //
+
+            seleced_appeardate = sdf2.format(myCalendar.getTime());
+            appeardate.setText(sdf.format(myCalendar.getTime()));
+            appeardate.setTextColor(Color.parseColor("#444444"));
+            cancel.setVisibility(View.VISIBLE);
+            //appeardate.setSelection(appeardate.getText().length());
+
+        }
+
+//        mDay = selectedday;
+//        mMonth = selectedmonth;
+//        mYear = selectedyear;
+    }
 }

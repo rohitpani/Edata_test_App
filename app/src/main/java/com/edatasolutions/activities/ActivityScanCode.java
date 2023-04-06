@@ -15,6 +15,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edatasolutions.R;
 import com.edatasolutions.utils.DBRDriverLicenseUtil;
@@ -181,13 +182,16 @@ public class ActivityScanCode extends AppCompatActivity {
 
 
                                 String keyData=barcode.rawValue;
-
+                                //Toast.makeText(getApplicationContext(),keyData,Toast.LENGTH_LONG).show();
                                 String[] separated = keyData.split("\n");
                                 List<String> nameList = new ArrayList<>(Arrays.asList(separated));
 
                                 if (DBRDriverLicenseUtil.ifDriverLicense(keyData)) {
 
                                     HashMap<String, String> resultMaps = DBRDriverLicenseUtil.readUSDriverLicense(keyData);
+                                    for(String k: resultMaps.keySet()){
+                                        //Toast.makeText(getApplicationContext(),k +": "+resultMaps.get(k),Toast.LENGTH_SHORT).show();
+                                    }
                                     Intent intent = new Intent(ActivityScanCode.this, ActivityDriver.class);
                                     DriverLicense driverLicense = new DriverLicense();
                                     driverLicense.documentType = "DL";

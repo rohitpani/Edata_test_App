@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
             lastsync_lay.setVisibility(View.GONE);
         } else {
 
-
             last_sync_time.setText(sessionManager.getLastAdminSyncSession().get(SessionManager.LAST_SYNC_TIME));
             String last_sync = sessionManager.getLastAdminSyncSession().get(SessionManager.LAST_SYNC_DATE);
 
@@ -411,6 +410,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject totaldata = new JSONObject(String.valueOf(response.body()));
                     Log.d("radhika_log1", totaldata.toString());
+                    //Toast.makeText(MainActivity.this,totaldata.toString(),Toast.LENGTH_LONG).show();
                     if (totaldata.getString("success").equals("1")) {
 
                         startServiceMain();
@@ -697,6 +697,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject totaldata = new JSONObject(String.valueOf(response.body()));
                     Log.d("radhika_log3", totaldata.toString());
+                    //Toast.makeText(MainActivity.this,totaldata.toString(),Toast.LENGTH_LONG);
                     if (totaldata.getString("success").equals("1")) {
 
                         JSONArray jsonArray = new JSONArray(totaldata.getString("data"));
@@ -2736,6 +2737,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject totaldata = new JSONObject(String.valueOf(response.body()));
                     Log.d("radhika_log_citation", totaldata.toString());
+                    //Toast.makeText(MainActivity.this,totaldata.toString(),Toast.LENGTH_SHORT).show();
                     if (totaldata.getString("success").equals("1")) {
                         String lastcitation = totaldata.getString("lastCitationNumber");
                         if (!lastcitation.equals("")) {

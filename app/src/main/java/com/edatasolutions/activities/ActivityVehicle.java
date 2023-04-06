@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +64,7 @@ public class ActivityVehicle extends AppCompatActivity {
     private ArrayList<String> suffixList = new ArrayList<>();
     private EditText owner_firstname, owner_middlename,owner_lastname, owner_address1,owner_address2,  owner_zipcode, vehicle_no,overload,policy_no;
     private SessionManager sessionManager;
+    private ScrollView vehicle_scroll;
     private String firstname ="", middlename="", lastname="", suffix="",suffixid="", address1="",address2="",city="",city_id="",state="",state_id="", zipcode="",vehicleno="",vehiclestate="",vehiclestateid="",s_overload="", policyno="" ;
     private String s_vehyear="",s_vehmake="",s_vehmakeid="", s_vehbody="",s_vehbodyid="",s_vehtype="",s_vehtypeid="",s_vehcolor="",s_vehcolorid="", s_vehmodel="",s_vehmodelid="",s_commercial="0", s_hazardous="N";
 
@@ -640,6 +642,7 @@ public class ActivityVehicle extends AppCompatActivity {
         if (owner_responsibility.equals("Y")){
             if ( TextUtils.isEmpty(firstname) ) {
                 firstname_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                firstname_lay.getParent().requestChildFocus(firstname_lay,firstname_lay);
                 valid = false;
             }else {
 //            DatabaseAccess databaseAccess = new DatabaseAccess(ActivityVehicle.this);
@@ -655,6 +658,7 @@ public class ActivityVehicle extends AppCompatActivity {
 
             if ( TextUtils.isEmpty(lastname) ) {
                 lastname_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                lastname_lay.getParent().requestChildFocus(lastname_lay,lastname_lay);
                 valid = false;
             }else {
 //            DatabaseAccess databaseAccess = new DatabaseAccess(ActivityVehicle.this);
@@ -670,13 +674,16 @@ public class ActivityVehicle extends AppCompatActivity {
 
             if ( TextUtils.isEmpty(address1) ) {
                 address_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                address_lay.getParent().requestChildFocus(address_lay,address_lay);
                 valid = false;
             }else {
                 if(address1.startsWith("0")){
                     address_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                    address_lay.getParent().requestChildFocus(address_lay,address_lay);
                     valid = false;
                 }else if (address1.length()<=4){
                     address_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                    address_lay.getParent().requestChildFocus(address_lay,address_lay);
                     valid = false;
                 }else {
                     address_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -685,6 +692,7 @@ public class ActivityVehicle extends AppCompatActivity {
 
             if ( TextUtils.isEmpty(city) ) {
                 city_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                city_lay.getParent().requestChildFocus(city_lay,city_lay);
                 valid = false;
             }else {
                 city_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -692,6 +700,7 @@ public class ActivityVehicle extends AppCompatActivity {
 
             if (TextUtils.isEmpty(state)){
                 ownerstate_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                ownerstate_lay.getParent().requestChildFocus(ownerstate_lay,ownerstate_lay);
                 valid = false;
             }else {
                 ownerstate_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -701,6 +710,7 @@ public class ActivityVehicle extends AppCompatActivity {
 
                 if (zipcode.length() < 5) {
                     zip_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                    zip_lay.getParent().requestChildFocus(zip_lay,zip_lay);
                     valid = false;
                     // Toast.makeText(ActivityDriver.this, "Please enter correct zipcode", Toast.LENGTH_SHORT).show();
                 } else {
@@ -723,6 +733,7 @@ public class ActivityVehicle extends AppCompatActivity {
                         int Digit = Integer.parseInt(zipcode);
                         if (!(firstDigit(Digit) == 9)) {
                             zip_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+                            zip_lay.getParent().requestChildFocus(zip_lay,zip_lay);
                             valid = false;
                             //   Toast.makeText(ActivityDriver.this, "Please enter correct zipcode", Toast.LENGTH_SHORT).show();
                         }else {
@@ -746,6 +757,10 @@ public class ActivityVehicle extends AppCompatActivity {
                         }
                     }
                 }
+        }
+
+        if(TextUtils.isEmpty(firstname) && TextUtils.isEmpty(lastname) && TextUtils.isEmpty(address1) && TextUtils.isEmpty(city)){
+            vehicle_scroll.fullScroll(View.FOCUS_UP);
         }
 
         }
@@ -857,6 +872,8 @@ public class ActivityVehicle extends AppCompatActivity {
         vehicle_state = findViewById(R.id.vehicle_state);
         overload = findViewById(R.id.overload);
         policy_no = findViewById(R.id.policy_no);
+
+        vehicle_scroll = findViewById(R.id.vehicle_scroll);
 
         vehicle_next_btn = findViewById(R.id.vehicle_next_btn);
         header_text = findViewById(R.id.header_text);

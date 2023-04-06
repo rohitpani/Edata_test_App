@@ -441,6 +441,7 @@ public class ActivitySignature extends AppCompatActivity {
 
         progressdialog = new ProgressDialog(ActivitySignature.this);
         progressdialog.setMessage("Loading....");
+        progressdialog.setCancelable(false);
         progressdialog.show();
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -587,6 +588,7 @@ public class ActivitySignature extends AppCompatActivity {
                         databaseAccess.deleteDataFromDataPasses(CitationNumber);
                         databaseAccess.close();
                         //  sessionManager.ClearDataEntery();
+                        //Toast.makeText(ActivitySignature.this,"Response code 500",Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(ActivitySignature.this, ActivityFailed.class);
                         i.putExtra("citation_number",CitationNumber);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -595,6 +597,7 @@ public class ActivitySignature extends AppCompatActivity {
                         overridePendingTransition(R.anim.enter,R.anim.exit);
                     }
                     JSONObject totaldata = new JSONObject(String.valueOf(response.body()));
+                    //Toast.makeText(ActivitySignature.this,totaldata.toString(),Toast.LENGTH_SHORT).show();
                     Log.e("data_1234556", "true" + totaldata.toString());
                     if (totaldata.getString("success").equals("1")){
 
@@ -620,7 +623,7 @@ public class ActivitySignature extends AppCompatActivity {
 
 
                     }else if (totaldata.getString("success").equals("4")){
-                        Toast.makeText(ActivitySignature.this,totaldata.getString("msg"),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ActivitySignature.this,totaldata.getString("msg"),Toast.LENGTH_SHORT).show();
                     }else {
                         progressdialog.dismiss();
                         CitationNumber=sessionManager.getHeaderSession().get(SessionManager.CITATION_NUMBER);
@@ -629,6 +632,7 @@ public class ActivitySignature extends AppCompatActivity {
                         databaseAccess.deleteDataFromDataPasses(CitationNumber);
                         databaseAccess.close();
                         //  sessionManager.ClearDataEntery();
+                        //Toast.makeText(ActivitySignature.this,"Error:"+response.toString(),Toast.LENGTH_LONG).show();
                         Intent i = new Intent(ActivitySignature.this, ActivityFailed.class);
                         i.putExtra("citation_number",CitationNumber);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

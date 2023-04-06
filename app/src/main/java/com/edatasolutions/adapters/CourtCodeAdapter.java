@@ -24,8 +24,7 @@ public class CourtCodeAdapter extends ArrayAdapter<CourtCodeModel> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable
-            View convertView, @NonNull ViewGroup parent)
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
     {
         return initView(position, convertView, parent);
     }
@@ -38,8 +37,7 @@ public class CourtCodeAdapter extends ArrayAdapter<CourtCodeModel> {
     }
 
 
-    private View initView(int position, View convertView,
-                          ViewGroup parent)
+    private View initView(int position, View convertView, ViewGroup parent)
     {
         // It is used to set our custom view.
         if (convertView == null) {

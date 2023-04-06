@@ -17,33 +17,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        android:paddingBottom="50dp"
-        >
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
 
         <ImageView
+            android:id="@+id/sync_"
             android:layout_width="160dp"
             android:layout_height="80dp"
+            android:padding="18dp"
             android:src="@drawable/sync"
-            android:id="@+id/sync_"
-            android:visibility="gone"
-            android:padding="18dp"/>
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/ll_sync_btn"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/oval_blue_btn"
             android:layout_gravity="center"
+            android:background="@drawable/oval_blue_btn"
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/sync_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_sync"
-                android:id="@+id/sync_btn"
-                android:padding="18dp"/>
+                android:padding="18dp"
+                android:src="@drawable/ic_sync" />
 
         </LinearLayout>
 
@@ -57,70 +56,67 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sync"
-                android:gravity="center"
-                android:textSize="16sp"
                 android:fontFamily="@font/opensans_semibold"
+                android:gravity="center"
+                android:text="Sync"
                 android:textColor="@color/text_color"
-                />
+                android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/sync_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:gravity="center"
-                android:textSize="16sp"
                 android:layout_marginLeft="10dp"
-                android:id="@+id/sync_percent"
                 android:fontFamily="@font/opensans_semibold"
+                android:gravity="center"
+                android:text=""
                 android:textColor="@color/text_color"
-                />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:progressDrawable="@drawable/custom_progress_bg"/>
+            android:progressDrawable="@drawable/custom_progress_bg" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/light_blue"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
-            android:visibility="gone"
-            android:layout_marginRight="30dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/light_blue"
+            android:visibility="gone" />
 
         <LinearLayout
+            android:id="@+id/lastsync_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lastsync_lay"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Last sync"
-                android:gravity="center"
-                android:textSize="16sp"
                 android:layout_gravity="center"
-                android:fontFamily="@font/opensans_regular"
-                android:textColor="@color/text_color"
                 android:layout_marginTop="20dp"
-                />
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:text="Last sync"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal">
 
 
                 <LinearLayout
@@ -133,20 +129,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/lastsync_time"
-                        android:textSize="12sp"
                         android:textColor="@color/hint_color"
-                        android:fontFamily="@font/opensans_regular"/>
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/last_sync_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/opensans_regular"
                         android:text=""
                         android:textColor="@color/hint_color"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="12sp"
-                        android:id="@+id/last_sync_time"
-                        android:fontFamily="@font/opensans_regular"/>
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -160,54 +156,55 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/lastsync_date"
-                        android:textSize="12sp"
                         android:textColor="@color/hint_color"
-                        android:fontFamily="@font/opensans_regular"/>
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/last_sync_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/opensans_regular"
                         android:text=""
                         android:textColor="@color/hint_color"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="12sp"
-                        android:id="@+id/last_sync_date"
-                        android:fontFamily="@font/opensans_regular"/>
+                        android:textSize="12sp" />
 
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            >
+            android:layout_marginTop="20dp">
+
             <TextView
+                android:id="@+id/deviceno_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
+                android:fontFamily="@font/opensans_regular"
                 android:gravity="center"
-                android:id="@+id/deviceno_txt"
+                android:text=""
                 android:textColor="@color/text_color"
-                android:fontFamily="@font/opensans_regular"/>
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            >
+            android:layout_marginTop="15dp">
+
             <TextView
+                android:id="@+id/pleasewait_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="14sp"
+                android:fontFamily="@font/opensans_regular"
                 android:gravity="center"
-                android:id="@+id/pleasewait_txt"
-                android:fontFamily="@font/opensans_regular"/>
+                android:text=""
+                android:textSize="14sp" />
 
         </LinearLayout>
     </LinearLayout>

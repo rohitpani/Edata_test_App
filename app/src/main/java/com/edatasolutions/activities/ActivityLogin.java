@@ -7,6 +7,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,6 +37,7 @@ import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,12 +63,12 @@ public class ActivityLogin extends AppCompatActivity {
     private String platform = "android";
     private String app_version = "1.0";
     private SessionManager sessionManager;
-
+    private ImageView visibility_btn;
     private FrameLayout selecttype_lay;
     private TextView selecttype_txt;
 
 
-    @SuppressLint("HardwareIds")
+    @SuppressLint({"HardwareIds", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,12 +82,13 @@ public class ActivityLogin extends AppCompatActivity {
         login_btn = findViewById(R.id.login_btn);
         selecttype_lay = findViewById(R.id.selecttype_lay);
         selecttype_txt = findViewById(R.id.selecttype_txt);
+        visibility_btn = findViewById(R.id.imgbtn);
         //readFromLocalStorage();
 
         selectRole();
 
         if (roleList.isEmpty()){
-            selected_roleid = "1";
+            selected_roleid = "1"; //Role id of admin
             selecttype_lay.setVisibility(View.GONE);
             selecttype_txt.setVisibility(View.GONE);
         }else {
@@ -109,6 +116,28 @@ public class ActivityLogin extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
+
+        login_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().equals("")){
+                    visibility_btn.setVisibility(View.GONE);
+                }
+                else{
+                    visibility_btn.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -152,14 +181,18 @@ public class ActivityLogin extends AppCompatActivity {
                         Toast.makeText(ActivityLogin.this, "Please enter correct information", Toast.LENGTH_SHORT).show();
                     }
 
-                } else if (selected_roleid.equals("1")) {
+                }
+                else if (selected_roleid.equals("1")) {
                     if (userRoleId.equals(selected_roleid)) {
                         if (NetworkConectivity.checkConnectivity(ActivityLogin.this)) {
 
                             String uniqueId = UUID.randomUUID().toString();
+                            //String uniqueId = "xxxx";
                             String admin_pass = RSA.encryptData(uniqueId + actual_pass);
-                            Log.e("uniqueId", uniqueId);
-                            Log.e("admin_pass", admin_pass);
+                            Log.w("uniqueId", uniqueId);
+                            Log.w("admin_pass", admin_pass);
+                            //Toast.makeText(getApplicationContext(),"Login token- "+uniqueId,Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(),admin_pass,Toast.LENGTH_LONG).show();
                             callAppVersion(uniqueId);
                             callAdminLogin(email, uniqueId, admin_pass,selected_roleid);
                         } else {
@@ -170,6 +203,11 @@ public class ActivityLogin extends AppCompatActivity {
 
                             String uniqueId = UUID.randomUUID().toString();
                             String admin_pass = RSA.encryptData(uniqueId + actual_pass);
+                            //Toast.makeText(getApplicationContext(),admin_pass,Toast.LENGTH_LONG).show();
+                            Log.w("uniqueId", uniqueId);
+                            Log.w("admin_pass", admin_pass);
+                            //Toast.makeText(getApplicationContext(),uniqueId,Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(),admin_pass,Toast.LENGTH_LONG).show();
                             callAppVersion(uniqueId);
                             callAdminLogin(email, uniqueId, admin_pass,selected_roleid);
                         } else {
@@ -180,7 +218,8 @@ public class ActivityLogin extends AppCompatActivity {
                 }
 
 
-            } else {
+            }
+                else {
                         Toast.makeText(ActivityLogin.this,"Please enter correct information",Toast.LENGTH_SHORT).show();
                     }
 
@@ -188,6 +227,23 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
 
+        visibility_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(visibility_btn.getTag().toString().equals("1")){
+                    login_password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    visibility_btn.setImageResource(R.drawable.ic_visibility);
+                    visibility_btn.setTag("2");
+                    login_password.setSelection(login_password.length());
+                }
+                else if(visibility_btn.getTag().toString().equals("2")){
+                    login_password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    visibility_btn.setImageResource(R.drawable.ic_visibility_off);
+                    visibility_btn.setTag("1");
+                    login_password.setSelection(login_password.length());
+                }
+            }
+        });
     }
 
 
@@ -197,6 +253,7 @@ public class ActivityLogin extends AppCompatActivity {
         databaseAccess.open();
         roleList = databaseAccess.getRole();
         Collections.reverse(roleList);
+        //Log.e("rolelist", String.valueOf(roleList));
         databaseAccess.close();
     }
 
@@ -307,7 +364,7 @@ public class ActivityLogin extends AppCompatActivity {
                         finish();
 
                     }else {
-                        Toast.makeText(ActivityLogin.this, totaldata.getString("message"), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ActivityLogin.this, totaldata.getString("message"), Toast.LENGTH_SHORT).show();
                     }
 
 

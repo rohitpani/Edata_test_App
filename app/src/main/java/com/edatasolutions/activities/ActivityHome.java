@@ -535,6 +535,7 @@ public class ActivityHome extends AppCompatActivity {
                         String synced_citation_no= userdata.getString("synced_citation_no");
                         String check = synced_citation_no .replace("[", "(").replace("]", ")");
 
+                        //Toast.makeText(getApplicationContext(),check,Toast.LENGTH_LONG).show();
 
                         DatabaseAccess databaseAccess = new DatabaseAccess(ActivityHome.this);
                         databaseAccess.open();

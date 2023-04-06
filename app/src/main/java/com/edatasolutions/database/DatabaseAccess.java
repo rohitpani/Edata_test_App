@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
@@ -401,6 +402,7 @@ public class DatabaseAccess {
                         {
                             Log.e("TAG_NAME", cursor.getString(i) );
                             rowObject.put(cursor.getColumnName(i) ,  cursor.getString(i));
+                            //Toast.makeText(context.getApplicationContext(),cursor.getColumnName(i)+":"+cursor.getString(i),Toast.LENGTH_SHORT ).show();
                         }
                         else
                         {

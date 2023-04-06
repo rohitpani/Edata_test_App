@@ -57,6 +57,7 @@ public class ActivityHeader extends AppCompatActivity {
     private FrameLayout courtcode_lay;
     private ArrayAdapter<String> adapter;
     private LinearLayout lea_lay;
+    private ScrollView header_scroll;
     ArrayList<CourtCodeModel> courtCodeArrayList;
     CourtCodeAdapter courtCodeAdapter;
 
@@ -190,6 +191,8 @@ public class ActivityHeader extends AppCompatActivity {
         ped = findViewById(R.id.ped);
         img_menu.setVisibility(View.INVISIBLE);
         header_text.setText(R.string.header);
+
+        header_scroll= findViewById(R.id.header_scroll);
 
         rb_or_yes = findViewById(R.id.rb_or_yes);
         rb_or_no = findViewById(R.id.rb_or_no);
@@ -329,6 +332,7 @@ public class ActivityHeader extends AppCompatActivity {
         boolean valid = true;
         if (TextUtils.isEmpty(s_traffic) && TextUtils.isEmpty(s_nontraffic)) {
             traffic_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            traffic_lay.getParent().requestChildFocus(traffic_lay,traffic_lay);
             valid = false;
         } else {
             traffic_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -336,6 +340,7 @@ public class ActivityHeader extends AppCompatActivity {
 
         if (TextUtils.isEmpty(s_courtcode)) {
             courtcode_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            courtcode_lay.getParent().requestChildFocus(courtcode_lay,courtcode_lay);
             valid = false;
         } else {
             courtcode_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
@@ -343,11 +348,15 @@ public class ActivityHeader extends AppCompatActivity {
 
         if (TextUtils.isEmpty(s_lea)) {
             lea_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
+            lea_lay.getParent().requestChildFocus(lea_lay,lea_lay);
             valid = false;
         } else {
             lea_lay.setBackgroundResource(R.drawable.round_corner_blue_btn_4dp);
         }
 
+        if(TextUtils.isEmpty(s_traffic) && TextUtils.isEmpty(s_nontraffic) && TextUtils.isEmpty(s_courtcode) && TextUtils.isEmpty(s_lea)){
+            header_scroll.fullScroll(View.FOCUS_UP);
+        }
 
         if (valid) {
             sessionManager.saveHeader("Y");

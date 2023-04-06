@@ -118,8 +118,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingTop="20dp"
                 android:paddingLeft="20dp"
+                android:paddingTop="20dp"
                 android:paddingRight="20dp">
 
                 <LinearLayout
@@ -131,46 +131,46 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/issue_date"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/required_field"
-                        android:textColor="@color/red"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="30dp"
-                        android:text="@string/issue_date"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
-                        android:background="@null"
                         android:id="@+id/issuedate"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:inputType="number"
-                        android:textSize="14sp"/>
+                        android:text="@string/issue_date"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -184,47 +184,47 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/time"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/required_field"
-                        android:textColor="@color/red"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="30dp"
-                        android:text="@string/time"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
-                        android:background="@null"
                         android:id="@+id/time"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:inputType="number"
-                        android:textSize="14sp"/>
+                        android:text="@string/time"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -238,61 +238,61 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/ampm"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/required_field"
-                        android:textColor="@color/red"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/ampm_txt"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:text="@string/ampm"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:background="@null"
-                        android:id="@+id/ampm_txt"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
                         android:inputType="number"
-                        android:textSize="14sp"/>
+                        android:text="@string/ampm"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/ampm"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/ampm"
+                        android:background="@null"
                         android:gravity="center|start"
-                        android:visibility="gone"
                         android:theme="@style/SpinnerTheme"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
 
                 </FrameLayout>
@@ -301,49 +301,48 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/school_zone"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <RadioGroup
+                        android:id="@+id/schoolzone"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/schoolzone"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_schoolzone_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_schoolzone_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_schoolzone_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
 
@@ -352,89 +351,88 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violationcity"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/violationcity_txt"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationcity_txt"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/violationcity"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/violationcity"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationcity"
+                        android:background="@null"
                         android:gravity="center|start"
-                        android:visibility="gone"
                         android:theme="@style/SpinnerTheme"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
-                        android:visibility="gone"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violationst"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/violationst"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:hint="@string/violationst"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/hint_color"
                         android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/violationst"
+                        android:inputType="text"
                         android:maxLength="12"
                         android:singleLine="true"
-                        android:inputType="text"
-                        android:id="@+id/violationst"
-                        android:textSize="14sp"/>
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -442,76 +440,76 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violationsttyp"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <Spinner
+                        android:id="@+id/violationsttyp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationsttyp"
+                        android:background="@null"
                         android:gravity="center|start"
-                        android:theme="@style/SpinnerTheme"
-                        android:background="@null" />
+                        android:theme="@style/SpinnerTheme" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn" />
 
                 </FrameLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violationcst"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/violationcst"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:hint="@string/violationcst"
-                        android:singleLine="true"
-                        android:gravity="center|start"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/violationcst"
+                        android:inputType="text"
+                        android:maxLength="12"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:maxLength="12"
-                        android:inputType="text"
-                        android:id="@+id/violationcst"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -519,38 +517,38 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/violationcsttyp"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <Spinner
+                        android:id="@+id/violationcsttyp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/violationcsttyp"
+                        android:background="@null"
                         android:gravity="center|start"
-                        android:theme="@style/SpinnerTheme"
-                        android:background="@null" />
+                        android:theme="@style/SpinnerTheme" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn" />
 
 
                 </FrameLayout>
@@ -564,10 +562,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/appeardate"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
 
                 </LinearLayout>
@@ -576,27 +574,37 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:id="@+id/appeardate_lay"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <TextView
+                        android:id="@+id/appeardate"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
-                        android:text="@string/appeardate"
-                        android:gravity="center|start"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/appeardate"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:id="@+id/appeardate"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/cancel_btn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:padding="5dp"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_cancel" />
 
 
                 </LinearLayout>
@@ -604,39 +612,39 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/courttime"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <TextView
+                        android:id="@+id/courttime"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
-                        android:hint="@string/courttime"
-                        android:gravity="center|start"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/hint_color"
+                        android:layout_weight="1"
                         android:background="@null"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/courttime"
                         android:inputType="number"
                         android:singleLine="true"
-                        android:id="@+id/courttime"
-                        android:textSize="14sp"/>
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -651,49 +659,49 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/offbadgeno"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/required_field"
-                        android:textColor="@color/red"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/offbadgeno"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
-                        android:hint="@string/offbadgeno"
-                        android:singleLine="true"
-                        android:maxLength="30"
-                        android:gravity="center|start"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/offbadgeno"
+                        android:inputType="text"
+                        android:maxLength="30"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:inputType="text"
-                        android:id="@+id/offbadgeno"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -707,49 +715,49 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/offlname"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/required_field"
-                        android:textColor="@color/red"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <EditText
+                        android:id="@+id/offlname"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="30dp"
-                        android:hint="@string/offlname"
-                        android:gravity="center|start"
+                        android:layout_weight="1"
+                        android:background="@null"
                         android:fontFamily="@font/opensans_regular"
+                        android:gravity="center|start"
+                        android:hint="@string/offlname"
+                        android:inputType="text"
+                        android:maxLength="120"
+                        android:singleLine="true"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color"
-                        android:background="@null"
-                        android:textSize="14sp"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:maxLength="120"
-                        android:id="@+id/offlname"/>
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -757,38 +765,38 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/opensans_regular"
                     android:text="@string/areacode"
                     android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <Spinner
+                        android:id="@+id/areacode"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/areacode"
+                        android:background="@null"
                         android:gravity="center|start"
-                        android:theme="@style/SpinnerTheme"
-                        android:background="@null" />
+                        android:theme="@style/SpinnerTheme" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn" />
 
 
                 </FrameLayout>
@@ -796,51 +804,50 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/division"
-                    android:textColor="@color/text_color"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:text="@string/division"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
                     <TextView
+                        android:id="@+id/division_txt"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/division_txt"
-                        android:textSize="14sp"
-                        android:singleLine="true"
                         android:fontFamily="@font/opensans_regular"
-                        android:textColor="@color/text_color"
                         android:gravity="center|start"
                         android:hint="@string/division"
-                        />
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
 
                     <Spinner
+                        android:id="@+id/division"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/division"
+                        android:background="@null"
                         android:gravity="center|start"
                         android:theme="@style/SpinnerTheme"
-                        android:visibility="gone"
-                        android:background="@null" />
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
-                        android:visibility="gone"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
@@ -848,38 +855,38 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/detail"
-                    android:textColor="@color/text_color"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:text="@string/detail"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <Spinner
+                        android:id="@+id/detail"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:id="@+id/detail"
+                        android:background="@null"
                         android:gravity="center|start"
-                        android:theme="@style/SpinnerTheme"
-                        android:background="@null" />
+                        android:theme="@style/SpinnerTheme" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="7dp"
                         android:layout_gravity="right"
-                        android:src="@drawable/ic_down_btn"/>
+                        android:padding="7dp"
+                        android:src="@drawable/ic_down_btn" />
 
 
                 </FrameLayout>
@@ -887,51 +894,50 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/night_court"
-                    android:textColor="@color/text_color"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:text="@string/night_court"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
-                    android:orientation="horizontal">
-
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <RadioGroup
+                        android:id="@+id/night_court"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/night_court"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_nightcourt_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_nightcourt_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_nightcourt_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -939,50 +945,49 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/ca_tobenotified"
-                    android:textColor="@color/text_color"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/opensans_regular"
-                    android:textSize="12sp"/>
+                    android:text="@string/ca_tobenotified"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
-                    android:orientation="horizontal">
-
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <RadioGroup
+                        android:id="@+id/ca_tobenotified"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/ca_tobenotified"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_ca_notified_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_ca_notified_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_ca_notified_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -996,82 +1001,82 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_regular"
                         android:text="@string/ca_citenotsignedbydriver"
                         android:textColor="@color/text_color"
-                        android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="@string/required_field"
-                        android:textColor="@color/red"
                         android:layout_marginLeft="2dp"
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/opensans_regular"
-                        android:textSize="12sp"/>
+                        android:text="@string/required_field"
+                        android:textColor="@color/red"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ca_citenotsignedbydriver_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_corner_blue_btn_4dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="20dp"
-                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
-                    android:id="@+id/ca_citenotsignedbydriver_lay"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/round_corner_blue_btn_4dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="15dp">
 
 
                     <RadioGroup
+                        android:id="@+id/ca_citenotsignedbydriver"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:orientation="horizontal"
-                        android:id="@+id/ca_citenotsignedbydriver"
-                        >
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yes"
                             android:id="@+id/rb_ca_cite_yes"
-                            android:textColor="@color/text_color"
-                            android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
-                        <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="No"
-                            android:id="@+id/rb_ca_cite_no"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/text_color"
                             android:fontFamily="@font/opensans_regular"
-                            android:textSize="14sp"/>
+                            android:text="Yes"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_ca_cite_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="No"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
                     </RadioGroup>
 
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/preview_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="60dp"
-                    android:paddingLeft="60dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="20dp"
-                    android:layout_gravity="center"
-                    android:text="@string/preview"
                     android:background="@drawable/round_blue_btn"
-                    android:textAllCaps="false"
-                    android:textSize="16sp"
-                    android:gravity="center|bottom"
-                    android:id="@+id/preview_btn"
                     android:fontFamily="@font/opensans_regular"
-                    android:textColor="@color/white"/>
+                    android:gravity="center|bottom"
+                    android:paddingLeft="60dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="60dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/preview"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

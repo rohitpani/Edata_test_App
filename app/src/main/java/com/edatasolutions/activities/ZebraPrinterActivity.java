@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -45,6 +46,12 @@ import com.edatasolutions.utils.SessionManager;
 import com.edatasolutions.zebraPrinterUtils.DemoSleeper;
 import com.edatasolutions.zebraPrinterUtils.SettingsHelper;
 import com.edatasolutions.zebraPrinterUtils.UIHelper;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.zebra.sdk.comm.BluetoothConnection;
 import com.zebra.sdk.comm.Connection;
 import com.zebra.sdk.comm.ConnectionException;
@@ -82,6 +89,13 @@ public class ZebraPrinterActivity extends AppCompatActivity {
     private static final String PREFS_NAME = "OurSavedAddress";
 
     private Button testButton, print_data;
+    String macAddress="";
+    boolean connected = false;
+    int timeout=17;
+    int count=0;
+    private int linecount = 0;
+    private int total_height = 0;
+    private static final int line_height = 48;
     private ZebraPrinter printer;
     //private TextView statusField;
     private LinearLayout ll_print_layout;
@@ -107,10 +121,11 @@ public class ZebraPrinterActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private ImageView clear_page;
     private SharedPreferences settings;
-    private LinearLayout ll_owner_first_name, ll_owner_middlename, ll_owner_lastname, ll_owner_suffix, ll_owner_address1, ll_owner_address2, ll_owner_city, ll_owner_state, ll_owner_zipcode;
+    private LinearLayout ll_ctlout,ll_driver_first_name, ll_driver_middlename, ll_driver_lastname, ll_driver_suffix, ll_driver_address1, ll_driver_address2, ll_driver_city, ll_driver_state, ll_driver_zipcode, ll_driver_license_no,ll_driver_statee,ll_driver_dob,ll_driver_gender,ll_driver_hair,ll_driver_eyes,ll_driver_height,ll_driver_weight,ll_driver_license_type,ll_driver_race,ll_driver_ethnicity,ll_driver_common_driver_license;
+    private LinearLayout ll_owner_first_name, ll_owner_middlename, ll_owner_lastname, ll_owner_suffix, ll_owner_address1, ll_owner_address2, ll_owner_city, ll_owner_state, ll_owner_zipcode,ll_vehyear,ll_vehmake,ll_vehmodel,ll_vehbody,ll_vehcolor,ll_vehtype,ll_vehcommercial,ll_veh_licno,ll_veh_state,ll_hazardous,ll_overload,ll_insurance_policy_no;
     private LinearLayout ll_vioA, ll_vioB, ll_vioC, ll_vioD, ll_vioE, ll_vioF, ll_vioG, ll_vioH, ll_vca, ll_vcb, ll_vcc, ll_vcd, ll_vce, ll_vcf, ll_vcg, ll_vch;
     private LinearLayout ll_animal1, ll_animal2, ll_animal3, ll_animal4, ll_animal5, ll_animal6, ll_animal7, ll_animal8;
-
+    private LinearLayout ll_vehlimit,ll_safe_speed,ll_appr_speed,ll_pf_speed,ll_issue_date,ll_issue_time,ll_appear_date,ll_court_time,ll_night_court;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,6 +180,9 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         Looper.myLooper().quit();
                     }
                 }).start();*/
+                //enablePrintButton(false);
+                total_height = 0;
+                linecount = 0;
                 performTestWithManyJobs();
             }
         });
@@ -183,7 +201,6 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         });
 
     }
-
     private void init() {
         sessionManager = new SessionManager(ZebraPrinterActivity.this);
         clear_page = findViewById(R.id.clear_page);
@@ -268,6 +285,31 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         pre_animal7 = findViewById(R.id.pre_animal7);
         pre_animal8 = findViewById(R.id.pre_animal8);
 
+        ll_ctlout = findViewById(R.id.citation_lout);
+
+        ll_driver_first_name = findViewById(R.id.ll_driver_first_name);
+        ll_driver_middlename = findViewById(R.id.ll_driver_middlename);
+        ll_driver_lastname = findViewById(R.id.ll_driver_lastname);
+        ll_driver_suffix = findViewById(R.id.ll_driver_suffix);
+        ll_driver_address1 = findViewById(R.id.ll_driver_address1);
+        ll_driver_address2 = findViewById(R.id.ll_driver_address2);
+        ll_driver_city = findViewById(R.id.ll_driver_city);
+        ll_driver_state = findViewById(R.id.ll_driver_state);
+        ll_driver_zipcode = findViewById(R.id.ll_driver_zipcode);
+        ll_driver_license_no = findViewById(R.id.ll_driver_license_no);
+        ll_driver_statee = findViewById(R.id.ll_driver_statee);
+        ll_driver_dob = findViewById(R.id.ll_driver_dob);
+        ll_driver_gender = findViewById(R.id.ll_driver_gender);
+        ll_driver_hair = findViewById(R.id.ll_driver_hair);
+        ll_driver_eyes = findViewById(R.id.ll_driver_eyes);
+        ll_driver_height = findViewById(R.id.ll_driver_height);
+        ll_driver_weight = findViewById(R.id.ll_driver_weight);
+        ll_driver_license_type = findViewById(R.id.ll_driver_licensetype);
+        ll_driver_race = findViewById(R.id.ll_driver_race);
+        ll_driver_ethnicity = findViewById(R.id.ll_driver_ethnicity);
+        ll_driver_common_driver_license = findViewById(R.id.ll_driver_common_driver_license);
+
+
         ll_owner_first_name = findViewById(R.id.ll_owner_first_name);
         ll_owner_middlename = findViewById(R.id.ll_owner_middlename);
         ll_owner_lastname = findViewById(R.id.ll_owner_lastname);
@@ -277,6 +319,28 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         ll_owner_city = findViewById(R.id.ll_owner_city);
         ll_owner_state = findViewById(R.id.ll_owner_state);
         ll_owner_zipcode = findViewById(R.id.ll_owner_zipcode);
+        ll_vehyear = findViewById(R.id.ll_vehyear);
+        ll_vehmake = findViewById(R.id.ll_vehmake);
+        ll_vehmodel = findViewById(R.id.ll_vehmodel);
+        ll_vehbody = findViewById(R.id.ll_vehbody);
+        ll_vehcolor = findViewById(R.id.ll_vehcolor);
+        ll_vehtype = findViewById(R.id.ll_vehtype);
+        ll_vehcommercial = findViewById(R.id.ll_vehcommercial);
+        ll_veh_licno = findViewById(R.id.ll_vehlicno);
+        ll_veh_state = findViewById(R.id.ll_veh_state);
+        ll_hazardous = findViewById(R.id.ll_hazardous);
+        ll_overload = findViewById(R.id.ll_overload);
+        ll_insurance_policy_no = findViewById(R.id.ll_insurance_policy_no);
+
+        ll_vehlimit = findViewById(R.id.ll_vehlimit);
+        ll_safe_speed = findViewById(R.id.ll_safe_speed);
+        ll_appr_speed = findViewById(R.id.ll_appr_speed);
+        ll_pf_speed = findViewById(R.id.ll_pfspeed);
+        ll_issue_date = findViewById(R.id.ll_issue_date);
+        ll_issue_time = findViewById(R.id.ll_issue_time);
+        ll_appear_date = findViewById(R.id.ll_appear_date);
+        ll_court_time = findViewById(R.id.ll_court_time);
+        ll_night_court = findViewById(R.id.ll_night_court);
 
         ll_vioA = findViewById(R.id.ll_vioA);
         ll_vioB = findViewById(R.id.ll_vioB);
@@ -307,101 +371,12 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
         ll_print_layout = findViewById(R.id.ll_print_layout);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
-    @SuppressLint({"ServiceCast", "HardwareIds"})
-    public ZebraPrinter connect() {
-        //setStatus("Connecting...", Color.YELLOW);
-        Log.e("TAG", "connect: Connecting..." );
-        connection = null;
-        if (isBluetoothSelected()) {
-            try {
-                BluetoothDiscoverer.findPrinters(this, new DiscoveryHandler() {
-
-                    public void foundPrinter(DiscoveredPrinter printer) {
-                        String macAddress = printer.address;
-                        connection = new BluetoothConnection(macAddress);
-                        SettingsHelper.saveBluetoothAddress(ZebraPrinterActivity.this, macAddress);
-
-                        //I found a printer! I can use the properties of a Discovered printer (address) to make a Bluetooth Connection
-                    }
-
-                    public void discoveryFinished() {
-                        //        Toast.makeText(ZebraPrinterActivity.this,"Discovery is done ",Toast.LENGTH_SHORT).show();
-                        //Discovery is done
-                    }
-
-                    public void discoveryError(String message) {
-                        Toast.makeText(ZebraPrinterActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                        //Error during discovery
-                    }
-                });
-            } catch (ConnectionException e) {
-                e.printStackTrace();
-            }
-
-            connection = new BluetoothConnection(getMacAddressFieldText());
-            SettingsHelper.saveBluetoothAddress(this, getMacAddressFieldText());
-        } else {
-            try {
-                int port = Integer.parseInt(getTcpPortNumber());
-                connection = new TcpConnection(getTcpAddress(), port);
-                SettingsHelper.saveIp(this, getTcpAddress());
-                SettingsHelper.savePort(this, getTcpPortNumber());
-            } catch (NumberFormatException e) {
-               // setStatus("Port Number Is Invalid", Color.RED);
-                Log.e("TAG", "connect: Port Number Is Invalid" );
-                return null;
-            }
-        }
-
-        try {
-            connection.open();
-            //setStatus("Connected", Color.GREEN);
-            Log.e("TAG", "connect: Connected" );
-        } catch (ConnectionException e) {
-            Toast.makeText(ZebraPrinterActivity.this, "ConnectionException: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            //setStatus("Comm Error! Disconnecting", Color.RED);
-            Log.e("TAG", "connect: Comm Error! Disconnecting" );
-            DemoSleeper.sleep(1000);
-            disconnect();
-        }
-
-        ZebraPrinter printer = null;
-
-        if (connection.isConnected()) {
-            try {
-                printer = ZebraPrinterFactory.getInstance(connection);
-                //setStatus("Determining Printer Language", Color.YELLOW);
-                Log.e("TAG", "connect: Determining Printer Language" );
-                String pl = SGD.GET("device.languages", connection);
-                //setStatus("Printer Language " + pl, Color.BLUE);
-                Log.e("TAG", "connect: Printer Language "+ pl );
-            } catch (ConnectionException e) {
-              //  setStatus("Unknown Printer Language", Color.RED);
-                Log.e("TAG", "connect: Unknown Printer Language" );
-                printer = null;
-                DemoSleeper.sleep(1000);
-                disconnect();
-            } catch (ZebraPrinterLanguageUnknownException e) {
-                //setStatus("Unknown Printer Language", Color.RED);
-                Log.e("TAG", "connect: Unknown Printer Language" );
-                printer = null;
-                DemoSleeper.sleep(1000);
-                disconnect();
-            }
-        }
-
-        return printer;
-    }
-
     public void disconnect() {
         try {
             //setStatus("Disconnecting", Color.RED);
@@ -409,7 +384,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             if (connection != null) {
                 connection.close();
             }
-           // setStatus("Not Connected", Color.RED);
+            // setStatus("Not Connected", Color.RED);
             Log.e("TAG", "Not Connected" );
         } catch (ConnectionException e) {
             //setStatus("COMM Error! Disconnected", Color.RED);
@@ -429,7 +404,13 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         DemoSleeper.sleep(1000);
     }*/
 
-
+//    private void enablePrintButton(final boolean enabled) {
+//        runOnUiThread(new Runnable() {
+//            public void run() {
+//                print_data.setEnabled(enabled);
+//            }
+//        });
+//    }
     private void sendTestLabel() {
         try {
             ZebraPrinterLinkOs linkOsPrinter = ZebraPrinterFactory.createLinkOsPrinter(printer);
@@ -447,28 +428,27 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 //-----------------------//
                 //setStatus("Sending Data", Color.BLUE);
             } else if (printerStatus.isHeadOpen) {
-               // setStatus("Printer Head Open", Color.RED);
+                // setStatus("Printer Head Open", Color.RED);
                 Log.e("sendTestLabel", "sendTestLabel: Printer Head Open" );
             } else if (printerStatus.isPaused) {
-               // setStatus("Printer is Paused", Color.RED);
+                // setStatus("Printer is Paused", Color.RED);
                 Log.e("sendTestLabel", "sendTestLabel: Printer is Paused" );
             } else if (printerStatus.isPaperOut) {
-               // setStatus("Printer Media Out", Color.RED);
+                // setStatus("Printer Media Out", Color.RED);
                 Log.e("sendTestLabel", "sendTestLabel: Printer Media Out" );
             }
             DemoSleeper.sleep(1500);
             if (connection instanceof BluetoothConnection) {
                 String friendlyName = ((BluetoothConnection) connection).getFriendlyName();
-               // setStatus(friendlyName, Color.MAGENTA);
+                // setStatus(friendlyName, Color.MAGENTA);
                 DemoSleeper.sleep(500);
             }
         } catch (ConnectionException e) {
-           // setStatus(e.getMessage(), Color.RED);
+            // setStatus(e.getMessage(), Color.RED);
         } finally {
             disconnect();
         }
     }
-
     private void enableTestButton(final boolean enabled) {
         runOnUiThread(new Runnable() {
             public void run() {
@@ -508,22 +488,6 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
         }
         return configLabel;
-    }
-
-
-    private void doConnectionTest() {
-
-        if (!(ActivityCompat.checkSelfPermission(ZebraPrinterActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(ZebraPrinterActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        }
-
-        printer = connect();
-
-        if (printer != null) {
-            sendTestLabel();
-        } else {
-            disconnect();
-        }
     }
 
     private void toggleEditField(EditText editText, boolean set) {
@@ -580,6 +544,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_firstname.setText(session_driver_firstname);
         } else {
             driver_firstname.setText(getResources().getString(R.string.dash));
+            ll_driver_first_name.setVisibility(View.GONE);
         }
 
 
@@ -588,6 +553,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_middlename.setText(session_driver_middlename);
         } else {
             driver_middlename.setText(getResources().getString(R.string.dash));
+            ll_driver_middlename.setVisibility(View.GONE);
         }
 
 
@@ -596,6 +562,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_lastname.setText(session_driver_lastname);
         } else {
             driver_lastname.setText(getResources().getString(R.string.dash));
+            ll_driver_lastname.setVisibility(View.GONE);
         }
 
 
@@ -604,6 +571,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_suffix.setText(session_driver_suffix);
         } else {
             driver_suffix.setText(getResources().getString(R.string.dash));
+            ll_driver_suffix.setVisibility(View.GONE);
         }
 
 
@@ -612,6 +580,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_address1.setText(session_driver_address1);
         } else {
             driver_address1.setText(getResources().getString(R.string.dash));
+            ll_driver_address1.setVisibility(View.GONE);
         }
 
 
@@ -620,6 +589,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_address2.setText(session_driver_address2);
         } else {
             driver_address2.setText(getResources().getString(R.string.dash));
+            ll_driver_address2.setVisibility(View.GONE);
         }
 
 
@@ -628,6 +598,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_zipcode.setText(session_driver_zipcode);
         } else {
             driver_zipcode.setText(getResources().getString(R.string.dash));
+            ll_driver_zipcode.setVisibility(View.GONE);
         }
 
 
@@ -636,6 +607,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_license_no.setText(session_driver_license_no);
         } else {
             driver_license_no.setText(getResources().getString(R.string.dash));
+            ll_driver_license_no.setVisibility(View.GONE);
         }
 
         assert session_driver_dob != null;
@@ -643,6 +615,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_dob.setText(session_driver_dob);
         } else {
             driver_dob.setText(getResources().getString(R.string.dash));
+            ll_driver_dob.setVisibility(View.GONE);
         }
 
         assert session_driver_weight != null;
@@ -650,6 +623,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_weight.setText(session_driver_weight);
         } else {
             driver_weight.setText(getResources().getString(R.string.dash));
+            ll_driver_weight.setVisibility(View.GONE);
         }
 
 
@@ -682,6 +656,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehlimit.setText(session_vehlimit);
         } else {
             pre_vehlimit.setText(getResources().getString(R.string.dash));
+            ll_vehlimit.setVisibility(View.GONE);
         }
 
 
@@ -690,6 +665,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_safespeed.setText(session_safespeed);
         } else {
             pre_safespeed.setText(getResources().getString(R.string.dash));
+            ll_safe_speed.setVisibility(View.GONE);
         }
 
 
@@ -698,6 +674,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_apprspeed.setText(session_apprspeed);
         } else {
             pre_apprspeed.setText(getResources().getString(R.string.dash));
+            ll_appr_speed.setVisibility(View.GONE);
         }
 
 
@@ -706,6 +683,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_pfspeed.setText(session_pfspeed);
         } else {
             pre_pfspeed.setText(getResources().getString(R.string.dash));
+            ll_pf_speed.setVisibility(View.GONE);
         }
 
 
@@ -812,6 +790,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_overload.setText(session_overload);
         } else {
             pre_overload.setText(getResources().getString(R.string.dash));
+            ll_overload.setVisibility(View.GONE);
         }
 
 
@@ -820,6 +799,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_policyno.setText(session_policyno);
         } else {
             pre_policyno.setText(getResources().getString(R.string.dash));
+            ll_insurance_policy_no.setVisibility(View.GONE);
         }
 
         assert session_vehyear != null;
@@ -827,6 +807,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehyear.setText(session_vehyear);
         } else {
             pre_vehyear.setText(getResources().getString(R.string.dash));
+            ll_vehyear.setVisibility(View.GONE);
         }
 
 
@@ -835,6 +816,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehno.setText(session_vehno);
         } else {
             pre_vehno.setText(getResources().getString(R.string.dash));
+            ll_veh_licno.setVisibility(View.GONE);
         }
 
 
@@ -946,6 +928,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_firstname.setText(session_ownerfirstname);
             } else {
                 pre_owner_firstname.setText(getResources().getString(R.string.dash));
+                ll_owner_first_name.setVisibility(View.GONE);
             }
 
             assert session_ownermiddlename != null;
@@ -953,6 +936,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_middlename.setText(session_ownermiddlename);
             } else {
                 pre_owner_middlename.setText(getResources().getString(R.string.dash));
+                ll_owner_middlename.setVisibility(View.GONE);
             }
 
             assert session_ownerlastname != null;
@@ -960,6 +944,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_lastname.setText(session_ownerlastname);
             } else {
                 pre_owner_lastname.setText(getResources().getString(R.string.dash));
+                ll_owner_lastname.setVisibility(View.GONE);
             }
 
             assert session_owneraddress1 != null;
@@ -967,6 +952,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_address1.setText(session_owneraddress1);
             } else {
                 pre_owner_address1.setText(getResources().getString(R.string.dash));
+                ll_owner_address1.setVisibility(View.GONE);
             }
 
 
@@ -975,6 +961,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_address2.setText(session_owneraddress2);
             } else {
                 pre_owner_address2.setText(getResources().getString(R.string.dash));
+                ll_owner_address2.setVisibility(View.GONE);
             }
 
 
@@ -983,6 +970,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_zipcode.setText(session_zipcode);
             } else {
                 pre_owner_zipcode.setText(getResources().getString(R.string.dash));
+                ll_owner_zipcode.setVisibility(View.GONE);
             }
 
 
@@ -992,6 +980,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_city.setText(selected_value);
             } else {
                 pre_owner_city.setText(getResources().getString(R.string.dash));
+                ll_owner_city.setVisibility(View.GONE);
             }
 
             assert session_ownersuffix != null;
@@ -1000,6 +989,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_suffix.setText(selected_value);
             } else {
                 pre_owner_suffix.setText(getResources().getString(R.string.dash));
+                ll_owner_suffix.setVisibility(View.GONE);
             }
 
             assert session_ownerstate != null;
@@ -1008,6 +998,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 pre_owner_state.setText(selected_value);
             } else {
                 pre_owner_state.setText(getResources().getString(R.string.dash));
+                ll_owner_state.setVisibility(View.GONE);
             }
 
         } else {
@@ -1148,6 +1139,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehstate.setText(selected_value);
         } else {
             pre_vehstate.setText(getResources().getString(R.string.dash));
+            ll_veh_state.setVisibility(View.GONE);
         }
 
         assert session_city != null;
@@ -1156,6 +1148,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_city.setText(selected_value);
         } else {
             driver_city.setText(getResources().getString(R.string.dash));
+            ll_driver_city.setVisibility(View.GONE);
         }
 
 
@@ -1165,6 +1158,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_height.setText(selected_value);
         } else {
             driver_height.setText(getResources().getString(R.string.dash));
+            ll_driver_height.setVisibility(View.GONE);
         }
 
         assert session_violationH != null;
@@ -1258,6 +1252,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehmodel.setText(selected_value);
         } else {
             pre_vehmodel.setText(getResources().getString(R.string.dash));
+            ll_vehmodel.setVisibility(View.GONE);
         }
 
 
@@ -1267,6 +1262,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehmake.setText(selected_value);
         } else {
             pre_vehmake.setText(getResources().getString(R.string.dash));
+            ll_vehmake.setVisibility(View.GONE);
         }
 
 
@@ -1276,6 +1272,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehtype.setText(selected_value);
         } else {
             pre_vehtype.setText(getResources().getString(R.string.dash));
+            ll_vehtype.setVisibility(View.GONE);
         }
 
 
@@ -1285,6 +1282,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehcolor.setText(selected_value);
         } else {
             pre_vehcolor.setText(getResources().getString(R.string.dash));
+            ll_vehcolor.setVisibility(View.GONE);
         }
 
 
@@ -1294,6 +1292,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             pre_vehbody.setText(selected_value);
         } else {
             pre_vehbody.setText(getResources().getString(R.string.dash));
+            ll_vehbody.setVisibility(View.GONE);
         }
 
 
@@ -1303,6 +1302,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             license_type.setText(selected_value);
         } else {
             license_type.setText(getResources().getString(R.string.dash));
+            ll_driver_license_type.setVisibility(View.GONE);
         }
 
         assert session_hair != null;
@@ -1311,6 +1311,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_hair.setText(selected_value);
         } else {
             driver_hair.setText(getResources().getString(R.string.dash));
+            ll_driver_hair.setVisibility(View.GONE);
         }
 
         assert session_eyes != null;
@@ -1319,6 +1320,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_eyes.setText(selected_value);
         } else {
             driver_eyes.setText(getResources().getString(R.string.dash));
+            ll_driver_eyes.setVisibility(View.GONE);
         }
 
         assert session_statee != null;
@@ -1327,6 +1329,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_statee.setText(selected_value);
         } else {
             driver_statee.setText(getResources().getString(R.string.dash));
+            ll_driver_statee.setVisibility(View.GONE);
         }
 
         assert session_state != null;
@@ -1335,6 +1338,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_state.setText(selected_value);
         } else {
             driver_state.setText(getResources().getString(R.string.dash));
+            ll_driver_state.setVisibility(View.GONE);
         }
 
 
@@ -1344,6 +1348,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_ethncity.setText(selected_value);
         } else {
             driver_ethncity.setText(getResources().getString(R.string.dash));
+            ll_driver_ethnicity.setVisibility(View.GONE);
         }
 
 
@@ -1353,6 +1358,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             driver_race.setText(selected_value);
         } else {
             driver_race.setText(getResources().getString(R.string.dash));
+            ll_driver_race.setVisibility(View.GONE);
         }
 
         //COURT DETAILS
@@ -1370,6 +1376,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             issuedate_txt.setText(session_issuedate);
         } else {
             issuedate_txt.setText(getResources().getString(R.string.dash));
+            ll_issue_date.setVisibility(View.GONE);
         }
 
         assert session_issuetime != null;
@@ -1378,6 +1385,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             issuetime_txt.setText(session_issuetime + " " + session_ampm);
         } else {
             issuetime_txt.setText(getResources().getString(R.string.dash));
+            ll_issue_time.setVisibility(View.GONE);
         }
 
         assert session_appeardate != null;
@@ -1385,6 +1393,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             appeardate_txt.setText(session_appeardate);
         } else {
             appeardate_txt.setText(getResources().getString(R.string.dash));
+            ll_appear_date.setVisibility(View.GONE);
         }
 
         assert session_courttime != null;
@@ -1392,6 +1401,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             courttime_txt.setText(session_courttime);
         } else {
             courttime_txt.setText(getResources().getString(R.string.dash));
+            ll_court_time.setVisibility(View.GONE);
         }
 
         assert session_nightcourt != null;
@@ -1399,36 +1409,36 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             nightcourt_txt.setText(session_nightcourt);
         } else {
             nightcourt_txt.setText(getResources().getString(R.string.dash));
+            ll_night_court.setVisibility(View.GONE);
         }
 
         databaseAccess.close();
     }
 
     //------------- //
-    private Bitmap loadBitmapFromView(View v) {
-        Bitmap b = null;
-        try {
-            b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
-            Canvas c = new Canvas(b);
-            Drawable bgDrawable = v.getBackground();
-            if (bgDrawable != null)
-                bgDrawable.draw(c);
-            else
-                c.drawColor(Color.WHITE);
-            v.draw(c);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return b;
-    }
-    //---------- //
-
     public void performTestWithManyJobs() {
-        if (!(ActivityCompat.checkSelfPermission(ZebraPrinterActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(ZebraPrinterActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        }
-        executeTest(true);
+//        if (!(ActivityCompat.checkSelfPermission(ZebraPrinterActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
+//            ActivityCompat.requestPermissions(ZebraPrinterActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+//        }
+
+        Dexter.withContext(getApplicationContext())
+                .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                        executeTest(true);
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                        permissionToken.continuePermissionRequest();
+                    }
+                }).check();
     }
 
     public void executeTest(final boolean withManyJobs) {
@@ -1440,51 +1450,95 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 Looper.myLooper().quit();
             }
         }).start();
-
+        //executeAsyncTask();
     }
 
     private void connectAndSendLabel(final boolean withManyJobs) {
         if (isBluetoothSelected()) {
-            try {
-                BluetoothDiscoverer.findPrinters(this, new DiscoveryHandler() {
-
-                    public void foundPrinter(DiscoveredPrinter printer) {
-                        String macAddress = printer.address;
-                        connection = new BluetoothConnection(macAddress);
-                        SettingsHelper.saveBluetoothAddress(ZebraPrinterActivity.this, macAddress);
-
-                        //I found a printer! I can use the properties of a Discovered printer (address) to make a Bluetooth Connection
+            while(count < timeout){
+                try{
+                    if(count == 0){
+                        helper.showLoadingDialog("Connecting...");
+                        establishConnection();
                     }
+                    //Toast.makeText(getApplicationContext(),""+count+": MAC:"+macAddress,Toast.LENGTH_SHORT).show();
+                    Thread.sleep(1000);
+                    count++;
 
-                    public void discoveryFinished() {
-                        //        Toast.makeText(ZebraPrinterActivity.this,"Discovery is done ",Toast.LENGTH_SHORT).show();
-                        //Discovery is done
-                    }
+                    /*if((count == 10) && macAddress == ""){
+                        if(count == 10){
+                            establishConnection();
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),""+count+": MAC Id:"+macAddress,Toast.LENGTH_SHORT).show();
+                        }
+                    }*/
 
-                    public void discoveryError(String message) {
-                        Toast.makeText(ZebraPrinterActivity.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                        //Error during discovery
+                    if(macAddress != ""){
+                        connected = true;
+                        count=0;
+                        helper.updateLoadingDialog("Printing...");
+                        startPrinting(true);
+                        break;
                     }
-                });
-            } catch (ConnectionException e) {
-                e.printStackTrace();
+                    else if(count == timeout-1){
+                        //Toast.makeText(ZebraPrinterActivity.this,"MAC ADDRESS:"+macAddress,Toast.LENGTH_LONG).show();
+                        helper.dismissLoadingDialog();
+                        count=0;
+                        //enablePrintButton(true);
+                        break;
+                    }
+                } catch (InterruptedException e) {
+                    //throw new RuntimeException(e);
+                    //Toast.makeText(getApplicationContext(), ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                    Log.d("connectAndSendLabel",e.getMessage());
+                    helper.dismissLoadingDialog();
+                    count=0;
+                    //enablePrintButton(true);
+                }
+
             }
 
-            connection = new BluetoothConnection(getMacAddressFieldText());
-            SettingsHelper.saveBluetoothAddress(this, getMacAddressFieldText());
+            //connection = new BluetoothConnection(getMacAddressFieldText());
+            //SettingsHelper.saveBluetoothAddress(this, getMacAddressFieldText());
         }
-       /* if (!isBluetoothSelected()) {
-            try {
-                connection = new TcpConnection(getTcpAddress(), Integer.valueOf(getTcpPortNumber()));
-            } catch (NumberFormatException e) {
-                helper.showErrorDialogOnGuiThread("Port number is invalid");
-                return;
-            }
-        } else {
-            connection = new BluetoothConnection(getMacAddressFieldText());
-        }*/
+    }
+
+    private void establishConnection() {
         try {
-            helper.showLoadingDialog("Connecting...");
+            macAddress = "";
+            //Toast.makeText(ZebraPrinterActivity.this,"Inside establishConnection()",Toast.LENGTH_SHORT).show();
+            BluetoothDiscoverer.findPrinters(this, new DiscoveryHandler() {
+                public void foundPrinter(DiscoveredPrinter printer) {
+                    macAddress = printer.address;
+                    //Toast.makeText(ZebraPrinterActivity.this,"Inside foundPrinter()",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ZebraPrinterActivity.this,"MAC ADD:"+macAddress,Toast.LENGTH_SHORT).show();
+                    connection = new BluetoothConnection(macAddress);
+                    SettingsHelper.saveBluetoothAddress(ZebraPrinterActivity.this, macAddress);
+                    //Toast.makeText(ZebraPrinterActivity.this,"IsConnected ? : "+connection.isConnected(),Toast.LENGTH_LONG).show();
+                    //I found a printer! I can use the properties of a Discovered printer (address) to make a Bluetooth Connection
+                }
+
+                public void discoveryFinished() {
+                    //Toast.makeText(ZebraPrinterActivity.this,"Discovery is done ",Toast.LENGTH_LONG).show();
+                    //Discovery is done
+                }
+
+                public void discoveryError(String message) {
+                    //Toast.makeText(ZebraPrinterActivity.this, "Discovery Error: " + message, Toast.LENGTH_LONG).show();
+                    //Error during discovery
+                }
+            });
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            helper.dismissLoadingDialog();
+            //enablePrintButton(true);
+            //Toast.makeText(ZebraPrinterActivity.this, "Inside catch: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void startPrinting(boolean withManyJobs) {
+        try {
             connection.open();
 
             ZebraPrinter printer = null;
@@ -1510,10 +1564,13 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             }
         } catch (ConnectionException e) {
             helper.showErrorDialogOnGuiThread(e.getMessage());
+            //enablePrintButton(true);
         } catch (ZebraPrinterLanguageUnknownException e) {
             helper.showErrorDialogOnGuiThread("Could not detect printer language");
+            //enablePrintButton(true);
         } finally {
             helper.dismissLoadingDialog();
+            //enablePrintButton(true);
         }
     }
 
@@ -1522,6 +1579,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             sendZplReceipt(printerConnection);
         } catch (ConnectionException e) {
             helper.showErrorDialogOnGuiThread(e.getMessage());
+            //enablePrintButton(true);
         }
     }
 
@@ -1554,28 +1612,29 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 + getString(R.string.courttime) + " : " + courttime_txt.getText().toString().trim() + "\n"
                 + getString(R.string.night_court) + " : " + nightcourt_txt.getText().toString().trim() + "\n";*/
 
-        String citation = "CITATION NUMBER : " + citation_no_txt.getText().toString().trim() + "\n";
-        String firstName = "FIRST NAME : " + driver_firstname.getText().toString().trim() + "\n";
-        String middleName = "MIDDLE NAME : " + driver_middlename.getText().toString().trim() + "\n";
-        String lastName = "LAST NAME : " + driver_lastname.getText().toString().trim() + "\n";
-        String suffix = "SUFFIX : " + driver_suffix.getText().toString().trim() + "\n";
-        String addLine1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim() + "\n";
-        String addLine2 = "ADDRESS 2 : " + driver_address2.getText().toString().trim() + "\n";
-        String city = "CITY : " + driver_city.getText().toString().trim() + "\n";
-        String state = "STATE : " + driver_state.getText().toString().trim() + "\n";
-        String zipcode = "ZIPCODE : " + driver_zipcode.getText().toString().trim() + "\n";
-        String licNumber = "LICENCE : " + driver_license_no.getText().toString().trim() + "\n";
-        String drState = "DRIVER STATE : " + driver_statee.getText().toString().trim() + "\n";
-        String drDOB = "DOB : " + driver_dob.getText().toString().trim() + "\n";
-        String drSex = "SEX : " + driver_sex.getText().toString().trim() + "\n";
-        String drHair = "HAIR : " + driver_hair.getText().toString().trim() + "\n";
-        String drEyes = "EYES : " + driver_eyes.getText().toString().trim() + "\n";
-        String drHeight = "HEIGHT (in) : " + driver_height.getText().toString().trim() + "\n";
-        String drWeight = "WEIGHT (lbs) : " + driver_weight.getText().toString().trim() + "\n";
-        String lcType = "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n";
-        String race = "DESCENT/RACE : " + driver_race.getText().toString().trim() + "\n";
-        String ethncity = "ETHNCITY : " + driver_ethncity.getText().toString().trim() + "\n";
-        String commDrLicence = "COMM DR LICENSE : " + comm_drivers_license.getText().toString().trim() + "\n";
+
+        /*String citation = ll_ctlout.getVisibility() == View.VISIBLE ? "CITATION NUMBER : " + citation_no_txt.getText().toString().trim() + "\n" : "";
+        String firstName = ll_driver_first_name.getVisibility() == View.VISIBLE ? "FIRST NAME : " + driver_firstname.getText().toString().trim() + "\n" : "";
+        String middleName = ll_driver_middlename.getVisibility() == View.VISIBLE ? "MIDDLE NAME : " + driver_middlename.getText().toString().trim() + "\n" : "";
+        String lastName = ll_driver_lastname.getVisibility() == View.VISIBLE ? "LAST NAME : " + driver_lastname.getText().toString().trim() + "\n" : "";
+        String suffix = ll_driver_suffix.getVisibility() == View.VISIBLE ? "SUFFIX : " + driver_suffix.getText().toString().trim() + "\n" : "";
+        String addLine1 = ll_driver_address1.getVisibility() == View.VISIBLE ? "ADDRESS 1 : " + driver_address1.getText().toString().trim() + "\n" : "";
+        String addLine2 = ll_driver_address2.getVisibility() == View.VISIBLE ? "ADDRESS 2 : " + driver_address2.getText().toString().trim() + "\n" : "";
+        String city = ll_driver_city.getVisibility() == View.VISIBLE ? "CITY : " + driver_city.getText().toString().trim() + "\n" : "";
+        String state = ll_driver_state.getVisibility() == View.VISIBLE ? "STATE : " + driver_state.getText().toString().trim() + "\n" : "";
+        String zipcode = ll_driver_zipcode.getVisibility() == View.VISIBLE ? "ZIPCODE : " + driver_zipcode.getText().toString().trim() + "\n" : "";
+        String licNumber = ll_driver_license_no.getVisibility() == View.VISIBLE ? "LICENCE : " + driver_license_no.getText().toString().trim() + "\n" : "";
+        String drState = ll_driver_statee.getVisibility() == View.VISIBLE ? "DRIVER STATE : " + driver_statee.getText().toString().trim() + "\n" : "";
+        String drDOB = ll_driver_dob.getVisibility() == View.VISIBLE ? "DOB : " + driver_dob.getText().toString().trim() + "\n" : "";
+        String drSex = ll_driver_gender.getVisibility() == View.VISIBLE ? "SEX : " + driver_sex.getText().toString().trim() + "\n" : "";
+        String drHair = ll_driver_hair.getVisibility() == View.VISIBLE ? "HAIR : " + driver_hair.getText().toString().trim() + "\n" : "";
+        String drEyes = ll_driver_eyes.getVisibility() == View.VISIBLE ? "EYES : " + driver_eyes.getText().toString().trim() + "\n" : "";
+        String drHeight = ll_driver_height.getVisibility() == View.VISIBLE ? "HEIGHT (in) : " + driver_height.getText().toString().trim() + "\n" : "";
+        String drWeight = ll_driver_weight.getVisibility() == View.VISIBLE ? "WEIGHT (lbs) : " + driver_weight.getText().toString().trim() + "\n" : "";
+        String lcType = ll_driver_license_type.getVisibility() == View.VISIBLE ? "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n" : "";
+        String race = ll_driver_race.getVisibility() == View.VISIBLE ? "DESCENT/RACE : " + driver_race.getText().toString().trim() + "\n" : "";
+        String ethncity = ll_driver_ethnicity.getVisibility() == View.VISIBLE ? "ETHNCITY : " + driver_ethncity.getText().toString().trim() + "\n" : "";
+        String commDrLicence = ll_driver_common_driver_license.getVisibility() == View.VISIBLE ? "COMM DR LICENSE : " + comm_drivers_license.getText().toString().trim() + "\n" : "";
         String ownerFname = ll_owner_first_name.getVisibility() == View.VISIBLE ? "OWNER FIRST NAME : " + pre_owner_firstname.getText().toString().trim() + "\n" : "";
         String ownerMname = ll_owner_middlename.getVisibility() == View.VISIBLE ? "OWNER MIDDLE NAME : " + pre_owner_middlename.getText().toString().trim() + "\n" : "";
         String ownerLname = ll_owner_lastname.getVisibility() == View.VISIBLE ? "OWNER LAST NAME : " + pre_owner_lastname.getText().toString().trim() + "\n" : "";
@@ -1585,18 +1644,18 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String ownerCity = ll_owner_city.getVisibility() == View.VISIBLE ? "OWNER CITY : " + pre_owner_city.getText().toString().trim() + "\n" : "";
         String ownerState = ll_owner_state.getVisibility() == View.VISIBLE ? "OWNER STATE : " + pre_owner_state.getText().toString().trim() + "\n" : "";
         String ownerZcode = ll_owner_zipcode.getVisibility() == View.VISIBLE ? "OWNER ZIPCODE : " + pre_owner_zipcode.getText().toString().trim() + "\n" : "";
-        String vehYear = "VEHYEAR : " + pre_vehyear.getText().toString().trim() + "\n";
-        String vehMake = "VEHMAKE : " + pre_vehmake.getText().toString().trim() + "\n";
-        String vehModel = "VEHMODEL : " + pre_vehmodel.getText().toString().trim() + "\n";
-        String vehBody = "VEHBODY : " + pre_vehbody.getText().toString().trim() + "\n";
-        String vehColor = "VEHCOLOR : " + pre_vehcolor.getText().toString().trim() + "\n";
-        String vehType = "VEHTYPE : " + pre_vehtype.getText().toString().trim() + "\n";
-        String commercial = "COMMERCIAL : " + pre_commercial.getText().toString().trim() + "\n";
-        String vehlicNo = "VEHLICNO : " + pre_vehno.getText().toString().trim() + "\n";
-        String vehicleState = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim() + "\n";
-        String hazardous = "HAZARDOUS : " + pre_hazardous.getText().toString().trim() + "\n";
-        String overload = "OVERLOAD : " + pre_overload.getText().toString().trim() + "\n";
-        String policy_no = "POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
+        String vehYear = ll_vehyear.getVisibility() == View.VISIBLE ? "VEHYEAR : " + pre_vehyear.getText().toString().trim() + "\n" : "";
+        String vehMake = ll_vehmake.getVisibility() == View.VISIBLE ? "VEHMAKE : " + pre_vehmake.getText().toString().trim() + "\n" : "";
+        String vehModel = ll_vehmodel.getVisibility() == View.VISIBLE ? "VEHMODEL : " + pre_vehmodel.getText().toString().trim() + "\n" : "";
+        String vehBody = ll_vehbody.getVisibility() == View.VISIBLE ? "VEHBODY : " + pre_vehbody.getText().toString().trim() + "\n" : "";
+        String vehColor = ll_vehcolor.getVisibility() == View.VISIBLE ? "VEHCOLOR : " + pre_vehcolor.getText().toString().trim() + "\n" : "";
+        String vehType = ll_vehtype.getVisibility() == View.VISIBLE ? "VEHTYPE : " + pre_vehtype.getText().toString().trim() + "\n" : "";
+        String commercial = ll_vehcommercial.getVisibility() == View.VISIBLE ? "COMMERCIAL : " + pre_commercial.getText().toString().trim() + "\n" : "";
+        String vehlicNo = ll_veh_licno.getVisibility() == View.VISIBLE ? "VEHLICNO : " + pre_vehno.getText().toString().trim() + "\n" : "";
+        String vehicleState = ll_veh_state.getVisibility() == View.VISIBLE ? "VEHICLE STATE : " + pre_vehstate.getText().toString().trim() + "\n" : "";
+        String hazardous = ll_hazardous.getVisibility() == View.VISIBLE ? "HAZARDOUS : " + pre_hazardous.getText().toString().trim() + "\n" : "";
+        String overload = ll_overload.getVisibility() == View.VISIBLE ? "OVERLOAD : " + pre_overload.getText().toString().trim() + "\n" : "";
+        String policy_no = ll_insurance_policy_no.getVisibility() == View.VISIBLE ? "POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n" : "";
         String violationA1 = "";
         String violationA2 = "";
         if (pre_vioA.getText().toString().trim().length() > 32) {
@@ -1675,10 +1734,10 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String vcf = ll_vcf.getVisibility() == View.VISIBLE ? "VCF : " + pre_vcf.getText().toString().trim() + "\n" : "";
         String vcg = ll_vcg.getVisibility() == View.VISIBLE ? "VCG : " + pre_vcg.getText().toString().trim() + "\n" : "";
         String vch = ll_vch.getVisibility() == View.VISIBLE ? "VCH : " + pre_vch.getText().toString().trim() + "\n" : "";
-        String vehlimit = "VEHLIMIT : " + pre_vehlimit.getText().toString().trim() + "\n";
-        String safespeed = "SAFE SPEED : " + pre_safespeed.getText().toString().trim() + "\n";
-        String apprspeed = "APPRSPEED : " + pre_apprspeed.getText().toString().trim() + "\n";
-        String pfspeed = "PFSPEED : " + pre_pfspeed.getText().toString().trim() + "\n";
+        String vehlimit = ll_vehlimit.getVisibility() == View.VISIBLE ? "VEHLIMIT : " + pre_vehlimit.getText().toString().trim() + "\n" : "";
+        String safespeed = ll_safe_speed.getVisibility() == View.VISIBLE ? "SAFE SPEED : " + pre_safespeed.getText().toString().trim() + "\n" : "";
+        String apprspeed = ll_appr_speed.getVisibility() == View.VISIBLE ? "APPRSPEED : " + pre_apprspeed.getText().toString().trim() + "\n" : "";
+        String pfspeed = ll_pf_speed.getVisibility() == View.VISIBLE ? "PFSPEED : " + pre_pfspeed.getText().toString().trim() + "\n" : "";
         String animal1 = ll_animal1.getVisibility() == View.VISIBLE ? "ANIMAL1 : " + pre_animal1.getText().toString().trim() + "\n" : "";
         String animal2 = ll_animal2.getVisibility() == View.VISIBLE ? "ANIMAL2 : " + pre_animal2.getText().toString().trim() + "\n" : "";
         String animal3 = ll_animal3.getVisibility() == View.VISIBLE ? "ANIMAL3 : " + pre_animal3.getText().toString().trim() + "\n" : "";
@@ -1687,37 +1746,1260 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String animal6 = ll_animal6.getVisibility() == View.VISIBLE ? "ANIMAL6 : " + pre_animal6.getText().toString().trim() + "\n" : "";
         String animal7 = ll_animal7.getVisibility() == View.VISIBLE ? "ANIMAL7 : " + pre_animal7.getText().toString().trim() + "\n" : "";
         String animal8 = ll_animal8.getVisibility() == View.VISIBLE ? "ANIMAL8 : " + pre_animal8.getText().toString().trim() + "\n" : "";
-        String issueDate = "ISSUE DATE : " + issuedate_txt.getText().toString().trim() + "\n";
-        String issueTime = "ISSUE TIME : " + issuetime_txt.getText().toString().trim() + "\n";
-        String appearDate = "APPEAR DATE : " + appeardate_txt.getText().toString().trim() + "\n";
-        String courtTime = "COURT TIME : " + courttime_txt.getText().toString().trim() + "\n";
-        String nightCourt = "NIGHT COURT : " + nightcourt_txt.getText().toString().trim() + "\n";
+        String issueDate = ll_issue_date.getVisibility() == View.VISIBLE ? "ISSUE DATE : " + issuedate_txt.getText().toString().trim() + "\n" : "";
+        String issueTime = ll_issue_time.getVisibility() == View.VISIBLE ? "ISSUE TIME : " + issuetime_txt.getText().toString().trim() + "\n" : "";
+        String appearDate = ll_appear_date.getVisibility() == View.VISIBLE ? "APPEAR DATE : " + appeardate_txt.getText().toString().trim() + "\n" : "";
+        String courtTime = ll_court_time.getVisibility() == View.VISIBLE ? "COURT TIME : " + courttime_txt.getText().toString().trim() + "\n" : "";
+        String nightCourt = ll_night_court.getVisibility() == View.VISIBLE ? "NIGHT COURT : " + nightcourt_txt.getText().toString().trim() + "\n" : "";*/
+        String citation;
+        if(ll_ctlout.getVisibility() == View.VISIBLE){
+            citation = "CITATIONR NUMBER : " + citation_no_txt.getText().toString().trim() + "\n";
+            linecount+=1;
+        }else{
+            citation="";
+        }
+
+        String firstName;
+        if(ll_driver_first_name.getVisibility() == View.VISIBLE){
+            firstName =  "FIRST NAME : " + driver_firstname.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            firstName="";
+        }
+
+        String  middleName;
+        if(ll_driver_middlename.getVisibility() == View.VISIBLE){
+            middleName =  "MIDDLE NAME : " + driver_middlename.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            middleName="";
+        }
+
+        String lastName;
+        if(ll_driver_lastname.getVisibility() == View.VISIBLE){
+            lastName =  "LAST NAME : " + driver_lastname.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            lastName="";
+        }
+
+        String suffix;
+        if(ll_driver_suffix.getVisibility() == View.VISIBLE){
+            suffix =  "SUFFIX : " + driver_suffix.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            suffix="";
+        }
+
+        String addLine1_1 = "";
+        String addLine1_2 = "";
+        if(driver_address1.getText().toString().trim().length() > 34){
+            if(ll_driver_address1.getVisibility() == View.VISIBLE){
+                addLine1_1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim().substring(0,34) + "\n";
+                addLine1_2 = "            " + driver_address1.getText().toString().trim().substring(34) + "\n";
+                linecount+=2;
+            }
+            else{
+                addLine1_1="";
+                addLine1_2="";
+            }
+        }
+        else{
+            if(ll_driver_address1.getVisibility() == View.VISIBLE){
+                addLine1_1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                addLine1_1="";
+            }
+        }
+
+        String addLine2_1 = "";
+        String addLine2_2 = "";
+        if(driver_address2.getText().toString().trim().length() > 34){
+            if(ll_driver_address2.getVisibility() == View.VISIBLE){
+                addLine2_1 = "ADDRESS 2 : " + driver_address2.getText().toString().trim().substring(0,34) + "\n";
+                addLine2_2 = "            " + driver_address2.getText().toString().trim().substring(34) + "\n";
+                linecount+=2;
+            }
+            else{
+                addLine2_1="";
+                addLine2_2="";
+            }
+        }
+        else{
+            if(ll_driver_address2.getVisibility() == View.VISIBLE){
+                addLine2_1 = "ADDRESS 2 : " + driver_address2.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                addLine2_1="";
+            }
+        }
+
+        String city;
+        if(ll_driver_city.getVisibility() == View.VISIBLE){
+            city = "CITY : " + driver_city.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            city="";
+        }
+
+        String state1="";
+        String state2="";
+        if (driver_state.getText().toString().trim().length() > 38) {
+            if(ll_driver_state.getVisibility() == View.VISIBLE){
+                state1 = "STATE : " + driver_state.getText().toString().trim().substring(0,38) + "\n";
+                state2 = "        " + driver_state.getText().toString().trim().substring(38) + "\n";
+                linecount+=2;
+            }
+            else{
+                state1="";
+                state2="";
+            }
+        }
+        else{
+            if(ll_driver_state.getVisibility() == View.VISIBLE){
+                state1 = "STATE : " + driver_state.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                state1="";
+            }
+        }
+
+        String zipcode;
+        if(ll_driver_zipcode.getVisibility() == View.VISIBLE){
+            zipcode = "ZIPCODE : " + driver_zipcode.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            zipcode="";
+        }
+
+        String licNumber;
+        if(ll_driver_license_no.getVisibility() == View.VISIBLE){
+            licNumber = "LICENCE : " + driver_license_no.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            licNumber="";
+        }
+
+        String drState1="";
+        String drState2="";
+        if (driver_statee.getText().toString().trim().length() > 31) {
+            if(ll_driver_statee.getVisibility() == View.VISIBLE){
+                drState1 = "DRIVER STATE : " + driver_statee.getText().toString().trim().substring(0,31) + "\n";
+                drState2 = "               " + driver_statee.getText().toString().trim().substring(31) + "\n";
+                linecount += 2;
+            }
+            else{
+                drState1 = "";
+                drState2 = "";
+            }
+        }
+        else{
+            if(ll_driver_statee.getVisibility() == View.VISIBLE){
+                drState1 = "DRIVER STATE : " + driver_statee.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                drState1="";
+            }
+        }
+
+        String drDOB;
+        if(ll_driver_dob.getVisibility() == View.VISIBLE){
+            drDOB = "DOB : " + driver_dob.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            drDOB="";
+        }
+
+        String drSex;
+        if(ll_driver_gender.getVisibility() == View.VISIBLE){
+            drSex = "SEX : " + driver_sex.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            drSex="";
+        }
+
+        String drHair;
+        if(ll_driver_hair.getVisibility() == View.VISIBLE){
+            drHair = "HAIR : " + driver_hair.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            drHair="";
+        }
+
+        String drEyes;
+        if(ll_driver_eyes.getVisibility() == View.VISIBLE){
+            drEyes = "EYES : " + driver_eyes.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            drEyes="";
+        }
+
+        String drHeight;
+        if(ll_driver_height.getVisibility() == View.VISIBLE){
+            drHeight = "HEIGHT (in) : " + driver_height.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            drHeight="";
+        }
+
+        String drWeight;
+        if(ll_driver_weight.getVisibility() == View.VISIBLE){
+            drWeight = "WEIGHT (lbs) : " + driver_weight.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            drWeight="";
+        }
+
+        String lcType1="";
+        String lcType2="";
+        String lcType3="";
+        if(license_type.getText().toString().trim().length() > 25){
+            if(license_type.getText().toString().trim().length() > 50){
+                if(ll_driver_license_type.getVisibility() == View.VISIBLE){
+                    lcType1 = "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
+                    lcType2 = "                     " + license_type.getText().toString().trim().substring(25,50) + "\n";
+                    lcType3 = "                     " + license_type.getText().toString().trim().substring(50) + "\n";
+                    linecount+=3;
+                }
+                else{
+                    lcType1="";
+                    lcType2="";
+                    lcType3="";
+                }
+            }
+            else{
+                if(ll_driver_license_type.getVisibility() == View.VISIBLE){
+                    lcType1 = "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
+                    lcType2 = "                     " + license_type.getText().toString().trim().substring(25) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    lcType1="";
+                    lcType2="";
+                }
+            }
+        }
+        else{
+            if(ll_driver_license_type.getVisibility() == View.VISIBLE){
+                lcType1 = "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                lcType1="";
+            }
+        }
+
+        String race;
+        if(ll_driver_race.getVisibility() == View.VISIBLE){
+            race = "DESCENT/RACE : " + driver_race.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            race="";
+        }
+
+        String ethncity;
+        if(ll_driver_ethnicity.getVisibility() == View.VISIBLE){
+            ethncity = "ETHNCITY : " + driver_ethncity.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            ethncity="";
+        }
+
+        String commDrLicence;
+        if(ll_driver_common_driver_license.getVisibility() == View.VISIBLE){
+            commDrLicence = "COMM DR LICENSE : " + comm_drivers_license.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            commDrLicence="";
+        }
+
+        String ownerFname;
+        if(ll_owner_first_name.getVisibility() == View.VISIBLE){
+            ownerFname = "OWNER FIRST NAME : " + pre_owner_firstname.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            ownerFname="";
+        }
+
+        String ownerMname;
+        if(ll_owner_middlename.getVisibility() == View.VISIBLE){
+            ownerMname = "OWNER MIDDLE NAME : " + pre_owner_middlename.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            ownerMname="";
+        }
+
+        String ownerLname;
+        if(ll_owner_lastname.getVisibility() == View.VISIBLE){
+            ownerLname = "OWNER LAST NAME : " + pre_owner_lastname.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            ownerLname="";
+        }
+
+        String ownerSuffix;
+        if(ll_owner_suffix.getVisibility() == View.VISIBLE){
+            ownerSuffix = "OWNER SUFFIX : " + pre_owner_suffix.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            ownerSuffix="";
+        }
+
+        String ownerAdd1_1="";
+        String ownerAdd1_2="";
+        if(pre_owner_address1.getText().toString().trim().length() > 28){
+            if(ll_owner_address1.getVisibility() == View.VISIBLE){
+                ownerAdd1_1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim().substring(0,28) + "\n";
+                ownerAdd1_2 = "                  " + pre_owner_address1.getText().toString().trim().substring(28) + "\n";
+                linecount+=2;
+            }
+            else{
+                ownerAdd1_1="";
+                ownerAdd1_2="";
+            }
+        }
+        else{
+            if(ll_owner_address1.getVisibility() == View.VISIBLE){
+                ownerAdd1_1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                ownerAdd1_1="";
+            }
+        }
+
+        String ownerAdd2_1="";
+        String ownerAdd2_2="";
+        if(pre_owner_address2.getText().toString().trim().length() > 28){
+            if(ll_owner_address2.getVisibility() == View.VISIBLE){
+                ownerAdd2_1 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim().substring(0,28) + "\n";
+                ownerAdd2_2 = "                  " + pre_owner_address2.getText().toString().trim().substring(28) + "\n";
+                linecount+=2;
+            }
+            else{
+                ownerAdd2_1="";
+                ownerAdd2_2="";
+            }
+        }
+        else{
+            if(ll_owner_address2.getVisibility() == View.VISIBLE){
+                ownerAdd2_1 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                ownerAdd2_1="";
+            }
+        }
+
+        String ownerCity;
+        if(ll_owner_city.getVisibility() == View.VISIBLE){
+            ownerCity = "OWNER CITY : " + pre_owner_city.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            ownerCity="";
+        }
+
+        String ownerState1="";
+        String ownerState2="";
+        if(pre_owner_state.getText().toString().trim().length() > 32){
+            if(ll_owner_state.getVisibility() == View.VISIBLE){
+                ownerState1 = "OWNER STATE : " + pre_owner_state.getText().toString().trim().substring(0,32) + "\n";
+                ownerState2 = "              " + pre_owner_state.getText().toString().trim().substring(32) + "\n";
+                linecount+=2;
+            }
+            else{
+                ownerState1="";
+                ownerState2="";
+            }
+        }
+        else{
+            if(ll_owner_state.getVisibility() == View.VISIBLE){
+                ownerState1 = "OWNER STATE : " + pre_owner_state.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                ownerState1="";
+            }
+        }
+
+        String ownerZcode;
+        if(ll_owner_zipcode.getVisibility() == View.VISIBLE){
+            ownerZcode = "OWNER ZIPCODE : " + pre_owner_zipcode.getText().toString().trim()+ "\n";
+            linecount+=1;
+        }
+        else{
+            ownerZcode="";
+        }
+
+        String vehYear;
+        if(ll_vehyear.getVisibility() == View.VISIBLE){
+            vehYear = "VEHYEAR : " + pre_vehyear.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vehYear="";
+        }
+
+        String vehMake;
+        if(ll_vehmake.getVisibility() == View.VISIBLE){
+            vehMake = "VEHMAKE : " + pre_vehmake.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vehMake="";
+        }
+
+        String vehModel;
+        if(ll_vehmodel.getVisibility() == View.VISIBLE){
+            vehModel = "VEHMODEL : " + pre_vehmodel.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vehModel="";
+        }
+
+        String vehBody;
+        if(ll_vehbody.getVisibility() == View.VISIBLE){
+            vehBody = "VEHBODY : " + pre_vehbody.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vehBody="";
+        }
+
+        String vehColor;
+        if(ll_vehcolor.getVisibility() == View.VISIBLE){
+            vehColor = "VEHCOLOR : " + pre_vehcolor.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vehColor="";
+        }
+
+        String vehType1="";
+        String vehType2="";
+        if(pre_vehtype.getText().toString().trim().length() > 36){
+            if(ll_vehtype.getVisibility() == View.VISIBLE){
+                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim().substring(0,36) + "\n";
+                vehType2 = "          " + pre_vehtype.getText().toString().trim().substring(36) + "\n";
+                linecount+=2;
+            }
+            else{
+                vehType1="";
+                vehType2="";
+            }
+        }
+        else{
+            if(ll_vehtype.getVisibility() == View.VISIBLE){
+                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                vehType1="";
+            }
+        }
+
+        String commercial;
+        if(ll_vehcommercial.getVisibility() == View.VISIBLE){
+            commercial = "COMMERCIAL : " + pre_commercial.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            commercial="";
+        }
+
+        String vehlicNo;
+        if(ll_veh_licno.getVisibility() == View.VISIBLE){
+            vehlicNo = "VEHLICNO : " + pre_vehno.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vehlicNo="";
+        }
+
+        String vehicleState1 = "";
+        String vehicleState2 = "";
+        if(pre_vehstate.getText().toString().trim().length() > 30){
+            if(ll_veh_state.getVisibility() == View.VISIBLE){
+                vehicleState1 = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim().substring(0,30) + "\n";
+                vehicleState2 = "                " + pre_vehstate.getText().toString().trim().substring(30) + "\n";
+                linecount+=2;
+            }
+            else{
+                vehicleState1="";
+                vehicleState2="";
+            }
+        }
+        else{
+            if(ll_veh_state.getVisibility() == View.VISIBLE){
+                vehicleState1 = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                vehicleState1="";
+            }
+        }
+
+        String hazardous;
+        if(ll_hazardous.getVisibility() == View.VISIBLE){
+            hazardous = "HAZARDOUS : " + pre_hazardous.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            hazardous="";
+        }
+
+        String overload;
+        if(ll_overload.getVisibility() == View.VISIBLE){
+            overload = "OVERLOAD : " + pre_overload.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            overload="";
+        }
+
+        String policy_no;
+        if(ll_insurance_policy_no.getVisibility() == View.VISIBLE){
+            policy_no = "POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            policy_no="";
+        }
+
+        String violationA1 = "";
+        String violationA2 = "";
+        String violationA3 = "";
+        String violationA4 = "";
+        if (pre_vioA.getText().toString().trim().length() > 32) {
+            if (pre_vioA.getText().toString().trim().length() > 64) {
+                if (pre_vioA.getText().toString().trim().length() > 96) {
+                    if(ll_vioA.getVisibility() == View.VISIBLE){
+                        violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
+                        violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32,64) + "\n";
+                        violationA3 = "              " + pre_vioA.getText().toString().trim().substring(64,96) + "\n";
+                        violationA4 = "              " + pre_vioA.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationA1 =  "";
+                        violationA2 =  "";
+                        violationA3 = "";
+                        violationA4 = "";
+                    }
+                }
+                else{
+                    if(ll_vioA.getVisibility() == View.VISIBLE){
+                        violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
+                        violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32,64) + "\n";
+                        violationA3 = "              " + pre_vioA.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationA1 =  "";
+                        violationA2 =  "";
+                        violationA3 = "";
+                    }
+                }
+            }
+            else{
+                if(ll_vioA.getVisibility() == View.VISIBLE){
+                    violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
+                    violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationA1 =  "";
+                    violationA2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioA.getVisibility() == View.VISIBLE){
+                violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationA1 =  "";
+            }
+        }
+
+        String violationB1 = "";
+        String violationB2 = "";
+        String violationB3 = "";
+        String violationB4 = "";
+        if (pre_vioB.getText().toString().trim().length() > 32) {
+            if(pre_vioB.getText().toString().trim().length() > 64){
+                if(pre_vioB.getText().toString().trim().length() > 96){
+                    if(ll_vioB.getVisibility() == View.VISIBLE){
+                        violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
+                        violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32,64) + "\n";
+                        violationB3 = "              " + pre_vioB.getText().toString().trim().substring(64,96) + "\n";
+                        violationB4 = "              " + pre_vioB.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationB1 =  "";
+                        violationB2 =  "";
+                        violationB3 = "";
+                        violationB4 = "";
+                    }
+                }
+                else{
+                    if(ll_vioB.getVisibility() == View.VISIBLE){
+                        violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
+                        violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32,64) + "\n";
+                        violationB3 = "              " + pre_vioB.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationB1 =  "";
+                        violationB2 =  "";
+                        violationB3 = "";
+                    }
+                }
+            }else{
+                if(ll_vioB.getVisibility() == View.VISIBLE){
+                    violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
+                    violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationB1 =  "";
+                    violationB2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioB.getVisibility() == View.VISIBLE){
+                violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationB1 =  "";
+            }
+        }
+
+        String violationC1 = "";
+        String violationC2 = "";
+        String violationC3 = "";
+        String violationC4 = "";
+        if (pre_vioC.getText().toString().trim().length() > 32) {
+            if (pre_vioC.getText().toString().trim().length() > 64) {
+                if (pre_vioC.getText().toString().trim().length() > 96) {
+                    if(ll_vioC.getVisibility() == View.VISIBLE){
+                        violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
+                        violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32,64) + "\n";
+                        violationC3 =  "              " + pre_vioC.getText().toString().trim().substring(64,96) + "\n";
+                        violationC4 =  "              " + pre_vioC.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationC1 =  "";
+                        violationC2 =  "";
+                        violationC3 =  "";
+                        violationC4 =  "";
+                    }
+                }
+                else{
+                    if(ll_vioC.getVisibility() == View.VISIBLE){
+                        violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
+                        violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32,64) + "\n";
+                        violationC3 =  "              " + pre_vioC.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationC1 =  "";
+                        violationC2 =  "";
+                        violationC3 =  "";
+                    }
+                }
+            }
+            else{
+                if(ll_vioC.getVisibility() == View.VISIBLE){
+                    violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
+                    violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationC1 =  "";
+                    violationC2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioC.getVisibility() == View.VISIBLE){
+                violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationC1 =  "";
+            }
+        }
+
+        String violationD1 = "";
+        String violationD2 = "";
+        String violationD3 = "";
+        String violationD4 = "";
+        if (pre_vioD.getText().toString().trim().length() > 32) {
+            if(pre_vioD.getText().toString().trim().length() > 64){
+                if(pre_vioD.getText().toString().trim().length() > 96){
+                    if(ll_vioD.getVisibility() == View.VISIBLE){
+                        violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
+                        violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32,64) + "\n";
+                        violationD3 =  "              " + pre_vioD.getText().toString().trim().substring(64,96) + "\n";
+                        violationD4 =  "              " + pre_vioD.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationD1 =  "";
+                        violationD2 =  "";
+                        violationD3 =  "";
+                        violationD4 =  "";
+                    }
+                }
+                else{
+                    if(ll_vioD.getVisibility() == View.VISIBLE){
+                        violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
+                        violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32,64) + "\n";
+                        violationD3 =  "              " + pre_vioD.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationD1 =  "";
+                        violationD2 =  "";
+                        violationD3 =  "";
+                    }
+                }
+            }
+            else{
+                if(ll_vioD.getVisibility() == View.VISIBLE){
+                    violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
+                    violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationD1 =  "";
+                    violationD2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioD.getVisibility() == View.VISIBLE){
+                violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationD1 =  "";
+            }
+        }
+
+        String violationE1 = "";
+        String violationE2 = "";
+        String violationE3 = "";
+        String violationE4 = "";
+        if (pre_vioE.getText().toString().trim().length() > 32) {
+            if(pre_vioE.getText().toString().trim().length() > 64){
+                if(pre_vioE.getText().toString().trim().length() > 96){
+                    if(ll_vioE.getVisibility() == View.VISIBLE){
+                        violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
+                        violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32,64) + "\n";
+                        violationE3 = "              " + pre_vioE.getText().toString().trim().substring(64,96) + "\n";
+                        violationE4 = "              " + pre_vioE.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationE1 =  "";
+                        violationE2 =  "";
+                        violationE3 =  "";
+                        violationE4 =  "";
+                    }
+                }
+                else{
+                    if(ll_vioE.getVisibility() == View.VISIBLE){
+                        violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
+                        violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32,64) + "\n";
+                        violationE3 = "              " + pre_vioE.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationE1 =  "";
+                        violationE2 =  "";
+                        violationE3 =  "";
+                    }
+                }
+            }
+            else{
+                if(ll_vioE.getVisibility() == View.VISIBLE){
+                    violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
+                    violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationE1 =  "";
+                    violationE2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioE.getVisibility() == View.VISIBLE){
+                violationE1 = "VIOLATION E : " + pre_vioE.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationE1 =  "";
+            }
+        }
+
+        String violationF1 = "";
+        String violationF2 = "";
+        String violationF3 = "";
+        String violationF4 = "";
+        if (pre_vioF.getText().toString().trim().length() > 32) {
+            if(pre_vioF.getText().toString().trim().length() > 64){
+                if(pre_vioF.getText().toString().trim().length() > 96){
+                    if(ll_vioF.getVisibility() == View.VISIBLE){
+                        violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
+                        violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32,64) + "\n";
+                        violationF3 = "              " + pre_vioF.getText().toString().trim().substring(64,96) + "\n";
+                        violationF4 = "              " + pre_vioF.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationF1 =  "";
+                        violationF2 =  "";
+                        violationF3 =  "";
+                        violationF4 =  "";
+                    }
+                }
+                else{
+                    if(ll_vioF.getVisibility() == View.VISIBLE){
+                        violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
+                        violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32,64) + "\n";
+                        violationF3 = "              " + pre_vioF.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationF1 =  "";
+                        violationF2 =  "";
+                        violationF3 =  "";
+                    }
+                }
+            }
+            else{
+                if(ll_vioF.getVisibility() == View.VISIBLE){
+                    violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
+                    violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationF1 =  "";
+                    violationF2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioF.getVisibility() == View.VISIBLE){
+                violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationF1 =  "";
+            }
+        }
+
+        String violationG1 = "";
+        String violationG2 = "";
+        String violationG3 = "";
+        String violationG4 = "";
+        if (pre_vioG.getText().toString().trim().length() > 32) {
+            if(pre_vioG.getText().toString().trim().length() > 64){
+                if(pre_vioG.getText().toString().trim().length() > 96){
+                    if(ll_vioG.getVisibility() == View.VISIBLE){
+                        violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
+                        violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32,64) + "\n";
+                        violationG3 = "              " + pre_vioG.getText().toString().trim().substring(64,96) + "\n";
+                        violationG4 = "              " + pre_vioG.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationG1 =  "";
+                        violationG2 =  "";
+                        violationG3 =  "";
+                        violationG4 =  "";
+                    }
+                }
+                else{
+                    if(ll_vioG.getVisibility() == View.VISIBLE){
+                        violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
+                        violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32,64) + "\n";
+                        violationG3 = "              " + pre_vioG.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationG1 =  "";
+                        violationG2 =  "";
+                        violationG3 =  "";
+                    }
+                }
+            }
+            else{
+                if(ll_vioG.getVisibility() == View.VISIBLE){
+                    violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
+                    violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationG1 =  "";
+                    violationG2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioG.getVisibility() == View.VISIBLE){
+                violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationG1 =  "";
+            }
+        }
+
+        String violationH1 = "";
+        String violationH2 = "";
+        String violationH3 = "";
+        String violationH4 = "";
+        if (pre_vioH.getText().toString().trim().length() > 32) {
+            if(pre_vioH.getText().toString().trim().length() > 64){
+                if(pre_vioH.getText().toString().trim().length() > 96){
+                    if(ll_vioH.getVisibility() == View.VISIBLE){
+                        violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
+                        violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32,64) + "\n";
+                        violationH3 ="              " + pre_vioH.getText().toString().trim().substring(64,96) + "\n";
+                        violationH4 ="              " + pre_vioH.getText().toString().trim().substring(96) + "\n";
+                        linecount+=4;
+                    }
+                    else{
+                        violationH1 =  "";
+                        violationH2 =  "";
+                        violationH3 =  "";
+                        violationH4 =  "";
+                    }
+                }
+                else{
+                    if(ll_vioH.getVisibility() == View.VISIBLE){
+                        violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
+                        violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32,64) + "\n";
+                        violationH3 ="              " + pre_vioH.getText().toString().trim().substring(64) + "\n";
+                        linecount+=3;
+                    }
+                    else{
+                        violationH1 =  "";
+                        violationH2 =  "";
+                        violationH3 =  "";
+                    }
+                }
+            }
+            else{
+                if(ll_vioH.getVisibility() == View.VISIBLE){
+                    violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
+                    violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32) + "\n";
+                    linecount+=2;
+                }
+                else{
+                    violationH1 =  "";
+                    violationH2 =  "";
+                }
+            }
+        } else {
+            if(ll_vioH.getVisibility() == View.VISIBLE){
+                violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violationH1 =  "";
+            }
+        }
+
+        String vca;
+        if(ll_vca.getVisibility() == View.VISIBLE){
+            vca = "VCA : " + pre_vca.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vca="";
+        }
+
+        String vcb;
+        if(ll_vcb.getVisibility() == View.VISIBLE){
+            vcb = "VCB : " + pre_vcb.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vcb="";
+        }
+
+        String vcc;
+        if(ll_vcc.getVisibility() == View.VISIBLE){
+            vcc = "VCC : " + pre_vcc.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vcc="";
+        }
+
+        String vcd;
+        if(ll_vcd.getVisibility() == View.VISIBLE){
+            vcd = "VCD : " + pre_vcd.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vcd="";
+        }
+
+        String vce;
+        if(ll_vce.getVisibility() == View.VISIBLE){
+            vce = "VCE : " + pre_vce.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vce="";
+        }
+
+        String vcf;
+        if(ll_vcf.getVisibility() == View.VISIBLE){
+            vcf = "VCF : " + pre_vcf.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vcf="";
+        }
+
+        String vcg;
+        if(ll_vcg.getVisibility() == View.VISIBLE){
+            vcg = "VCG : " + pre_vcg.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vcg="";
+        }
+
+        String vch;
+        if(ll_vch.getVisibility() == View.VISIBLE){
+            vch = "VCH : " + pre_vch.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vch="";
+        }
+
+        String vehlimit;
+        if(ll_vehlimit.getVisibility() == View.VISIBLE){
+            vehlimit = "VEHLIMIT : " + pre_vehlimit.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            vehlimit="";
+        }
+
+        String safespeed;
+        if(ll_safe_speed.getVisibility() == View.VISIBLE){
+            safespeed = "SAFE SPEED : " + pre_safespeed.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            safespeed="";
+        }
+
+        String apprspeed;
+        if(ll_appr_speed.getVisibility() == View.VISIBLE){
+            apprspeed = "APPRSPEED : " + pre_apprspeed.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            apprspeed="";
+        }
+
+        String pfspeed;
+        if(ll_pf_speed.getVisibility() == View.VISIBLE){
+            pfspeed = "PFSPEED : " + pre_pfspeed.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            pfspeed="";
+        }
+
+        String animal1;
+        if(ll_animal1.getVisibility() == View.VISIBLE){
+            animal1 = "ANIMAL1 : " + pre_animal1.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal1="";
+        }
+
+        String animal2;
+        if(ll_animal2.getVisibility() == View.VISIBLE){
+            animal2 = "ANIMAL2 : " + pre_animal2.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal2="";
+        }
+
+        String animal3;
+        if(ll_animal3.getVisibility() == View.VISIBLE){
+            animal3 = "ANIMAL3 : " + pre_animal3.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal3="";
+        }
+
+        String animal4;
+        if(ll_animal4.getVisibility() == View.VISIBLE){
+            animal4 = "ANIMAL4 : " + pre_animal4.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal4="";
+        }
+
+        String animal5;
+        if(ll_animal5.getVisibility() == View.VISIBLE){
+            animal5 = "ANIMAL5 : " + pre_animal5.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal5="";
+        }
+
+        String animal6;
+        if(ll_animal6.getVisibility() == View.VISIBLE){
+            animal6 = "ANIMAL6 : " + pre_animal6.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal6="";
+        }
+
+        String animal7;
+        if(ll_animal7.getVisibility() == View.VISIBLE){
+            animal7 = "ANIMAL7 : " + pre_animal7.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal7="";
+        }
+
+        String animal8;
+        if(ll_animal8.getVisibility() == View.VISIBLE){
+            animal8 = "ANIMAL8 : " + pre_animal8.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            animal8="";
+        }
+
+        String issueDate;
+        if(ll_issue_date.getVisibility() == View.VISIBLE){
+            issueDate = "ISSUE DATE : " + issuedate_txt.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            issueDate="";
+        }
+
+        String issueTime;
+        if(ll_issue_time.getVisibility() == View.VISIBLE){
+            issueTime = "ISSUE TIME : " + issuetime_txt.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            issueTime="";
+        }
+
+        String appearDate;
+        if(ll_appear_date.getVisibility() == View.VISIBLE){
+            appearDate = "APPEAR DATE : " + appeardate_txt.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            appearDate="";
+        }
+
+        String courtTime;
+        if(ll_court_time.getVisibility() == View.VISIBLE){
+            courtTime = "COURT TIME : " + courttime_txt.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            courtTime="";
+        }
+
+        String nightCourt;
+        if(ll_night_court.getVisibility() == View.VISIBLE){
+            nightCourt = "NIGHT COURT : " + nightcourt_txt.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            nightCourt="";
+        }
+
 
        /* StringBuffer sb = new StringBuffer("CITATION NUMBER : ");
         sb.append(citation_no_txt.getText().toString().trim()).append("\n")
                 .append("FIRST NAME : ").append(driver_firstname.getText().toString().trim()).append("\n");*/
-        String footer = String.format("! 0 200 200 2150 1\n" +
-                "ML 47\n" +
-                "T 7 0 10 20 " +
+
+        total_height = (linecount * line_height)+48; //48 is added just to add height of line break(------------------)
+
+        String footer = String.format("! 0 200 200 "+total_height+" 1\n" +
+                "ML 48\n" +
+                "T 7 1 10 20 " +
                 citation +
                 firstName +
                 middleName +
                 lastName +
                 suffix +
-                addLine1 +
-                addLine2 +
+                addLine1_1 +
+                addLine1_2 +
+                addLine2_1 +
+                addLine2_2 +
                 city +
-                state +
+                state1 +
+                state2 +
                 zipcode +
                 licNumber +
-                drState +
+                drState1 +
+                drState2 +
                 drDOB +
                 drSex +
                 drHair +
                 drEyes +
                 drHeight +
                 drWeight +
-                lcType +
+                lcType1 +
+                lcType2 +
+                lcType3 +
                 race +
                 ethncity +
                 commDrLicence +
@@ -1725,39 +3007,60 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 ownerMname +
                 ownerLname +
                 ownerSuffix +
-                ownerAdd1 +
-                ownerAdd2 +
+                ownerAdd1_1 +
+                ownerAdd1_2 +
+                ownerAdd2_1 +
+                ownerAdd2_2 +
                 ownerCity +
-                ownerState +
+                ownerState1 +
+                ownerState2 +
                 ownerZcode +
                 vehYear +
                 vehMake +
                 vehModel +
                 vehBody +
                 vehColor +
-                vehType +
+                vehType1 +
+                vehType2 +
                 commercial +
                 vehlicNo +
-                vehicleState +
+                vehicleState1 +
+                vehicleState2 +
                 hazardous +
                 overload +
                 policy_no +
                 violationA1 +
                 violationA2 +
+                violationA3 +
+                violationA4 +
                 violationB1 +
                 violationB2 +
+                violationB3 +
+                violationB4 +
                 violationC1 +
                 violationC2 +
+                violationC3 +
+                violationC4 +
                 violationD1 +
                 violationD2 +
+                violationD3 +
+                violationD4 +
                 violationE1 +
                 violationE2 +
+                violationE3 +
+                violationE4 +
                 violationF1 +
                 violationF2 +
+                violationF3 +
+                violationF4 +
                 violationG1 +
                 violationG2 +
+                violationG3 +
+                violationG4 +
                 violationH1 +
                 violationH2 +
+                violationH3 +
+                violationH4 +
                 vca +
                 vcb +
                 vcc +
@@ -1785,33 +3088,10 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 nightCourt +
                 "--------------------------------------------------\n" +
                 "ENDML\n" +
-                "FORM\n" +
+                //"FORM\n" +
                 "PRINT\n");
 
         printerConnection.write(footer.getBytes());
-
-    }
-
-    private void printBitmap(final Bitmap bitmap, Connection connection) {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Looper.prepare();
-                  /*  helper.showLoadingDialog("Sending image to printer");
-                    connection.open();*/
-                    ZebraPrinter printer = ZebraPrinterFactory.getInstance(connection);
-                    printer.printImage(new ZebraImageAndroid(bitmap), 0, 0, 550, 412, false);
-                    /*connection.close();*/
-
-                } catch (ConnectionException | ZebraPrinterLanguageUnknownException e) {
-                    helper.showErrorDialogOnGuiThread(e.getMessage());
-                } finally {
-                    bitmap.recycle();
-                    //  helper.dismissLoadingDialog();
-                    Looper.myLooper().quit();
-                }
-            }
-        }).start();
 
     }
 
