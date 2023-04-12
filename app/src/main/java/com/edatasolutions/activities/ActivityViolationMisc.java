@@ -280,6 +280,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
                         }
                         String time = hour+":"+minutes;
                         seleced_time = hour+minutes;
+//                        seleced_time = time;
                         courttime.setText(time);
 
 

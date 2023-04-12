@@ -43,6 +43,162 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@color/light_blue">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/header_details"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/description"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_owner_responsibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/owner_responsibility"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/owner_responsibility"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_traffic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/traffic"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/traffic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_PED"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/ped"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/ped"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_court_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/court_code"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/court_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_LEA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/lea"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/lea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -316,7 +472,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:fontFamily="@font/opensans_semibold"
-                    android:text="@string/license_no"
+                    android:text="@string/driver_license_no"
                     android:textColor="@color/text_color"
                     android:textSize="13sp" />
 
@@ -524,7 +680,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:fontFamily="@font/opensans_semibold"
-                    android:text="@string/lic_type"
+                    android:text="@string/license_type"
                     android:textColor="@color/text_color"
                     android:textSize="13sp" />
 
@@ -1644,58 +1800,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_vehlimit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="7dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:fontFamily="@font/opensans_semibold"
-                    android:text="@string/vehlimit"
-                    android:textColor="@color/text_color"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/pre_vehlimit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:fontFamily="@font/opensans_semibold"
-                    android:textColor="@color/text_color"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_safe_speed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="7dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:fontFamily="@font/opensans_semibold"
-                    android:text="@string/safespeed"
-                    android:textColor="@color/text_color"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/pre_safespeed"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:fontFamily="@font/opensans_semibold"
-                    android:textColor="@color/text_color"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/ll_appr_speed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1740,6 +1844,58 @@
 
                 <TextView
                     android:id="@+id/pre_pfspeed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_vehlimit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/vehlimit"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/pre_vehlimit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_safe_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/safespeed"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/pre_safespeed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"

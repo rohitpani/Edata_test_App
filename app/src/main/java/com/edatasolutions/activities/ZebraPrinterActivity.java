@@ -88,6 +88,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
     private static final String tcpPortKey = "ZEBRA_DEMO_TCP_PORT";
     private static final String PREFS_NAME = "OurSavedAddress";
 
+    private DatabaseAccess databaseAccess;
     private Button testButton, print_data;
     String macAddress="";
     boolean connected = false;
@@ -110,6 +111,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    private TextView owner_responsibility,traffic,ped,court_code,lea;
     private TextView driver_firstname, driver_middlename, driver_lastname, driver_suffix, driver_address1, driver_address2, driver_city, driver_state, driver_zipcode;
     private TextView driver_license_no, driver_statee, driver_dob, driver_sex, driver_hair, driver_eyes, driver_height, driver_weight, license_type, driver_race, driver_ethncity, comm_drivers_license;
     private TextView pre_owner_firstname, pre_owner_middlename, pre_owner_lastname, pre_owner_suffix, pre_owner_address1, pre_owner_address2, pre_owner_city, pre_owner_state, pre_owner_zipcode;
@@ -121,7 +123,9 @@ public class ZebraPrinterActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private ImageView clear_page;
     private SharedPreferences settings;
-    private LinearLayout ll_ctlout,ll_driver_first_name, ll_driver_middlename, ll_driver_lastname, ll_driver_suffix, ll_driver_address1, ll_driver_address2, ll_driver_city, ll_driver_state, ll_driver_zipcode, ll_driver_license_no,ll_driver_statee,ll_driver_dob,ll_driver_gender,ll_driver_hair,ll_driver_eyes,ll_driver_height,ll_driver_weight,ll_driver_license_type,ll_driver_race,ll_driver_ethnicity,ll_driver_common_driver_license;
+    private LinearLayout ll_ctlout,ll_owner_responsibility,ll_traffic,ll_ped,ll_court_code,ll_lea;
+
+    private LinearLayout ll_driver_first_name, ll_driver_middlename, ll_driver_lastname, ll_driver_suffix, ll_driver_address1, ll_driver_address2, ll_driver_city, ll_driver_state, ll_driver_zipcode, ll_driver_license_no,ll_driver_statee,ll_driver_dob,ll_driver_gender,ll_driver_hair,ll_driver_eyes,ll_driver_height,ll_driver_weight,ll_driver_license_type,ll_driver_race,ll_driver_ethnicity,ll_driver_common_driver_license;
     private LinearLayout ll_owner_first_name, ll_owner_middlename, ll_owner_lastname, ll_owner_suffix, ll_owner_address1, ll_owner_address2, ll_owner_city, ll_owner_state, ll_owner_zipcode,ll_vehyear,ll_vehmake,ll_vehmodel,ll_vehbody,ll_vehcolor,ll_vehtype,ll_vehcommercial,ll_veh_licno,ll_veh_state,ll_hazardous,ll_overload,ll_insurance_policy_no;
     private LinearLayout ll_vioA, ll_vioB, ll_vioC, ll_vioD, ll_vioE, ll_vioF, ll_vioG, ll_vioH, ll_vca, ll_vcb, ll_vcc, ll_vcd, ll_vce, ll_vcf, ll_vcg, ll_vch;
     private LinearLayout ll_animal1, ll_animal2, ll_animal3, ll_animal4, ll_animal5, ll_animal6, ll_animal7, ll_animal8;
@@ -205,13 +209,15 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         sessionManager = new SessionManager(ZebraPrinterActivity.this);
         clear_page = findViewById(R.id.clear_page);
 
-        appeardate_txt = findViewById(R.id.appeardate_txt);
-        courttime_txt = findViewById(R.id.courttime_txt);
-        nightcourt_txt = findViewById(R.id.nightcourt_txt);
-        issuedate_txt = findViewById(R.id.issuedate_txt);
-        issuetime_txt = findViewById(R.id.issuetime_txt);
+        owner_responsibility = findViewById(R.id.owner_responsibility);
+        traffic = findViewById(R.id.traffic);
+        ped = findViewById(R.id.ped);
+        court_code = findViewById(R.id.court_code);
+        lea = findViewById(R.id.lea);
 
         citation_no_txt = findViewById(R.id.citation_no_txt);
+        owner_responsibility = findViewById(R.id.owner_responsibility);
+
         driver_firstname = findViewById(R.id.driver_firstname);
         driver_middlename = findViewById(R.id.driver_middlename);
         driver_lastname = findViewById(R.id.driver_lastname);
@@ -286,6 +292,12 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         pre_animal8 = findViewById(R.id.pre_animal8);
 
         ll_ctlout = findViewById(R.id.citation_lout);
+        ll_owner_responsibility = findViewById(R.id.ll_owner_responsibility);
+        ll_traffic = findViewById(R.id.ll_traffic);
+        ll_ped = findViewById(R.id.ll_PED);
+        ll_court_code = findViewById(R.id.ll_court_code);
+        ll_lea = findViewById(R.id.ll_LEA);
+
 
         ll_driver_first_name = findViewById(R.id.ll_driver_first_name);
         ll_driver_middlename = findViewById(R.id.ll_driver_middlename);
@@ -370,6 +382,12 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         ll_animal8 = findViewById(R.id.ll_animal8);
 
         ll_print_layout = findViewById(R.id.ll_print_layout);
+
+        appeardate_txt = findViewById(R.id.appeardate_txt);
+        courttime_txt = findViewById(R.id.courttime_txt);
+        nightcourt_txt = findViewById(R.id.nightcourt_txt);
+        issuedate_txt = findViewById(R.id.issuedate_txt);
+        issuetime_txt = findViewById(R.id.issuetime_txt);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -519,11 +537,72 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
     private void setAllData() {
 
-
+        databaseAccess = new DatabaseAccess(ZebraPrinterActivity.this);
+        databaseAccess.open();
         String session_citation_no = sessionManager.getHeaderSession().get(SessionManager.CITATION_NUMBER);
 
 
         citation_no_txt.setText(session_citation_no);
+
+
+        //HEADER
+        String session_owner_responsibility = sessionManager.getHeaderSession().get(SessionManager.OWNER_RESPONSIBILITY);
+        String session_traffic = sessionManager.getHeaderSession().get(SessionManager.TRAFFIC);
+        String session_nontraffic = sessionManager.getHeaderSession().get(SessionManager.NON_TRAFFIC);
+        String session_ped = sessionManager.getHeaderSession().get(SessionManager.PED);
+        String session_courtcode_id = sessionManager.getHeaderSession().get(SessionManager.COURT_CODE_ID);
+        String session_court_code_value = sessionManager.getHeaderSession().get(SessionManager.COURT_CODE);
+        String session_lea = sessionManager.getHeaderSession().get(SessionManager.LEA);
+
+        assert session_owner_responsibility != null;
+        if (session_owner_responsibility.equals("Y")) {
+            owner_responsibility.setText("Yes");
+        } else {
+            owner_responsibility.setText(getResources().getString(R.string.dash));
+            ll_owner_responsibility.setVisibility(View.GONE);
+        }
+
+        assert session_traffic != null && session_nontraffic != null;
+        if (!session_traffic.equals("") || !session_nontraffic.equals("")) {
+
+            if(session_traffic.equals("1")){
+                traffic.setText("Yes");
+            }
+            else{
+                traffic.setText(getResources().getString(R.string.dash));
+                ll_traffic.setVisibility(View.GONE);
+            }
+
+        } else {
+            traffic.setText(getResources().getString(R.string.dash));
+            ll_traffic.setVisibility(View.GONE);
+        }
+
+        assert session_ped != null;
+        if (session_ped.equals("Y")) {
+            ped.setText("Yes");
+        } else {
+            ped.setText(getResources().getString(R.string.dash));
+            ll_ped.setVisibility(View.GONE);
+        }
+
+        assert session_court_code_value != null && session_courtcode_id != null;
+        if (!session_court_code_value.equals("")) {
+            String selected_value = databaseAccess.getSelectedCourtCodeName(session_court_code_value, session_courtcode_id);
+            court_code.setText(selected_value + " " + session_court_code_value);
+        } else {
+            court_code.setText(getResources().getString(R.string.dash));
+            ll_court_code.setVisibility(View.GONE);
+        }
+
+        assert session_lea != null;
+        if (!session_lea.equals("")) {
+            lea.setText(session_lea);
+        } else {
+            lea.setText(getResources().getString(R.string.dash));
+            ll_lea.setVisibility(View.GONE);
+        }
+
 
         //DRIVER
         String session_driver_firstname = sessionManager.getDriverSession().get(SessionManager.DRIVER_FIRST_NAME);
@@ -537,7 +616,6 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String session_driver_dob = sessionManager.getDriverSession().get(SessionManager.DOB);
         String session_driver_height = sessionManager.getDriverSession().get(SessionManager.HEIGHT);
         String session_driver_weight = sessionManager.getDriverSession().get(SessionManager.WEIGHT);
-
 
         assert session_driver_firstname != null;
         if (!session_driver_firstname.equals("")) {
@@ -884,7 +962,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String session_height = sessionManager.getDriverSession().get(SessionManager.HEIGHT);
 
         String session_or = sessionManager.getHeaderSession().get(SessionManager.OWNER_RESPONSIBILITY);
-        String session_ped = sessionManager.getHeaderSession().get(SessionManager.PED);
+        //String session_ped = sessionManager.getHeaderSession().get(SessionManager.PED);
 
         String session_sex = sessionManager.getDriverSession().get(SessionManager.SEX);
         String session_commdriverlicense = sessionManager.getDriverSession().get(SessionManager.COMM_DRIVER_LICENSE);
@@ -1759,6 +1837,50 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             citation="";
         }
 
+        String owner_responsibility_isyes;
+        if(ll_owner_responsibility.getVisibility() == View.VISIBLE){
+            owner_responsibility_isyes = "OWNER RESPONSIBILITY : " + owner_responsibility.getText().toString().trim() + "\n";
+            linecount+=1;
+        }else{
+            owner_responsibility_isyes="";
+        }
+
+        String traffic_isyes;
+        if(ll_traffic.getVisibility() == View.VISIBLE){
+            traffic_isyes = "TRAFFIC : "+traffic.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            traffic_isyes="";
+        }
+
+        String ped_isyes;
+        if(ll_ped.getVisibility() == View.VISIBLE){
+            ped_isyes = "PED : "+ped.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            ped_isyes="";
+        }
+
+        String court_code_value;
+        if(ll_court_code.getVisibility() == View.VISIBLE){
+            court_code_value = "COURT CODE : "+court_code.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            court_code_value="";
+        }
+
+        String lea_value;
+        if(ll_lea.getVisibility() == View.VISIBLE){
+            lea_value = "LEA : "+lea.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            lea_value="";
+        }
+
         String firstName;
         if(ll_driver_first_name.getVisibility() == View.VISIBLE){
             firstName =  "FIRST NAME : " + driver_firstname.getText().toString().trim() + "\n";
@@ -1884,7 +2006,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
         String licNumber;
         if(ll_driver_license_no.getVisibility() == View.VISIBLE){
-            licNumber = "LICENCE : " + driver_license_no.getText().toString().trim() + "\n";
+            licNumber = "DRIVERS LICENCE NUMBER : " + driver_license_no.getText().toString().trim() + "\n";
             linecount+=1;
         }
         else{
@@ -1974,7 +2096,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         if(license_type.getText().toString().trim().length() > 25){
             if(license_type.getText().toString().trim().length() > 50){
                 if(ll_driver_license_type.getVisibility() == View.VISIBLE){
-                    lcType1 = "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
+                    lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
                     lcType2 = "                     " + license_type.getText().toString().trim().substring(25,50) + "\n";
                     lcType3 = "                     " + license_type.getText().toString().trim().substring(50) + "\n";
                     linecount+=3;
@@ -1987,7 +2109,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             }
             else{
                 if(ll_driver_license_type.getVisibility() == View.VISIBLE){
-                    lcType1 = "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
+                    lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
                     lcType2 = "                     " + license_type.getText().toString().trim().substring(25) + "\n";
                     linecount+=2;
                 }
@@ -1999,7 +2121,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         }
         else{
             if(ll_driver_license_type.getVisibility() == View.VISIBLE){
-                lcType1 = "LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n";
+                lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
@@ -2027,7 +2149,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
         String commDrLicence;
         if(ll_driver_common_driver_license.getVisibility() == View.VISIBLE){
-            commDrLicence = "COMM DR LICENSE : " + comm_drivers_license.getText().toString().trim() + "\n";
+            commDrLicence = "COMM DRIVERS LICENSE : " + comm_drivers_license.getText().toString().trim() + "\n";
             linecount+=1;
         }
         else{
@@ -2286,7 +2408,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
         String policy_no;
         if(ll_insurance_policy_no.getVisibility() == View.VISIBLE){
-            policy_no = "POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
+            policy_no = "INSURANCE COMPANY POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
             linecount+=1;
         }
         else{
@@ -2959,6 +3081,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String nightCourt;
         if(ll_night_court.getVisibility() == View.VISIBLE){
             nightCourt = "NIGHT COURT : " + nightcourt_txt.getText().toString().trim() + "\n";
+            //Log.d("Night Court:",nightCourt);
             linecount+=1;
         }
         else{
@@ -2976,6 +3099,11 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 "ML 48\n" +
                 "T 7 1 10 20 " +
                 citation +
+                owner_responsibility_isyes+
+                traffic_isyes+
+                ped_isyes+
+                court_code_value+
+                lea_value+
                 firstName +
                 middleName +
                 lastName +
@@ -3069,10 +3197,10 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 vcf +
                 vcg +
                 vch +
-                vehlimit +
-                safespeed +
                 apprspeed +
                 pfspeed +
+                vehlimit +
+                safespeed +
                 animal1 +
                 animal2 +
                 animal3 +
