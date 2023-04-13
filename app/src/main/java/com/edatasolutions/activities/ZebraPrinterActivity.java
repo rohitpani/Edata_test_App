@@ -118,6 +118,8 @@ public class ZebraPrinterActivity extends AppCompatActivity {
     private TextView pre_vehyear, pre_vehmake, pre_vehmodel, pre_vehbody, pre_vehcolor, pre_vehtype, pre_commercial, pre_vehno, pre_vehstate, pre_hazardous, pre_overload, pre_policyno;
     private TextView pre_vioA, pre_vioB, pre_vioC, pre_vioD, pre_vioE, pre_vioF, pre_vioG, pre_vioH, pre_vca, pre_vcb, pre_vcc, pre_vcd, pre_vce, pre_vcf, pre_vcg, pre_vch;
     private TextView pre_apprspeed, pre_pfspeed, pre_vehlimit, pre_safespeed, pre_animal1, pre_animal2, pre_animal3, pre_animal4, pre_animal5, pre_animal6, pre_animal7, pre_animal8;
+
+    private TextView school_zone,violationcity,violationst,violationsttyp,violationcst,violationcsttyp,offbadgeno,offlname,offarea,division,detail,catobenotified,cacitenotsignedbydriver;
     private TextView citation_no_txt;
     private TextView appeardate_txt, courttime_txt, nightcourt_txt, issuetime_txt, issuedate_txt;
     private SessionManager sessionManager;
@@ -130,6 +132,8 @@ public class ZebraPrinterActivity extends AppCompatActivity {
     private LinearLayout ll_vioA, ll_vioB, ll_vioC, ll_vioD, ll_vioE, ll_vioF, ll_vioG, ll_vioH, ll_vca, ll_vcb, ll_vcc, ll_vcd, ll_vce, ll_vcf, ll_vcg, ll_vch;
     private LinearLayout ll_animal1, ll_animal2, ll_animal3, ll_animal4, ll_animal5, ll_animal6, ll_animal7, ll_animal8;
     private LinearLayout ll_vehlimit,ll_safe_speed,ll_appr_speed,ll_pf_speed,ll_issue_date,ll_issue_time,ll_appear_date,ll_court_time,ll_night_court;
+
+    private LinearLayout ll_schoolzone,ll_violationcity,ll_violationst,ll_violationsttyp,ll_violationcst,ll_violationcsttyp,ll_offbadgeno,ll_offlname,ll_offarea,ll_division,ll_detail,ll_catobenotified,ll_cacitenotsignedbydriver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -388,6 +392,35 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         nightcourt_txt = findViewById(R.id.nightcourt_txt);
         issuedate_txt = findViewById(R.id.issuedate_txt);
         issuetime_txt = findViewById(R.id.issuetime_txt);
+
+        school_zone = findViewById(R.id.schoolzone_txt);
+        violationcity = findViewById(R.id.violationcity_txt);
+        violationst = findViewById(R.id.violationst_txt);
+        violationsttyp = findViewById(R.id.violation_st_typ_txt);
+        violationcst = findViewById(R.id.violationcst_txt);
+        violationcsttyp = findViewById(R.id.violation_cst_typ_txt);
+        offbadgeno = findViewById(R.id.offbadgeno_txt);
+        offlname = findViewById(R.id.offlname_txt);
+        offarea = findViewById(R.id.officer_area_txt);
+        division = findViewById(R.id.division_txt);
+        detail = findViewById(R.id.detail_txt);
+        catobenotified= findViewById(R.id.ca_tobenotified_txt);
+        cacitenotsignedbydriver = findViewById(R.id.ca_citenotsignedbydriver_txt);
+
+        ll_schoolzone = findViewById(R.id.ll_school_zone);
+        ll_violationcity = findViewById(R.id.ll_violation_city);
+        ll_violationst = findViewById(R.id.ll_violation_st);
+        ll_violationsttyp = findViewById(R.id.ll_violation_st_typ);
+        ll_violationcst = findViewById(R.id.ll_violation_cst);
+        ll_violationcsttyp = findViewById(R.id.ll_violation_cst_typ);
+        ll_offbadgeno = findViewById(R.id.ll_offbadgeno);
+        ll_offlname = findViewById(R.id.ll_offlname);
+        ll_offarea = findViewById(R.id.ll_officer_area);
+        ll_division = findViewById(R.id.ll_division);
+        ll_detail = findViewById(R.id.ll_detail);
+        ll_catobenotified= findViewById(R.id.ll_ca_tobenotified);
+        ll_cacitenotsignedbydriver = findViewById(R.id.ll_ca_citenotsignedbydriver);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -1444,10 +1477,20 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String session_appeardate = sessionManager.getViolationMiscSession().get(SessionManager.APPEAR_DATE);
         String session_courttime = sessionManager.getViolationMiscSession().get(SessionManager.COURT_TIME);
         String session_nightcourt = sessionManager.getViolationMiscSession().get(SessionManager.NIGHT_COURT);
-
         String session_issuedate = sessionManager.getViolationMiscSession().get(SessionManager.ISSUE_DATE);
         String session_issuetime = sessionManager.getViolationMiscSession().get(SessionManager.TIME);
         String session_ampm = sessionManager.getViolationMiscSession().get(SessionManager.AMPM);
+        String session_schoolzone = sessionManager.getViolationMiscSession().get(SessionManager.SCHOOL_ZONE);
+        String session_violationst = sessionManager.getViolationMiscSession().get(SessionManager.VIOLATIONST);
+        String session_violationsttyp = sessionManager.getViolationMiscSession().get(SessionManager.VIOLATIONSTTYP);
+        String session_violationcst = sessionManager.getViolationMiscSession().get(SessionManager.VIOLATIONCST);
+        String session_violationcsttyp = sessionManager.getViolationMiscSession().get(SessionManager.VIOLATIONCSTTYP);
+        String session_offbadgeno = sessionManager.getViolationMiscSession().get(SessionManager.OFFBADGENO);
+        String session_offlname = sessionManager.getViolationMiscSession().get(SessionManager.OFFLNAME);
+        String session_division = sessionManager.getViolationMiscSession().get(SessionManager.DIVISION);
+        String session_detail = sessionManager.getViolationMiscSession().get(SessionManager.DETAIL);
+        String session_catobenotified = sessionManager.getViolationMiscSession().get(SessionManager.CA_TOBENOTIFIED);
+        String session_ca_citenotsignedbydriver = sessionManager.getViolationMiscSession().get(SessionManager.CA_CITENOTSIGNEDBYDRIVER);
 
         assert session_issuedate != null;
         if (!session_issuedate.equals("")) {
@@ -1466,6 +1509,55 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             ll_issue_time.setVisibility(View.GONE);
         }
 
+        assert session_schoolzone != null;
+        if (session_schoolzone.equals("Y")) {
+            school_zone.setText("Yes");
+        } else {
+            school_zone.setText(getResources().getString(R.string.dash));
+            ll_schoolzone.setVisibility(View.GONE);
+        }
+
+        assert session_violationcity != null;
+        if (!session_violationcity.equals("")) {
+            String selected_city = databaseAccess.getSelectedViolationCityValue(session_violationcity, session_violationcityid);
+            violationcity.setText(selected_city);
+        } else {
+            violationcity.setText(getResources().getString(R.string.dash));
+            ll_violationcity.setVisibility(View.GONE);
+        }
+
+        assert session_violationst != null;
+        if (!session_violationst.equals("")) {
+            violationst.setText(session_violationst);
+        } else {
+            violationst.setText(getResources().getString(R.string.dash));
+            ll_violationst.setVisibility(View.GONE);
+        }
+
+        assert session_violationsttyp != null;
+        if (!session_violationsttyp.equals("")) {
+            violationsttyp.setText(session_violationsttyp);
+        } else {
+            violationsttyp.setText(getResources().getString(R.string.dash));
+            ll_violationsttyp.setVisibility(View.GONE);
+        }
+
+        assert session_violationcst != null;
+        if (!session_violationcst.equals("")) {
+            violationcst.setText(session_violationcst);
+        } else {
+            violationcst.setText(getResources().getString(R.string.dash));
+            ll_violationcst.setVisibility(View.GONE);
+        }
+
+        assert session_violationcsttyp != null;
+        if (!session_violationcsttyp.equals("")) {
+            violationcsttyp.setText(session_violationcsttyp);
+        } else {
+            violationcsttyp.setText(getResources().getString(R.string.dash));
+            ll_violationcsttyp.setVisibility(View.GONE);
+        }
+
         assert session_appeardate != null;
         if (!session_appeardate.equals("")) {
             appeardate_txt.setText(session_appeardate);
@@ -1482,12 +1574,73 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             ll_court_time.setVisibility(View.GONE);
         }
 
+        assert session_offbadgeno != null;
+        if (!session_offbadgeno.equals("")) {
+            offbadgeno.setText(session_offbadgeno);
+        } else {
+            offbadgeno.setText(getResources().getString(R.string.dash));
+            ll_offbadgeno.setVisibility(View.GONE);
+        }
+
+        assert session_offlname != null;
+        if (!session_offlname.equals("")) {
+            offlname.setText(session_offlname);
+        } else {
+            offlname.setText(getResources().getString(R.string.dash));
+            ll_offlname.setVisibility(View.GONE);
+        }
+
+        assert session_areacode != null;
+        if (!session_areacode.equals("")) {
+            String selected_value = databaseAccess.getSelectedAreaCodeValue(session_areacode, session_areacodeid);
+            offarea.setText(selected_value);
+        } else {
+            offarea.setText(getResources().getString(R.string.dash));
+            ll_offarea.setVisibility(View.GONE);
+        }
+
+        assert session_division != null;
+        if (!session_division.equals("")) {
+            division.setText(session_division);
+        } else {
+            division.setText(getResources().getString(R.string.dash));
+            ll_division.setVisibility(View.GONE);
+        }
+
+        assert session_detail != null;
+        if (!session_detail.equals("")) {
+            detail.setText(session_detail);
+        } else {
+            detail.setText(getResources().getString(R.string.dash));
+            ll_detail.setVisibility(View.GONE);
+        }
+
         assert session_nightcourt != null;
         if (!session_nightcourt.equals("")) {
-            nightcourt_txt.setText(session_nightcourt);
+            if(session_nightcourt.equals("Y")){
+                nightcourt_txt.setText("Yes");
+            }else{
+                nightcourt_txt.setText("No");
+            }
         } else {
             nightcourt_txt.setText(getResources().getString(R.string.dash));
             ll_night_court.setVisibility(View.GONE);
+        }
+
+        assert session_catobenotified != null;
+        if (session_catobenotified.equals("Y")) {
+            catobenotified.setText("Yes");
+        } else {
+            catobenotified.setText(getResources().getString(R.string.dash));
+            ll_catobenotified.setVisibility(View.GONE);
+        }
+
+        assert session_ca_citenotsignedbydriver != null;
+        if (session_ca_citenotsignedbydriver.equals("Y")) {
+            cacitenotsignedbydriver.setText("Yes");
+        } else {
+            cacitenotsignedbydriver.setText(getResources().getString(R.string.dash));
+            ll_cacitenotsignedbydriver.setVisibility(View.GONE);
         }
 
         databaseAccess.close();

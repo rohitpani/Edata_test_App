@@ -13,9 +13,9 @@
             android:id="@+id/ll_print_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
             android:background="@color/white"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <LinearLayout
                 android:id="@+id/citation_lout"
@@ -46,9 +46,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_blue"
                 android:orientation="horizontal"
-                android:padding="10dp"
-                android:background="@color/light_blue">
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="0dp"
@@ -2113,6 +2113,40 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/light_blue"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/violation_misc_details"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/description"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ll_issue_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2164,6 +2198,161 @@
                     android:textSize="13sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ll_school_zone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/school_zone"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/schoolzone_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_violation_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/violationcity"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/violationcity_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_violation_st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/violationst"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/violationst_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_violation_st_typ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/violationsttyp"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/violation_st_typ_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_violation_cst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/violationcst"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/violationcst_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_violation_cst_typ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/violationcsttyp"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/violation_cst_typ_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_appear_date"
@@ -2218,6 +2407,136 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_offbadgeno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/offbadgeno"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/offbadgeno_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_offlname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/offlname"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/offlname_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_officer_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/areacode"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/officer_area_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_division"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/division"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/division_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/detail"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/detail_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ll_night_court"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2242,6 +2561,59 @@
                     android:textColor="@color/text_color"
                     android:textSize="13sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ca_tobenotified"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/ca_tobenotified"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/ca_tobenotified_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ca_citenotsignedbydriver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="7dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="@string/ca_citenotsignedbydriver"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/ca_citenotsignedbydriver_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <Button

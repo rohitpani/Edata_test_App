@@ -433,6 +433,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
                         s_division = databaseAccess.getDivisionAreaCodecodevalue(division,s_divisionid);
 
                         databaseAccess.close();
+                        //Toast.makeText(ActivityViolationMisc.this,""+selected_value,Toast.LENGTH_SHORT).show();
 
                         dialog.dismiss();
                     }
@@ -980,9 +981,6 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
         }else if (s_ca_citenotsignedbydriver.equals("")){
             violationmisc_scroll.fullScroll(View.FOCUS_DOWN);
             ca_citenotsignedbydriver_lay.setBackgroundResource(R.drawable.round_corner_red_btn_4dp);
-//            Toast.makeText(ActivityViolationMisc.this, "Please select driver signature type", Toast.LENGTH_SHORT).show();
-//        }else  if (selected_Date){
-//            Toast.makeText(ActivityViolationMisc.this, "Please verify your selected date", Toast.LENGTH_SHORT).show();
         }else {
 
             if (s_ampm.equals("am")){
@@ -1120,7 +1118,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
             //appeardate.setText(sdf.format(myCalendar.getTime()));
             appeardate.setText("");
             //appeardate.setTextColor(Color.parseColor("#444444"));
-//                            appeardate.setText("APPEARDATE");
+//            appeardate.setText("APPEARDATE");
             if(cancel.getVisibility() == View.VISIBLE){
                 cancel.setVisibility(View.GONE);
             }

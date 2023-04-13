@@ -81,6 +81,7 @@
     <string name="driver_details">DRIVER DETAILS </string>
     <string name="vehicle_details">VEHICLE DETAILS</string>
     <string name="violation_details">VIOLATION DETAILS</string>
+    <string name="violation_misc_details">VIOLATION MISC DETAILS</string>
     <string name="first_name">FIRST NAME </string>
     <string name="middle_name">MIDDLE NAME</string>
     <string name="last_name">LAST NAME</string>
@@ -160,8 +161,6 @@
     <string name="animal7">ANIMAL7</string>
     <string name="animal8">ANIMAL8</string>
     <string name="night_court">NIGHT COURT</string>
-    <string name="ca_tobenotified">CATOBENOTIFIED</string>
-    <string name="ca_citenotsignedbydriver">CACiteNotSignedByDriver</string>
 
     <string name="issue_date">ISSUE DATE</string>
     <string name="issue_time">ISSUE TIME</string>
@@ -182,6 +181,8 @@
     <string name="areacode">OFFICER AREA</string>
     <string name="division">DIVISION</string>
     <string name="detail">DETAIL</string>
+    <string name="ca_tobenotified">CATOBENOTIFIED</string>
+    <string name="ca_citenotsignedbydriver">CACiteNotSignedByDriver</string>
     <string name="court_location">COURT LOCATION</string>
     <string name="title_activity_home">ActivityHome</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
