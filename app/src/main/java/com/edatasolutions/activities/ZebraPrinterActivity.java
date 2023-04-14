@@ -1488,6 +1488,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         String session_offbadgeno = sessionManager.getViolationMiscSession().get(SessionManager.OFFBADGENO);
         String session_offlname = sessionManager.getViolationMiscSession().get(SessionManager.OFFLNAME);
         String session_division = sessionManager.getViolationMiscSession().get(SessionManager.DIVISION);
+        String session_division_codeid = sessionManager.getViolationMiscSession().get(SessionManager.DIVISION_ID);
         String session_detail = sessionManager.getViolationMiscSession().get(SessionManager.DETAIL);
         String session_catobenotified = sessionManager.getViolationMiscSession().get(SessionManager.CA_TOBENOTIFIED);
         String session_ca_citenotsignedbydriver = sessionManager.getViolationMiscSession().get(SessionManager.CA_CITENOTSIGNEDBYDRIVER);
@@ -1503,7 +1504,8 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         assert session_issuetime != null;
         assert session_ampm != null;
         if (!session_issuetime.equals("") && !session_ampm.equals("")) {
-            issuetime_txt.setText(session_issuetime + " " + session_ampm);
+            String am_or_pm = (session_ampm == "A")? "AM" : "PM";
+            issuetime_txt.setText(session_issuetime + " " + am_or_pm);
         } else {
             issuetime_txt.setText(getResources().getString(R.string.dash));
             ll_issue_time.setVisibility(View.GONE);
@@ -1601,7 +1603,8 @@ public class ZebraPrinterActivity extends AppCompatActivity {
 
         assert session_division != null;
         if (!session_division.equals("")) {
-            division.setText(session_division);
+            String selected_value = databaseAccess.getDivisionAreaCodeValue(session_division_codeid,session_division);
+            division.setText(selected_value);
         } else {
             division.setText(getResources().getString(R.string.dash));
             ll_division.setVisibility(View.GONE);
@@ -3213,6 +3216,60 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             issueTime="";
         }
 
+        String school_zone_txt;
+        if(ll_schoolzone.getVisibility() == View.VISIBLE){
+            school_zone_txt = "SCHOOL ZONE : " + school_zone.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            school_zone_txt="";
+        }
+
+        String violation_city_txt;
+        if(ll_violationcity.getVisibility() == View.VISIBLE){
+            violation_city_txt = "VIOLATIONCITY : " + violationcity.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            violation_city_txt="";
+        }
+
+        String violation_st_txt;
+        if(ll_violationst.getVisibility() == View.VISIBLE){
+            violation_st_txt = "VIOLATIONST : " + violationst.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            violation_st_txt="";
+        }
+
+        String violation_sttyp_txt;
+        if(ll_violationsttyp.getVisibility() == View.VISIBLE){
+            violation_sttyp_txt = "VIOLATIONSTTYP : " + violationsttyp.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            violation_sttyp_txt="";
+        }
+
+        String violation_cst_txt;
+        if(ll_violationcst.getVisibility() == View.VISIBLE){
+            violation_cst_txt = "VIOLATIONCST : " + violationcst.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            violation_cst_txt="";
+        }
+
+        String violation_csttyp_txt;
+        if(ll_violationcsttyp.getVisibility() == View.VISIBLE){
+            violation_csttyp_txt = "VIOLATIONCSTTYP : " + violationcsttyp.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            violation_csttyp_txt="";
+        }
+
         String appearDate;
         if(ll_appear_date.getVisibility() == View.VISIBLE){
             appearDate = "APPEAR DATE : " + appeardate_txt.getText().toString().trim() + "\n";
@@ -3231,6 +3288,51 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             courtTime="";
         }
 
+        String offbadge_no_txt;
+        if(ll_offbadgeno.getVisibility() == View.VISIBLE){
+            offbadge_no_txt = "OFFBADGENO : " + offbadgeno.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            offbadge_no_txt="";
+        }
+
+        String offlname_txt;
+        if(ll_offlname.getVisibility() == View.VISIBLE){
+            offlname_txt = "OFFLNAME : " + offlname.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            offlname_txt="";
+        }
+
+        String offarea_txt;
+        if(ll_offarea.getVisibility() == View.VISIBLE){
+            offarea_txt = "OFFICER AREA : " + offarea.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            offarea_txt="";
+        }
+
+        String division_txt;
+        if(ll_division.getVisibility() == View.VISIBLE){
+            division_txt = "DIVISION : " + division.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            division_txt="";
+        }
+
+        String detail_txt;
+        if(ll_detail.getVisibility() == View.VISIBLE){
+            detail_txt = "DETAIL : " + detail.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            detail_txt="";
+        }
+
         String nightCourt;
         if(ll_night_court.getVisibility() == View.VISIBLE){
             nightCourt = "NIGHT COURT : " + nightcourt_txt.getText().toString().trim() + "\n";
@@ -3239,6 +3341,24 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         }
         else{
             nightCourt="";
+        }
+
+        String catobenotified_txt;
+        if(ll_catobenotified.getVisibility() == View.VISIBLE){
+            catobenotified_txt = "CATOBENOTIFIED : " + catobenotified.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            catobenotified_txt="";
+        }
+
+        String cacitenotsignedbydriver_txt;
+        if(ll_cacitenotsignedbydriver.getVisibility() == View.VISIBLE){
+            cacitenotsignedbydriver_txt = "CACiteNotSignedByDriver : " + cacitenotsignedbydriver.getText().toString().trim() + "\n";
+            linecount+=1;
+        }
+        else{
+            cacitenotsignedbydriver_txt="";
         }
 
 
@@ -3364,9 +3484,22 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 animal8 +
                 issueDate +
                 issueTime +
+                school_zone_txt+
+                violation_city_txt+
+                violation_st_txt+
+                violation_sttyp_txt+
+                violation_cst_txt+
+                violation_csttyp_txt+
                 appearDate +
                 courtTime +
+                offbadge_no_txt+
+                offlname_txt+
+                offarea_txt+
+                division_txt+
+                detail_txt+
                 nightCourt +
+                catobenotified_txt+
+                cacitenotsignedbydriver_txt+
                 "--------------------------------------------------\n" +
                 "ENDML\n" +
                 //"FORM\n" +

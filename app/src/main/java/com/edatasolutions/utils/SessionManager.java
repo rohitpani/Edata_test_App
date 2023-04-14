@@ -605,6 +605,8 @@ public class SessionManager {
     public static final String AREACODE_ID = "areacode_id";
     public static final String DIVISION = "division";
     public static final String DIVISION_ID = "division_id";
+
+    public static final String DIVISION_VALUE = "division_value";
     public static final String DETAIL = "detail";
     public static final String SCHOOL_ZONE = "schoolzone";
     public static final String NIGHT_COURT = "night_court";
@@ -623,7 +625,7 @@ public class SessionManager {
 
     public void createViolationMiscSession(String issuedate, String time, String ampm,  String schoolzome, String violationcity,String violationcity_id, String violationst,
                                            String violationsttyp,String violationsttyp_id, String violationcst, String violationcsttyp,String violationcsttyp_id, String appeardate,String courttime, String offbadgeno,
-                                           String offlname, String areacode,String areacode_id,String division,String division_id, String detail, String night_court, String ca_tobenotified, String ca_citenotsignedbydriver) {
+                                           String offlname, String areacode,String areacode_id,String division,String divisionvalue,String division_id, String detail, String night_court, String ca_tobenotified, String ca_citenotsignedbydriver) {
 
         editor.putString(ISSUE_DATE, issuedate);
         editor.putString(TIME, time);
@@ -643,6 +645,8 @@ public class SessionManager {
         editor.putString(OFFLNAME, offlname);
         editor.putString(AREACODE, areacode);
         editor.putString(AREACODE_ID, areacode_id);
+        editor.putString(DIVISION, division);
+        editor.putString(DIVISION_VALUE, divisionvalue);
         editor.putString(DIVISION, division);
         editor.putString(DIVISION_ID, division_id);
         editor.putString(DETAIL, detail);

@@ -62,7 +62,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
     private EditText offbadgeno, offlname,violationst,violationcst;
     private Spinner violationcity, violationsttyp,ampm,areacode,violationcsttyp,detail,division;
     private String s_schoolzone="N",s_night_court="N",s_ca_tobenotified="N",s_ca_citenotsignedbydriver="N", s_violationcity="",s_violationcityid="",s_violationsttyp="",s_violationsttypid="",s_violationcsttypid="",s_violationst="",s_violationcst="",s_violationcsttyp="";
-    private String s_issuedate="", s_time="", s_ampm="",s_offbadgeno="", s_offlname="",s_areacode="",s_areacodeid="", s_division="",s_divisionid="", s_detail="", s_appeardate="",s_courttime="";
+    private String s_issuedate="", s_time="", s_ampm="",s_offbadgeno="", s_offlname="",s_areacode="",s_areacodeid="", s_division="", s_divisionvalue = "", s_divisionid="", s_detail="", s_appeardate="",s_courttime="";
 
     private ArrayList<String> violationcityList = new ArrayList<>();
     private ArrayList<String> violationsttypList = new ArrayList<>();
@@ -431,6 +431,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
                         databaseAccess.open();
                         s_divisionid = databaseAccess.getDivisionAreaCodeId(division);
                         s_division = databaseAccess.getDivisionAreaCodecodevalue(division,s_divisionid);
+                        s_divisionvalue = selected_value;
 
                         databaseAccess.close();
                         //Toast.makeText(ActivityViolationMisc.this,""+selected_value,Toast.LENGTH_SHORT).show();
@@ -1008,7 +1009,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
 
                 sessionManager.saveViolationMisc("Y");
                 sessionManager.ClearViolationMiscEntery();
-                sessionManager.createViolationMiscSession(s_issuedate, s_time, s_ampm, s_schoolzone,s_violationcity,s_violationcityid,s_violationst,s_violationsttyp,s_violationsttypid,s_violationcst,s_violationcsttyp,s_violationcsttypid,s_appeardate,s_courttime, s_offbadgeno,s_offlname,s_areacode,s_areacodeid,s_division,s_divisionid,s_detail,s_night_court,s_ca_tobenotified,s_ca_citenotsignedbydriver);
+                sessionManager.createViolationMiscSession(s_issuedate, s_time, s_ampm, s_schoolzone,s_violationcity,s_violationcityid,s_violationst,s_violationsttyp,s_violationsttypid,s_violationcst,s_violationcsttyp,s_violationcsttypid,s_appeardate,s_courttime, s_offbadgeno,s_offlname,s_areacode,s_areacodeid,s_division,s_divisionvalue,s_divisionid,s_detail,s_night_court,s_ca_tobenotified,s_ca_citenotsignedbydriver);
                 Intent i =new Intent(ActivityViolationMisc.this, ActivityPreview.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.enter,R.anim.exit);
@@ -1046,7 +1047,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
 
                     sessionManager.saveViolationMisc("Y");
                     sessionManager.ClearViolationMiscEntery();
-                    sessionManager.createViolationMiscSession(s_issuedate, s_time, s_ampm, s_schoolzone, s_violationcity, s_violationcityid, s_violationst, s_violationsttyp, s_violationsttypid, s_violationcst, s_violationcsttyp, s_violationcsttypid, s_appeardate, s_courttime, s_offbadgeno, s_offlname, s_areacode, s_areacodeid, s_division, s_divisionid, s_detail, s_night_court, s_ca_tobenotified, s_ca_citenotsignedbydriver);
+                    sessionManager.createViolationMiscSession(s_issuedate, s_time, s_ampm, s_schoolzone, s_violationcity, s_violationcityid, s_violationst, s_violationsttyp, s_violationsttypid, s_violationcst, s_violationcsttyp, s_violationcsttypid, s_appeardate, s_courttime, s_offbadgeno, s_offlname, s_areacode, s_areacodeid, s_division, s_divisionvalue, s_divisionid, s_detail, s_night_court, s_ca_tobenotified, s_ca_citenotsignedbydriver);
                     Intent i = new Intent(ActivityViolationMisc.this, ActivityPreview.class);
                     startActivity(i);
                     overridePendingTransition(R.anim.enter, R.anim.exit);

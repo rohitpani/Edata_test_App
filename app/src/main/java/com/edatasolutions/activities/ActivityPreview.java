@@ -268,6 +268,8 @@ public class ActivityPreview extends AppCompatActivity {
 
     private void setAllData() {
 
+        databaseAccess = new DatabaseAccess(ActivityPreview.this);
+        databaseAccess.open();
 
         //VIOLATION MISC
 
@@ -276,6 +278,8 @@ public class ActivityPreview extends AppCompatActivity {
         String session_pre_offbadgeno = sessionManager.getViolationMiscSession().get(SessionManager.OFFBADGENO);
         String session_pre_offlname = sessionManager.getViolationMiscSession().get(SessionManager.OFFLNAME);
         String session_pre_division = sessionManager.getViolationMiscSession().get(SessionManager.DIVISION);
+        String session_pre_divisioncodeid = sessionManager.getViolationMiscSession().get(SessionManager.DIVISION_ID);
+        //String session_pre_divisionvalue = sessionManager.getViolationMiscSession().get(SessionManager.DIVISION_VALUE);
         String session_pre_detail = sessionManager.getViolationMiscSession().get(SessionManager.DETAIL);
         String session_pre_issuedate = sessionManager.getViolationMiscSession().get(SessionManager.ISSUE_DATE);
         String session_pre_time = sessionManager.getViolationMiscSession().get(SessionManager.TIME);
@@ -349,10 +353,18 @@ public class ActivityPreview extends AppCompatActivity {
 
         assert session_pre_division != null;
         if (!session_pre_division.equals("")) {
-            pre_division.setText(session_pre_division);
+            String selected_value = databaseAccess.getDivisionAreaCodeValue(session_pre_divisioncodeid,session_pre_division);
+            pre_division.setText(selected_value);
         } else {
             pre_division.setText(getResources().getString(R.string.dash));
         }
+
+//        assert session_pre_divisionvalue != null;
+//        if (!session_pre_divisionvalue.equals("")) {
+//            pre_division.setText(session_pre_divisionvalue);
+//        } else {
+//            pre_division.setText(getResources().getString(R.string.dash));
+//        }
 
         assert session_pre_detail != null;
         if (!session_pre_detail.equals("")) {
@@ -617,9 +629,6 @@ public class ActivityPreview extends AppCompatActivity {
             txt_animal8.setVisibility(View.GONE);
         }
 
-
-        databaseAccess = new DatabaseAccess(ActivityPreview.this);
-        databaseAccess.open();
 
         String session_violationsttypid = sessionManager.getViolationMiscSession().get(SessionManager.VIOLATIONSTTYP_ID);
         String session_violationcsttypid = sessionManager.getViolationMiscSession().get(SessionManager.VIOLATIONCSTTYP_ID);
