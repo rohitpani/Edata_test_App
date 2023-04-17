@@ -2073,49 +2073,132 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             suffix="";
         }
 
-        String addLine1_1 = "";
-        String addLine1_2 = "";
+//        String addLine1_1 = "";
+//        String addLine1_2 = "";
+//        if(driver_address1.getText().toString().trim().length() > 34){
+//            if(ll_driver_address1.getVisibility() == View.VISIBLE){
+//                addLine1_1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim().substring(0,34) + "\n";
+//                addLine1_2 = "            " + driver_address1.getText().toString().trim().substring(34) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                addLine1_1="";
+//                addLine1_2="";
+//            }
+//        }
+//        else{
+//            if(ll_driver_address1.getVisibility() == View.VISIBLE){
+//                addLine1_1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                addLine1_1="";
+//            }
+//        }
+
+
+        String addLine1 = "";
         if(driver_address1.getText().toString().trim().length() > 34){
             if(ll_driver_address1.getVisibility() == View.VISIBLE){
-                addLine1_1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim().substring(0,34) + "\n";
-                addLine1_2 = "            " + driver_address1.getText().toString().trim().substring(34) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(driver_address1.getText().toString().trim().length() / 34.0);
+                //Toast.makeText(ZebraPrinterActivity.this,""+count,Toast.LENGTH_SHORT).show();
+                total_no_lines = (int)Math.ceil(count);
+                //Toast.makeText(ZebraPrinterActivity.this,""+linecount,Toast.LENGTH_SHORT).show();
+                for(int i = 1;i<=total_no_lines;i++){
+                    //Toast.makeText(ZebraPrinterActivity.this,"i = "+i,Toast.LENGTH_SHORT).show();
+                    if(i==1){
+                        //Toast.makeText(ZebraPrinterActivity.this,"Inside first part",Toast.LENGTH_SHORT).show();
+                        addLine1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim().substring(0,34*i) + "\n";
+                        linecount+=1;
+                        //Toast.makeText(ZebraPrinterActivity.this,""+driver_address1.getText().toString().trim().substring(0,34*i),Toast.LENGTH_SHORT).show();
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        //Toast.makeText(ZebraPrinterActivity.this,"Inside 2 part",Toast.LENGTH_SHORT).show();
+                        addLine1 = addLine1+"            " + driver_address1.getText().toString().trim().substring(34*(i-1),34*i) + "\n";
+                        linecount+=1;
+                        //Toast.makeText(ZebraPrinterActivity.this,""+driver_address1.getText().toString().trim().substring(34*(i-1),34*i),Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        //Toast.makeText(ZebraPrinterActivity.this,"Inside else part",Toast.LENGTH_SHORT).show();
+                        addLine1 = addLine1+"            " + driver_address1.getText().toString().trim().substring(34*(i-1)) + "\n";
+                        linecount+=1;
+                        // Toast.makeText(ZebraPrinterActivity.this,""+driver_address1.getText().toString().trim().substring(34*(i-1)),Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
             else{
-                addLine1_1="";
-                addLine1_2="";
+                addLine1 = "";
             }
         }
         else{
             if(ll_driver_address1.getVisibility() == View.VISIBLE){
-                addLine1_1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim() + "\n";
+                addLine1 = "ADDRESS 1 : " + driver_address1.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                addLine1_1="";
+                addLine1="";
             }
         }
 
-        String addLine2_1 = "";
-        String addLine2_2 = "";
+
+//        String addLine2_1 = "";
+//        String addLine2_2 = "";
+//        if(driver_address2.getText().toString().trim().length() > 34){
+//            if(ll_driver_address2.getVisibility() == View.VISIBLE){
+//                addLine2_1 = "ADDRESS 2 : " + driver_address2.getText().toString().trim().substring(0,34) + "\n";
+//                addLine2_2 = "            " + driver_address2.getText().toString().trim().substring(34) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                addLine2_1="";
+//                addLine2_2="";
+//            }
+//        }
+//        else{
+//            if(ll_driver_address2.getVisibility() == View.VISIBLE){
+//                addLine2_1 = "ADDRESS 2 : " + driver_address2.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                addLine2_1="";
+//            }
+//        }
+
+
+        String addLine2 = "";
         if(driver_address2.getText().toString().trim().length() > 34){
             if(ll_driver_address2.getVisibility() == View.VISIBLE){
-                addLine2_1 = "ADDRESS 2 : " + driver_address2.getText().toString().trim().substring(0,34) + "\n";
-                addLine2_2 = "            " + driver_address2.getText().toString().trim().substring(34) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(driver_address2.getText().toString().trim().length() / 34.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        addLine2 = "ADDRESS 2 : " + driver_address2.getText().toString().trim().substring(0,34*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        addLine2 = addLine2+"            " + driver_address2.getText().toString().trim().substring(34*(i-1),34*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        addLine2 = addLine2+"            " + driver_address2.getText().toString().trim().substring(34*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
             }
             else{
-                addLine2_1="";
-                addLine2_2="";
+                addLine2 = "";
             }
         }
-        else{
-            if(ll_driver_address2.getVisibility() == View.VISIBLE){
-                addLine2_1 = "ADDRESS 2 : " + driver_address2.getText().toString().trim() + "\n";
-                linecount+=1;
-            }
-            else{
-                addLine2_1="";
+        else {
+            if (ll_driver_address2.getVisibility() == View.VISIBLE) {
+                addLine2 = "ADDRESS 2 : " + driver_address2.getText().toString().trim() + "\n";
+                linecount += 1;
+            } else {
+                addLine2 = "";
             }
         }
 
@@ -2128,28 +2211,65 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             city="";
         }
 
-        String state1="";
-        String state2="";
+//        String state1="";
+//        String state2="";
+//        if (driver_state.getText().toString().trim().length() > 38) {
+//            if(ll_driver_state.getVisibility() == View.VISIBLE){
+//                state1 = "STATE : " + driver_state.getText().toString().trim().substring(0,38) + "\n";
+//                state2 = "        " + driver_state.getText().toString().trim().substring(38) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                state1="";
+//                state2="";
+//            }
+//        }
+//        else{
+//            if(ll_driver_state.getVisibility() == View.VISIBLE){
+//                state1 = "STATE : " + driver_state.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                state1="";
+//            }
+//        }
+
+        String state="";
         if (driver_state.getText().toString().trim().length() > 38) {
             if(ll_driver_state.getVisibility() == View.VISIBLE){
-                state1 = "STATE : " + driver_state.getText().toString().trim().substring(0,38) + "\n";
-                state2 = "        " + driver_state.getText().toString().trim().substring(38) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(driver_state.getText().toString().trim().length() / 38.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        state = "STATE : " + driver_state.getText().toString().trim().substring(0,38*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        state = state+"        " + driver_state.getText().toString().trim().substring(38*(i-1),38*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        state = state+"        " + driver_state.getText().toString().trim().substring(38*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
             }
             else{
-                state1="";
-                state2="";
+                state="";
             }
         }
         else{
             if(ll_driver_state.getVisibility() == View.VISIBLE){
-                state1 = "STATE : " + driver_state.getText().toString().trim() + "\n";
+                state = "STATE : " + driver_state.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                state1="";
+                state="";
             }
         }
+
 
         String zipcode;
         if(ll_driver_zipcode.getVisibility() == View.VISIBLE){
@@ -2169,26 +2289,62 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             licNumber="";
         }
 
-        String drState1="";
-        String drState2="";
+//        String drState1="";
+//        String drState2="";
+//        if (driver_statee.getText().toString().trim().length() > 31) {
+//            if(ll_driver_statee.getVisibility() == View.VISIBLE){
+//                drState1 = "DRIVER STATE : " + driver_statee.getText().toString().trim().substring(0,31) + "\n";
+//                drState2 = "               " + driver_statee.getText().toString().trim().substring(31) + "\n";
+//                linecount += 2;
+//            }
+//            else{
+//                drState1 = "";
+//                drState2 = "";
+//            }
+//        }
+//        else{
+//            if(ll_driver_statee.getVisibility() == View.VISIBLE){
+//                drState1 = "DRIVER STATE : " + driver_statee.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                drState1="";
+//            }
+//        }
+
+        String drState="";
         if (driver_statee.getText().toString().trim().length() > 31) {
             if(ll_driver_statee.getVisibility() == View.VISIBLE){
-                drState1 = "DRIVER STATE : " + driver_statee.getText().toString().trim().substring(0,31) + "\n";
-                drState2 = "               " + driver_statee.getText().toString().trim().substring(31) + "\n";
-                linecount += 2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(driver_statee.getText().toString().trim().length() / 31.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        drState = "DRIVER STATE : " + driver_statee.getText().toString().trim().substring(0,31*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        drState = drState+"               " + driver_statee.getText().toString().trim().substring(31*(i-1),31*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        drState = drState+"               " + driver_statee.getText().toString().trim().substring(31*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
             }
             else{
-                drState1 = "";
-                drState2 = "";
+                drState = "";
             }
         }
         else{
             if(ll_driver_statee.getVisibility() == View.VISIBLE){
-                drState1 = "DRIVER STATE : " + driver_statee.getText().toString().trim() + "\n";
+                drState = "DRIVER STATE : " + driver_statee.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                drState1="";
+                drState="";
             }
         }
 
@@ -2246,42 +2402,78 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             drWeight="";
         }
 
-        String lcType1="";
-        String lcType2="";
-        String lcType3="";
-        if(license_type.getText().toString().trim().length() > 25){
-            if(license_type.getText().toString().trim().length() > 50){
-                if(ll_driver_license_type.getVisibility() == View.VISIBLE){
-                    lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
-                    lcType2 = "                     " + license_type.getText().toString().trim().substring(25,50) + "\n";
-                    lcType3 = "                     " + license_type.getText().toString().trim().substring(50) + "\n";
-                    linecount+=3;
-                }
-                else{
-                    lcType1="";
-                    lcType2="";
-                    lcType3="";
+//        String lcType1="";
+//        String lcType2="";
+//        String lcType3="";
+//        if(license_type.getText().toString().trim().length() > 25){
+//            if(license_type.getText().toString().trim().length() > 50){
+//                if(ll_driver_license_type.getVisibility() == View.VISIBLE){
+//                    lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
+//                    lcType2 = "                     " + license_type.getText().toString().trim().substring(25,50) + "\n";
+//                    lcType3 = "                     " + license_type.getText().toString().trim().substring(50) + "\n";
+//                    linecount+=3;
+//                }
+//                else{
+//                    lcType1="";
+//                    lcType2="";
+//                    lcType3="";
+//                }
+//            }
+//            else{
+//                if(ll_driver_license_type.getVisibility() == View.VISIBLE){
+//                    lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
+//                    lcType2 = "                     " + license_type.getText().toString().trim().substring(25) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    lcType1="";
+//                    lcType2="";
+//                }
+//            }
+//        }
+//        else{
+//            if(ll_driver_license_type.getVisibility() == View.VISIBLE){
+//                lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                lcType1="";
+//            }
+//        }
+
+        String lcType="";
+        if(license_type.getText().toString().trim().length() > 17){
+            if(ll_driver_license_type.getVisibility() == View.VISIBLE){
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(license_type.getText().toString().trim().length() / 17.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        lcType = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,17*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        lcType = lcType+"                             " + license_type.getText().toString().trim().substring(17*(i-1),17*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        lcType = lcType+"                             " + license_type.getText().toString().trim().substring(17*(i-1)) + "\n";
+                        linecount+=1;
+                    }
                 }
             }
             else{
-                if(ll_driver_license_type.getVisibility() == View.VISIBLE){
-                    lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim().substring(0,25) + "\n";
-                    lcType2 = "                     " + license_type.getText().toString().trim().substring(25) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    lcType1="";
-                    lcType2="";
-                }
+                lcType = "";
             }
         }
         else{
             if(ll_driver_license_type.getVisibility() == View.VISIBLE){
-                lcType1 = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n";
+                lcType = "DRIVERS LICENSE TYPE/CLASS : " + license_type.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                lcType1="";
+                lcType="";
             }
         }
 
@@ -2348,49 +2540,122 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             ownerSuffix="";
         }
 
-        String ownerAdd1_1="";
-        String ownerAdd1_2="";
+//        String ownerAdd1_1="";
+//        String ownerAdd1_2="";
+//        if(pre_owner_address1.getText().toString().trim().length() > 28){
+//            if(ll_owner_address1.getVisibility() == View.VISIBLE){
+//                ownerAdd1_1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim().substring(0,28) + "\n";
+//                ownerAdd1_2 = "                  " + pre_owner_address1.getText().toString().trim().substring(28) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                ownerAdd1_1="";
+//                ownerAdd1_2="";
+//            }
+//        }
+//        else{
+//            if(ll_owner_address1.getVisibility() == View.VISIBLE){
+//                ownerAdd1_1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                ownerAdd1_1="";
+//            }
+//        }
+
+        String ownerAdd1 = "";
         if(pre_owner_address1.getText().toString().trim().length() > 28){
             if(ll_owner_address1.getVisibility() == View.VISIBLE){
-                ownerAdd1_1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim().substring(0,28) + "\n";
-                ownerAdd1_2 = "                  " + pre_owner_address1.getText().toString().trim().substring(28) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_owner_address1.getText().toString().trim().length() / 28.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        ownerAdd1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim().substring(0,28*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        ownerAdd1 = ownerAdd1+"                  " + pre_owner_address1.getText().toString().trim().substring(28*(i-1),28*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        ownerAdd1 = ownerAdd1+"                  " + pre_owner_address1.getText().toString().trim().substring(28*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
             }
             else{
-                ownerAdd1_1="";
-                ownerAdd1_2="";
+                ownerAdd1="";
             }
         }
         else{
             if(ll_owner_address1.getVisibility() == View.VISIBLE){
-                ownerAdd1_1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim() + "\n";
+                ownerAdd1 = "OWNER ADDRESS 1 : " + pre_owner_address1.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                ownerAdd1_1="";
+                ownerAdd1="";
             }
         }
 
-        String ownerAdd2_1="";
-        String ownerAdd2_2="";
+//        String ownerAdd2_1="";
+//        String ownerAdd2_2="";
+//        if(pre_owner_address2.getText().toString().trim().length() > 28){
+//            if(ll_owner_address2.getVisibility() == View.VISIBLE){
+//                ownerAdd2_1 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim().substring(0,28) + "\n";
+//                ownerAdd2_2 = "                  " + pre_owner_address2.getText().toString().trim().substring(28) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                ownerAdd2_1="";
+//                ownerAdd2_2="";
+//            }
+//        }
+//        else{
+//            if(ll_owner_address2.getVisibility() == View.VISIBLE){
+//                ownerAdd2_1 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                ownerAdd2_1="";
+//            }
+//        }
+
+
+        String ownerAdd2="";
         if(pre_owner_address2.getText().toString().trim().length() > 28){
             if(ll_owner_address2.getVisibility() == View.VISIBLE){
-                ownerAdd2_1 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim().substring(0,28) + "\n";
-                ownerAdd2_2 = "                  " + pre_owner_address2.getText().toString().trim().substring(28) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_owner_address2.getText().toString().trim().length() / 28.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        ownerAdd2 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim().substring(0,28*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        ownerAdd2 = ownerAdd2+"                  " + pre_owner_address2.getText().toString().trim().substring(28*(i-1),28*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        ownerAdd2 = ownerAdd2+"                  " + pre_owner_address2.getText().toString().trim().substring(28*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
             }
             else{
-                ownerAdd2_1="";
-                ownerAdd2_2="";
+                ownerAdd2="";
             }
         }
         else{
             if(ll_owner_address2.getVisibility() == View.VISIBLE){
-                ownerAdd2_1 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim() + "\n";
+                ownerAdd2 = "OWNER ADDRESS 2 : " + pre_owner_address2.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                ownerAdd2_1="";
+                ownerAdd2="";
             }
         }
 
@@ -2403,26 +2668,62 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             ownerCity="";
         }
 
-        String ownerState1="";
-        String ownerState2="";
+//        String ownerState1="";
+//        String ownerState2="";
+//        if(pre_owner_state.getText().toString().trim().length() > 32){
+//            if(ll_owner_state.getVisibility() == View.VISIBLE){
+//                ownerState1 = "OWNER STATE : " + pre_owner_state.getText().toString().trim().substring(0,32) + "\n";
+//                ownerState2 = "              " + pre_owner_state.getText().toString().trim().substring(32) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                ownerState1="";
+//                ownerState2="";
+//            }
+//        }
+//        else{
+//            if(ll_owner_state.getVisibility() == View.VISIBLE){
+//                ownerState1 = "OWNER STATE : " + pre_owner_state.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                ownerState1="";
+//            }
+//        }
+
+        String ownerState = "";
         if(pre_owner_state.getText().toString().trim().length() > 32){
             if(ll_owner_state.getVisibility() == View.VISIBLE){
-                ownerState1 = "OWNER STATE : " + pre_owner_state.getText().toString().trim().substring(0,32) + "\n";
-                ownerState2 = "              " + pre_owner_state.getText().toString().trim().substring(32) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_owner_state.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        ownerState = "OWNER STATE : " + pre_owner_state.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        ownerState = ownerState+"              " + pre_owner_state.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        ownerState = ownerState+"              " + pre_owner_state.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
             }
             else{
-                ownerState1="";
-                ownerState2="";
+                ownerState="";
             }
         }
         else{
             if(ll_owner_state.getVisibility() == View.VISIBLE){
-                ownerState1 = "OWNER STATE : " + pre_owner_state.getText().toString().trim() + "\n";
+                ownerState = "OWNER STATE : " + pre_owner_state.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                ownerState1="";
+                ownerState="";
             }
         }
 
@@ -2480,26 +2781,67 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             vehColor="";
         }
 
-        String vehType1="";
-        String vehType2="";
+//        String vehType1="";
+//        String vehType2="";
+//        if(pre_vehtype.getText().toString().trim().length() > 36){
+//            if(ll_vehtype.getVisibility() == View.VISIBLE){
+//                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim().substring(0,36) + "\n";
+//                vehType2 = "          " + pre_vehtype.getText().toString().trim().substring(36) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                vehType1="";
+//                vehType2="";
+//            }
+//        }
+//        else{
+//            if(ll_vehtype.getVisibility() == View.VISIBLE){
+//                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                vehType1="";
+//            }
+//        }
+
+
+        String vehType="";
         if(pre_vehtype.getText().toString().trim().length() > 36){
             if(ll_vehtype.getVisibility() == View.VISIBLE){
-                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim().substring(0,36) + "\n";
-                vehType2 = "          " + pre_vehtype.getText().toString().trim().substring(36) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vehtype.getText().toString().trim().length() / 36.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        vehType = "VEHTYPE : " + pre_vehtype.getText().toString().trim().substring(0,36*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        vehType = vehType+"          " + pre_vehtype.getText().toString().trim().substring(36*(i-1),36*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        vehType = vehType+"          " + pre_vehtype.getText().toString().trim().substring(36*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
+
+//                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim().substring(0,36) + "\n";
+//                vehType2 = "          " + pre_vehtype.getText().toString().trim().substring(36) + "\n";
+//                linecount+=2;
             }
             else{
-                vehType1="";
-                vehType2="";
+                vehType="";
             }
         }
         else{
             if(ll_vehtype.getVisibility() == View.VISIBLE){
-                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim() + "\n";
+                vehType = "VEHTYPE : " + pre_vehtype.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                vehType1="";
+                vehType="";
             }
         }
 
@@ -3381,26 +3723,31 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 middleName +
                 lastName +
                 suffix +
-                addLine1_1 +
-                addLine1_2 +
-                addLine2_1 +
-                addLine2_2 +
+                //addLine1_1 +
+                //addLine1_2 +
+                addLine1+
+                addLine2+
+//                addLine2_1 +
+//                addLine2_2 +
                 city +
-                state1 +
-                state2 +
+//                state1 +
+//                state2 +
+                state +
                 zipcode +
                 licNumber +
-                drState1 +
-                drState2 +
+                drState+
+//                drState1 +
+//                drState2 +
                 drDOB +
                 drSex +
                 drHair +
                 drEyes +
                 drHeight +
                 drWeight +
-                lcType1 +
-                lcType2 +
-                lcType3 +
+                lcType+
+//                lcType1 +
+//                lcType2 +
+//                lcType3 +
                 race +
                 ethncity +
                 commDrLicence +
@@ -3408,21 +3755,25 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 ownerMname +
                 ownerLname +
                 ownerSuffix +
-                ownerAdd1_1 +
-                ownerAdd1_2 +
-                ownerAdd2_1 +
-                ownerAdd2_2 +
+                ownerAdd1+
+//                ownerAdd1_1 +
+//                ownerAdd1_2 +
+//                ownerAdd2_1 +
+//                ownerAdd2_2 +
+                ownerAdd2+
                 ownerCity +
-                ownerState1 +
-                ownerState2 +
+//                ownerState1 +
+//                ownerState2 +
+                ownerState+
                 ownerZcode +
                 vehYear +
                 vehMake +
                 vehModel +
                 vehBody +
                 vehColor +
-                vehType1 +
-                vehType2 +
+//                vehType1 +
+//                vehType2 +
+                vehType+
                 commercial +
                 vehlicNo +
                 vehicleState1 +
