@@ -3052,7 +3052,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationA = violationA+"              " + pre_vioA.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationA = violationA+"              " + pre_vioA.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
@@ -3142,7 +3142,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationB = violationB+"              " + pre_vioB.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationB = violationB+"              " + pre_vioB.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
@@ -3233,7 +3233,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationC = violationC+"              " + pre_vioC.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationC = violationC+"              " + pre_vioC.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
@@ -3324,7 +3324,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationD = violationD+"              " + pre_vioD.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationD = violationD+"              " + pre_vioD.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
@@ -3415,7 +3415,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationE = violationE+"              " + pre_vioE.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationE = violationE+"              " + pre_vioE.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
@@ -3506,7 +3506,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationF = violationF+"              " + pre_vioF.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationF = violationF+"              " + pre_vioF.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
@@ -3597,7 +3597,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationG = violationG+"              " + pre_vioG.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationG = violationG+"              " + pre_vioG.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
@@ -3688,7 +3688,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                     else if(i > 1 && i < total_no_lines){
-                        violationH = violationH+"              " + pre_vioH.getText().toString().trim().substring(32*(i-1),12*i) + "\n";
+                        violationH = violationH+"              " + pre_vioH.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
                         linecount+=1;
                     }
                     else{
