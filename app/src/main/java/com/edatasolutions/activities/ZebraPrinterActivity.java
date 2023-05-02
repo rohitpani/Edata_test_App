@@ -2826,10 +2826,6 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                         linecount+=1;
                     }
                 }
-
-//                vehType1 = "VEHTYPE : " + pre_vehtype.getText().toString().trim().substring(0,36) + "\n";
-//                vehType2 = "          " + pre_vehtype.getText().toString().trim().substring(36) + "\n";
-//                linecount+=2;
             }
             else{
                 vehType="";
@@ -2863,26 +2859,62 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             vehlicNo="";
         }
 
-        String vehicleState1 = "";
-        String vehicleState2 = "";
+//        String vehicleState1 = "";
+//        String vehicleState2 = "";
+//        if(pre_vehstate.getText().toString().trim().length() > 30){
+//            if(ll_veh_state.getVisibility() == View.VISIBLE){
+//                vehicleState1 = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim().substring(0,30) + "\n";
+//                vehicleState2 = "                " + pre_vehstate.getText().toString().trim().substring(30) + "\n";
+//                linecount+=2;
+//            }
+//            else{
+//                vehicleState1="";
+//                vehicleState2="";
+//            }
+//        }
+//        else{
+//            if(ll_veh_state.getVisibility() == View.VISIBLE){
+//                vehicleState1 = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                vehicleState1="";
+//            }
+//        }
+
+        String vehicleState = "";
         if(pre_vehstate.getText().toString().trim().length() > 30){
             if(ll_veh_state.getVisibility() == View.VISIBLE){
-                vehicleState1 = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim().substring(0,30) + "\n";
-                vehicleState2 = "                " + pre_vehstate.getText().toString().trim().substring(30) + "\n";
-                linecount+=2;
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vehstate.getText().toString().trim().length() / 30.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        vehicleState = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim().substring(0,30*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        vehicleState = vehicleState+"                " + pre_vehstate.getText().toString().trim().substring(30*(i-1),30*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        vehicleState = vehicleState+"                " + pre_vehstate.getText().toString().trim().substring(30*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
             }
             else{
-                vehicleState1="";
-                vehicleState2="";
+                vehicleState="";
             }
         }
         else{
             if(ll_veh_state.getVisibility() == View.VISIBLE){
-                vehicleState1 = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim() + "\n";
+                vehicleState = "VEHICLE STATE : " + pre_vehstate.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                vehicleState1="";
+                vehicleState="";
             }
         }
 
@@ -2904,459 +2936,777 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             overload="";
         }
 
-        String policy_no;
-        if(ll_insurance_policy_no.getVisibility() == View.VISIBLE){
-            policy_no = "INSURANCE COMPANY POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
-            linecount+=1;
-        }
-        else{
-            policy_no="";
-        }
 
-        String violationA1 = "";
-        String violationA2 = "";
-        String violationA3 = "";
-        String violationA4 = "";
-        if (pre_vioA.getText().toString().trim().length() > 32) {
-            if (pre_vioA.getText().toString().trim().length() > 64) {
-                if (pre_vioA.getText().toString().trim().length() > 96) {
-                    if(ll_vioA.getVisibility() == View.VISIBLE){
-                        violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
-                        violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32,64) + "\n";
-                        violationA3 = "              " + pre_vioA.getText().toString().trim().substring(64,96) + "\n";
-                        violationA4 = "              " + pre_vioA.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+//        String policy_no="";
+//        if(ll_insurance_policy_no.getVisibility() == View.VISIBLE){
+//            policy_no = "INSURANCE COMPANY POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
+//            linecount+=1;
+//        }
+//        else{
+//            policy_no="";
+//        }
+
+        String policy_no="";
+        if(pre_policyno.getText().toString().trim().length() > 12){
+            if(ll_insurance_policy_no.getVisibility() == View.VISIBLE){
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_policyno.getText().toString().trim().length() / 12.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        policy_no = "INSURANCE COMPANY POLICY NUMBER : " + pre_policyno.getText().toString().trim().substring(0,12*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        policy_no = policy_no+"                                  " + pre_policyno.getText().toString().trim().substring(12*(i-1),12*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationA1 =  "";
-                        violationA2 =  "";
-                        violationA3 = "";
-                        violationA4 = "";
-                    }
-                }
-                else{
-                    if(ll_vioA.getVisibility() == View.VISIBLE){
-                        violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
-                        violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32,64) + "\n";
-                        violationA3 = "              " + pre_vioA.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationA1 =  "";
-                        violationA2 =  "";
-                        violationA3 = "";
+                        policy_no = policy_no+"                                  " + pre_policyno.getText().toString().trim().substring(12*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
             }
             else{
-                if(ll_vioA.getVisibility() == View.VISIBLE){
-                    violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
-                    violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
+                policy_no="";
+            }
+        }
+        else{
+            if(ll_insurance_policy_no.getVisibility() == View.VISIBLE){
+                policy_no = "INSURANCE COMPANY POLICY NUMBER : " + pre_policyno.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                policy_no="";
+            }
+        }
+
+//        String violationA1 = "";
+//        String violationA2 = "";
+//        String violationA3 = "";
+//        String violationA4 = "";
+//        if (pre_vioA.getText().toString().trim().length() > 32) {
+//            if (pre_vioA.getText().toString().trim().length() > 64) {
+//                if (pre_vioA.getText().toString().trim().length() > 96) {
+//                    if(ll_vioA.getVisibility() == View.VISIBLE){
+//                        violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32,64) + "\n";
+//                        violationA3 = "              " + pre_vioA.getText().toString().trim().substring(64,96) + "\n";
+//                        violationA4 = "              " + pre_vioA.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationA1 =  "";
+//                        violationA2 =  "";
+//                        violationA3 = "";
+//                        violationA4 = "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioA.getVisibility() == View.VISIBLE){
+//                        violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32,64) + "\n";
+//                        violationA3 = "              " + pre_vioA.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationA1 =  "";
+//                        violationA2 =  "";
+//                        violationA3 = "";
+//                    }
+//                }
+//            }
+//            else{
+//                if(ll_vioA.getVisibility() == View.VISIBLE){
+//                    violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationA2 = "              " + pre_vioA.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationA1 =  "";
+//                    violationA2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioA.getVisibility() == View.VISIBLE){
+//                violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationA1 =  "";
+//            }
+//        }
+
+
+        String violationA = "";
+        if (pre_vioA.getText().toString().trim().length() > 32) {
+            if (ll_vioA.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioA.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationA = "VIOLATION A : " + pre_vioA.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationA = violationA+"              " + pre_vioA.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        violationA = violationA+"              " + pre_vioA.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
+                    }
                 }
-                else{
-                    violationA1 =  "";
-                    violationA2 =  "";
-                }
+            }
+            else{
+                violationA = "";
             }
         } else {
             if(ll_vioA.getVisibility() == View.VISIBLE){
-                violationA1 = "VIOLATION A : " + pre_vioA.getText().toString().trim() + "\n";
+                violationA = "VIOLATION A : " + pre_vioA.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationA1 =  "";
+                violationA =  "";
             }
         }
 
-        String violationB1 = "";
-        String violationB2 = "";
-        String violationB3 = "";
-        String violationB4 = "";
+//        String violationB1 = "";
+//        String violationB2 = "";
+//        String violationB3 = "";
+//        String violationB4 = "";
+//        if (pre_vioB.getText().toString().trim().length() > 32) {
+//            if(pre_vioB.getText().toString().trim().length() > 64){
+//                if(pre_vioB.getText().toString().trim().length() > 96){
+//                    if(ll_vioB.getVisibility() == View.VISIBLE){
+//                        violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32,64) + "\n";
+//                        violationB3 = "              " + pre_vioB.getText().toString().trim().substring(64,96) + "\n";
+//                        violationB4 = "              " + pre_vioB.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationB1 =  "";
+//                        violationB2 =  "";
+//                        violationB3 = "";
+//                        violationB4 = "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioB.getVisibility() == View.VISIBLE){
+//                        violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32,64) + "\n";
+//                        violationB3 = "              " + pre_vioB.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationB1 =  "";
+//                        violationB2 =  "";
+//                        violationB3 = "";
+//                    }
+//                }
+//            }else{
+//                if(ll_vioB.getVisibility() == View.VISIBLE){
+//                    violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationB1 =  "";
+//                    violationB2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioB.getVisibility() == View.VISIBLE){
+//                violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationB1 =  "";
+//            }
+//        }
+
+        String violationB = "";
         if (pre_vioB.getText().toString().trim().length() > 32) {
-            if(pre_vioB.getText().toString().trim().length() > 64){
-                if(pre_vioB.getText().toString().trim().length() > 96){
-                    if(ll_vioB.getVisibility() == View.VISIBLE){
-                        violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
-                        violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32,64) + "\n";
-                        violationB3 = "              " + pre_vioB.getText().toString().trim().substring(64,96) + "\n";
-                        violationB4 = "              " + pre_vioB.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+            if (ll_vioB.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioB.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationB = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationB = violationB+"              " + pre_vioB.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationB1 =  "";
-                        violationB2 =  "";
-                        violationB3 = "";
-                        violationB4 = "";
+                        violationB = violationB+"              " + pre_vioB.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
-                else{
-                    if(ll_vioB.getVisibility() == View.VISIBLE){
-                        violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
-                        violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32,64) + "\n";
-                        violationB3 = "              " + pre_vioB.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationB1 =  "";
-                        violationB2 =  "";
-                        violationB3 = "";
-                    }
-                }
-            }else{
-                if(ll_vioB.getVisibility() == View.VISIBLE){
-                    violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim().substring(0, 32) + "\n";
-                    violationB2 = "              " + pre_vioB.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    violationB1 =  "";
-                    violationB2 =  "";
-                }
+            }
+            else{
+                violationB = "";
             }
         } else {
             if(ll_vioB.getVisibility() == View.VISIBLE){
-                violationB1 = "VIOLATION B : " + pre_vioB.getText().toString().trim() + "\n";
+                violationB = "VIOLATION B : " + pre_vioB.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationB1 =  "";
+                violationB =  "";
             }
         }
 
-        String violationC1 = "";
-        String violationC2 = "";
-        String violationC3 = "";
-        String violationC4 = "";
+//        String violationC1 = "";
+//        String violationC2 = "";
+//        String violationC3 = "";
+//        String violationC4 = "";
+//        if (pre_vioC.getText().toString().trim().length() > 32) {
+//            if (pre_vioC.getText().toString().trim().length() > 64) {
+//                if (pre_vioC.getText().toString().trim().length() > 96) {
+//                    if(ll_vioC.getVisibility() == View.VISIBLE){
+//                        violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32,64) + "\n";
+//                        violationC3 =  "              " + pre_vioC.getText().toString().trim().substring(64,96) + "\n";
+//                        violationC4 =  "              " + pre_vioC.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationC1 =  "";
+//                        violationC2 =  "";
+//                        violationC3 =  "";
+//                        violationC4 =  "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioC.getVisibility() == View.VISIBLE){
+//                        violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32,64) + "\n";
+//                        violationC3 =  "              " + pre_vioC.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationC1 =  "";
+//                        violationC2 =  "";
+//                        violationC3 =  "";
+//                    }
+//                }
+//            }
+//            else{
+//                if(ll_vioC.getVisibility() == View.VISIBLE){
+//                    violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationC1 =  "";
+//                    violationC2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioC.getVisibility() == View.VISIBLE){
+//                violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationC1 =  "";
+//            }
+//        }
+
+        String violationC = "";
         if (pre_vioC.getText().toString().trim().length() > 32) {
-            if (pre_vioC.getText().toString().trim().length() > 64) {
-                if (pre_vioC.getText().toString().trim().length() > 96) {
-                    if(ll_vioC.getVisibility() == View.VISIBLE){
-                        violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
-                        violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32,64) + "\n";
-                        violationC3 =  "              " + pre_vioC.getText().toString().trim().substring(64,96) + "\n";
-                        violationC4 =  "              " + pre_vioC.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+            if (ll_vioC.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioC.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationC = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationC = violationC+"              " + pre_vioC.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationC1 =  "";
-                        violationC2 =  "";
-                        violationC3 =  "";
-                        violationC4 =  "";
-                    }
-                }
-                else{
-                    if(ll_vioC.getVisibility() == View.VISIBLE){
-                        violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
-                        violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32,64) + "\n";
-                        violationC3 =  "              " + pre_vioC.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationC1 =  "";
-                        violationC2 =  "";
-                        violationC3 =  "";
+                        violationC = violationC+"              " + pre_vioC.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
             }
             else{
-                if(ll_vioC.getVisibility() == View.VISIBLE){
-                    violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim().substring(0, 32) + "\n";
-                    violationC2 =  "              " + pre_vioC.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    violationC1 =  "";
-                    violationC2 =  "";
-                }
+                violationC = "";
             }
         } else {
             if(ll_vioC.getVisibility() == View.VISIBLE){
-                violationC1 = "VIOLATION C : " + pre_vioC.getText().toString().trim() + "\n";
+                violationC = "VIOLATION C : " + pre_vioC.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationC1 =  "";
+                violationC =  "";
             }
         }
 
-        String violationD1 = "";
-        String violationD2 = "";
-        String violationD3 = "";
-        String violationD4 = "";
+//        String violationD1 = "";
+//        String violationD2 = "";
+//        String violationD3 = "";
+//        String violationD4 = "";
+//        if (pre_vioD.getText().toString().trim().length() > 32) {
+//            if(pre_vioD.getText().toString().trim().length() > 64){
+//                if(pre_vioD.getText().toString().trim().length() > 96){
+//                    if(ll_vioD.getVisibility() == View.VISIBLE){
+//                        violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32,64) + "\n";
+//                        violationD3 =  "              " + pre_vioD.getText().toString().trim().substring(64,96) + "\n";
+//                        violationD4 =  "              " + pre_vioD.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationD1 =  "";
+//                        violationD2 =  "";
+//                        violationD3 =  "";
+//                        violationD4 =  "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioD.getVisibility() == View.VISIBLE){
+//                        violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32,64) + "\n";
+//                        violationD3 =  "              " + pre_vioD.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationD1 =  "";
+//                        violationD2 =  "";
+//                        violationD3 =  "";
+//                    }
+//                }
+//            }
+//            else{
+//                if(ll_vioD.getVisibility() == View.VISIBLE){
+//                    violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationD1 =  "";
+//                    violationD2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioD.getVisibility() == View.VISIBLE){
+//                violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationD1 =  "";
+//            }
+//        }
+
+        String violationD = "";
         if (pre_vioD.getText().toString().trim().length() > 32) {
-            if(pre_vioD.getText().toString().trim().length() > 64){
-                if(pre_vioD.getText().toString().trim().length() > 96){
-                    if(ll_vioD.getVisibility() == View.VISIBLE){
-                        violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
-                        violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32,64) + "\n";
-                        violationD3 =  "              " + pre_vioD.getText().toString().trim().substring(64,96) + "\n";
-                        violationD4 =  "              " + pre_vioD.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+            if (ll_vioD.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioD.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationD = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationD = violationD+"              " + pre_vioD.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationD1 =  "";
-                        violationD2 =  "";
-                        violationD3 =  "";
-                        violationD4 =  "";
-                    }
-                }
-                else{
-                    if(ll_vioD.getVisibility() == View.VISIBLE){
-                        violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
-                        violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32,64) + "\n";
-                        violationD3 =  "              " + pre_vioD.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationD1 =  "";
-                        violationD2 =  "";
-                        violationD3 =  "";
+                        violationD = violationD+"              " + pre_vioD.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
             }
             else{
-                if(ll_vioD.getVisibility() == View.VISIBLE){
-                    violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim().substring(0, 32) + "\n";
-                    violationD2 =  "              " + pre_vioD.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    violationD1 =  "";
-                    violationD2 =  "";
-                }
+                violationD = "";
             }
         } else {
             if(ll_vioD.getVisibility() == View.VISIBLE){
-                violationD1 = "VIOLATION D : " + pre_vioD.getText().toString().trim() + "\n";
+                violationD = "VIOLATION D : " + pre_vioD.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationD1 =  "";
+                violationD =  "";
             }
         }
 
-        String violationE1 = "";
-        String violationE2 = "";
-        String violationE3 = "";
-        String violationE4 = "";
+//        String violationE1 = "";
+//        String violationE2 = "";
+//        String violationE3 = "";
+//        String violationE4 = "";
+//        if (pre_vioE.getText().toString().trim().length() > 32) {
+//            if(pre_vioE.getText().toString().trim().length() > 64){
+//                if(pre_vioE.getText().toString().trim().length() > 96){
+//                    if(ll_vioE.getVisibility() == View.VISIBLE){
+//                        violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32,64) + "\n";
+//                        violationE3 = "              " + pre_vioE.getText().toString().trim().substring(64,96) + "\n";
+//                        violationE4 = "              " + pre_vioE.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationE1 =  "";
+//                        violationE2 =  "";
+//                        violationE3 =  "";
+//                        violationE4 =  "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioE.getVisibility() == View.VISIBLE){
+//                        violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32,64) + "\n";
+//                        violationE3 = "              " + pre_vioE.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationE1 =  "";
+//                        violationE2 =  "";
+//                        violationE3 =  "";
+//                    }
+//                }
+//            }
+//            else{
+//                if(ll_vioE.getVisibility() == View.VISIBLE){
+//                    violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationE1 =  "";
+//                    violationE2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioE.getVisibility() == View.VISIBLE){
+//                violationE1 = "VIOLATION E : " + pre_vioE.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationE1 =  "";
+//            }
+//        }
+
+        String violationE = "";
         if (pre_vioE.getText().toString().trim().length() > 32) {
-            if(pre_vioE.getText().toString().trim().length() > 64){
-                if(pre_vioE.getText().toString().trim().length() > 96){
-                    if(ll_vioE.getVisibility() == View.VISIBLE){
-                        violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
-                        violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32,64) + "\n";
-                        violationE3 = "              " + pre_vioE.getText().toString().trim().substring(64,96) + "\n";
-                        violationE4 = "              " + pre_vioE.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+            if (ll_vioE.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioE.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationE = "VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationE = violationE+"              " + pre_vioE.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationE1 =  "";
-                        violationE2 =  "";
-                        violationE3 =  "";
-                        violationE4 =  "";
-                    }
-                }
-                else{
-                    if(ll_vioE.getVisibility() == View.VISIBLE){
-                        violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
-                        violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32,64) + "\n";
-                        violationE3 = "              " + pre_vioE.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationE1 =  "";
-                        violationE2 =  "";
-                        violationE3 =  "";
+                        violationE = violationE+"              " + pre_vioE.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
             }
             else{
-                if(ll_vioE.getVisibility() == View.VISIBLE){
-                    violationE1 ="VIOLATION E : " + pre_vioE.getText().toString().trim().substring(0, 32) + "\n";
-                    violationE2 = "              " + pre_vioE.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    violationE1 =  "";
-                    violationE2 =  "";
-                }
+                violationE = "";
             }
         } else {
             if(ll_vioE.getVisibility() == View.VISIBLE){
-                violationE1 = "VIOLATION E : " + pre_vioE.getText().toString().trim() + "\n";
+                violationE = "VIOLATION E : " + pre_vioE.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationE1 =  "";
+                violationE =  "";
             }
         }
 
-        String violationF1 = "";
-        String violationF2 = "";
-        String violationF3 = "";
-        String violationF4 = "";
+//        String violationF1 = "";
+//        String violationF2 = "";
+//        String violationF3 = "";
+//        String violationF4 = "";
+//        if (pre_vioF.getText().toString().trim().length() > 32) {
+//            if(pre_vioF.getText().toString().trim().length() > 64){
+//                if(pre_vioF.getText().toString().trim().length() > 96){
+//                    if(ll_vioF.getVisibility() == View.VISIBLE){
+//                        violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32,64) + "\n";
+//                        violationF3 = "              " + pre_vioF.getText().toString().trim().substring(64,96) + "\n";
+//                        violationF4 = "              " + pre_vioF.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationF1 =  "";
+//                        violationF2 =  "";
+//                        violationF3 =  "";
+//                        violationF4 =  "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioF.getVisibility() == View.VISIBLE){
+//                        violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32,64) + "\n";
+//                        violationF3 = "              " + pre_vioF.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationF1 =  "";
+//                        violationF2 =  "";
+//                        violationF3 =  "";
+//                    }
+//                }
+//            }
+//            else{
+//                if(ll_vioF.getVisibility() == View.VISIBLE){
+//                    violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationF1 =  "";
+//                    violationF2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioF.getVisibility() == View.VISIBLE){
+//                violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationF1 =  "";
+//            }
+//        }
+
+        String violationF = "";
         if (pre_vioF.getText().toString().trim().length() > 32) {
-            if(pre_vioF.getText().toString().trim().length() > 64){
-                if(pre_vioF.getText().toString().trim().length() > 96){
-                    if(ll_vioF.getVisibility() == View.VISIBLE){
-                        violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
-                        violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32,64) + "\n";
-                        violationF3 = "              " + pre_vioF.getText().toString().trim().substring(64,96) + "\n";
-                        violationF4 = "              " + pre_vioF.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+            if (ll_vioF.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioF.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationF = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationF = violationF+"              " + pre_vioF.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationF1 =  "";
-                        violationF2 =  "";
-                        violationF3 =  "";
-                        violationF4 =  "";
-                    }
-                }
-                else{
-                    if(ll_vioF.getVisibility() == View.VISIBLE){
-                        violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
-                        violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32,64) + "\n";
-                        violationF3 = "              " + pre_vioF.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationF1 =  "";
-                        violationF2 =  "";
-                        violationF3 =  "";
+                        violationF = violationF+"              " + pre_vioF.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
             }
             else{
-                if(ll_vioF.getVisibility() == View.VISIBLE){
-                    violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim().substring(0, 32) + "\n";
-                    violationF2 = "              " + pre_vioF.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    violationF1 =  "";
-                    violationF2 =  "";
-                }
+                violationF = "";
             }
         } else {
             if(ll_vioF.getVisibility() == View.VISIBLE){
-                violationF1 = "VIOLATION F : " + pre_vioF.getText().toString().trim() + "\n";
+                violationF = "VIOLATION F : " + pre_vioF.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationF1 =  "";
+                violationF =  "";
             }
         }
 
-        String violationG1 = "";
-        String violationG2 = "";
-        String violationG3 = "";
-        String violationG4 = "";
+//        String violationG1 = "";
+//        String violationG2 = "";
+//        String violationG3 = "";
+//        String violationG4 = "";
+//        if (pre_vioG.getText().toString().trim().length() > 32) {
+//            if(pre_vioG.getText().toString().trim().length() > 64){
+//                if(pre_vioG.getText().toString().trim().length() > 96){
+//                    if(ll_vioG.getVisibility() == View.VISIBLE){
+//                        violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32,64) + "\n";
+//                        violationG3 = "              " + pre_vioG.getText().toString().trim().substring(64,96) + "\n";
+//                        violationG4 = "              " + pre_vioG.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationG1 =  "";
+//                        violationG2 =  "";
+//                        violationG3 =  "";
+//                        violationG4 =  "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioG.getVisibility() == View.VISIBLE){
+//                        violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32,64) + "\n";
+//                        violationG3 = "              " + pre_vioG.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationG1 =  "";
+//                        violationG2 =  "";
+//                        violationG3 =  "";
+//                    }
+//                }
+//            }
+//            else{
+//                if(ll_vioG.getVisibility() == View.VISIBLE){
+//                    violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationG1 =  "";
+//                    violationG2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioG.getVisibility() == View.VISIBLE){
+//                violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationG1 =  "";
+//            }
+//        }
+
+        String violationG = "";
         if (pre_vioG.getText().toString().trim().length() > 32) {
-            if(pre_vioG.getText().toString().trim().length() > 64){
-                if(pre_vioG.getText().toString().trim().length() > 96){
-                    if(ll_vioG.getVisibility() == View.VISIBLE){
-                        violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
-                        violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32,64) + "\n";
-                        violationG3 = "              " + pre_vioG.getText().toString().trim().substring(64,96) + "\n";
-                        violationG4 = "              " + pre_vioG.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+            if (ll_vioG.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioG.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationG = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationG = violationG+"              " + pre_vioG.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationG1 =  "";
-                        violationG2 =  "";
-                        violationG3 =  "";
-                        violationG4 =  "";
-                    }
-                }
-                else{
-                    if(ll_vioG.getVisibility() == View.VISIBLE){
-                        violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
-                        violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32,64) + "\n";
-                        violationG3 = "              " + pre_vioG.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationG1 =  "";
-                        violationG2 =  "";
-                        violationG3 =  "";
+                        violationG = violationG+"              " + pre_vioG.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
             }
             else{
-                if(ll_vioG.getVisibility() == View.VISIBLE){
-                    violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim().substring(0, 32) + "\n";
-                    violationG2 = "              " + pre_vioG.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    violationG1 =  "";
-                    violationG2 =  "";
-                }
+                violationG = "";
             }
         } else {
             if(ll_vioG.getVisibility() == View.VISIBLE){
-                violationG1 = "VIOLATION G : " + pre_vioG.getText().toString().trim() + "\n";
+                violationG = "VIOLATION G : " + pre_vioG.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationG1 =  "";
+                violationG =  "";
             }
         }
 
-        String violationH1 = "";
-        String violationH2 = "";
-        String violationH3 = "";
-        String violationH4 = "";
+//        String violationH1 = "";
+//        String violationH2 = "";
+//        String violationH3 = "";
+//        String violationH4 = "";
+//        if (pre_vioH.getText().toString().trim().length() > 32) {
+//            if(pre_vioH.getText().toString().trim().length() > 64){
+//                if(pre_vioH.getText().toString().trim().length() > 96){
+//                    if(ll_vioH.getVisibility() == View.VISIBLE){
+//                        violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32,64) + "\n";
+//                        violationH3 ="              " + pre_vioH.getText().toString().trim().substring(64,96) + "\n";
+//                        violationH4 ="              " + pre_vioH.getText().toString().trim().substring(96) + "\n";
+//                        linecount+=4;
+//                    }
+//                    else{
+//                        violationH1 =  "";
+//                        violationH2 =  "";
+//                        violationH3 =  "";
+//                        violationH4 =  "";
+//                    }
+//                }
+//                else{
+//                    if(ll_vioH.getVisibility() == View.VISIBLE){
+//                        violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
+//                        violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32,64) + "\n";
+//                        violationH3 ="              " + pre_vioH.getText().toString().trim().substring(64) + "\n";
+//                        linecount+=3;
+//                    }
+//                    else{
+//                        violationH1 =  "";
+//                        violationH2 =  "";
+//                        violationH3 =  "";
+//                    }
+//                }
+//            }
+//            else{
+//                if(ll_vioH.getVisibility() == View.VISIBLE){
+//                    violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
+//                    violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32) + "\n";
+//                    linecount+=2;
+//                }
+//                else{
+//                    violationH1 =  "";
+//                    violationH2 =  "";
+//                }
+//            }
+//        } else {
+//            if(ll_vioH.getVisibility() == View.VISIBLE){
+//                violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim() + "\n";
+//                linecount+=1;
+//            }
+//            else{
+//                violationH1 =  "";
+//            }
+//        }
+
+        String violationH = "";
         if (pre_vioH.getText().toString().trim().length() > 32) {
-            if(pre_vioH.getText().toString().trim().length() > 64){
-                if(pre_vioH.getText().toString().trim().length() > 96){
-                    if(ll_vioH.getVisibility() == View.VISIBLE){
-                        violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
-                        violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32,64) + "\n";
-                        violationH3 ="              " + pre_vioH.getText().toString().trim().substring(64,96) + "\n";
-                        violationH4 ="              " + pre_vioH.getText().toString().trim().substring(96) + "\n";
-                        linecount+=4;
+            if (ll_vioH.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(pre_vioH.getText().toString().trim().length() / 32.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violationH = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0,32*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violationH = violationH+"              " + pre_vioH.getText().toString().trim().substring(32*(i-1),32*i) + "\n";
+                        linecount+=1;
                     }
                     else{
-                        violationH1 =  "";
-                        violationH2 =  "";
-                        violationH3 =  "";
-                        violationH4 =  "";
-                    }
-                }
-                else{
-                    if(ll_vioH.getVisibility() == View.VISIBLE){
-                        violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
-                        violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32,64) + "\n";
-                        violationH3 ="              " + pre_vioH.getText().toString().trim().substring(64) + "\n";
-                        linecount+=3;
-                    }
-                    else{
-                        violationH1 =  "";
-                        violationH2 =  "";
-                        violationH3 =  "";
+                        violationH = violationH+"              " + pre_vioH.getText().toString().trim().substring(32*(i-1)) + "\n";
+                        linecount+=1;
                     }
                 }
             }
             else{
-                if(ll_vioH.getVisibility() == View.VISIBLE){
-                    violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim().substring(0, 32) + "\n";
-                    violationH2 ="              " + pre_vioH.getText().toString().trim().substring(32) + "\n";
-                    linecount+=2;
-                }
-                else{
-                    violationH1 =  "";
-                    violationH2 =  "";
-                }
+                violationH = "";
             }
         } else {
             if(ll_vioH.getVisibility() == View.VISIBLE){
-                violationH1 = "VIOLATION H : " + pre_vioH.getText().toString().trim() + "\n";
+                violationH = "VIOLATION H : " + pre_vioH.getText().toString().trim() + "\n";
                 linecount+=1;
             }
             else{
-                violationH1 =  "";
+                violationH =  "";
             }
         }
 
@@ -3567,13 +3917,39 @@ public class ZebraPrinterActivity extends AppCompatActivity {
             school_zone_txt="";
         }
 
-        String violation_city_txt;
-        if(ll_violationcity.getVisibility() == View.VISIBLE){
-            violation_city_txt = "VIOLATIONCITY : " + violationcity.getText().toString().trim() + "\n";
-            linecount+=1;
-        }
-        else{
-            violation_city_txt="";
+        String violation_city_txt="";
+        if (violationcity.getText().toString().trim().length() > 30) {
+            if (ll_violationcity.getVisibility() == View.VISIBLE) {
+                Double count = 0.0;
+                int total_no_lines = 0;
+                count = Double.valueOf(violationcity.getText().toString().trim().length() / 30.0);
+                total_no_lines = (int)Math.ceil(count);
+                for(int i = 1;i<=total_no_lines;i++){
+                    if(i==1){
+                        violation_city_txt = "VIOLATIONCITY : " + violationcity.getText().toString().trim().substring(0,30*i) + "\n";
+                        linecount+=1;
+                    }
+                    else if(i > 1 && i < total_no_lines){
+                        violation_city_txt = violation_city_txt+"                " + violationcity.getText().toString().trim().substring(30*(i-1),30*i) + "\n";
+                        linecount+=1;
+                    }
+                    else{
+                        violation_city_txt = violation_city_txt+"                " + violationcity.getText().toString().trim().substring(30*(i-1)) + "\n";
+                        linecount+=1;
+                    }
+                }
+            }
+            else{
+                violation_city_txt = "";
+            }
+        } else {
+            if(ll_violationcity.getVisibility() == View.VISIBLE){
+                violation_city_txt = "VIOLATIONCITY : " + violationcity.getText().toString().trim() + "\n";
+                linecount+=1;
+            }
+            else{
+                violation_city_txt="";
+            }
         }
 
         String violation_st_txt;
@@ -3776,43 +4152,52 @@ public class ZebraPrinterActivity extends AppCompatActivity {
                 vehType+
                 commercial +
                 vehlicNo +
-                vehicleState1 +
-                vehicleState2 +
+                vehicleState+
+//                vehicleState1 +
+//                vehicleState2 +
                 hazardous +
                 overload +
                 policy_no +
-                violationA1 +
-                violationA2 +
-                violationA3 +
-                violationA4 +
-                violationB1 +
-                violationB2 +
-                violationB3 +
-                violationB4 +
-                violationC1 +
-                violationC2 +
-                violationC3 +
-                violationC4 +
-                violationD1 +
-                violationD2 +
-                violationD3 +
-                violationD4 +
-                violationE1 +
-                violationE2 +
-                violationE3 +
-                violationE4 +
-                violationF1 +
-                violationF2 +
-                violationF3 +
-                violationF4 +
-                violationG1 +
-                violationG2 +
-                violationG3 +
-                violationG4 +
-                violationH1 +
-                violationH2 +
-                violationH3 +
-                violationH4 +
+//                violationA1 +
+//                violationA2 +
+//                violationA3 +
+//                violationA4 +
+                violationA+
+                violationB+
+//                violationB1 +
+//                violationB2 +
+//                violationB3 +
+//                violationB4 +
+//                violationC1 +
+//                violationC2 +
+//                violationC3 +
+//                violationC4 +
+//                violationD1 +
+//                violationD2 +
+//                violationD3 +
+//                violationD4 +
+                violationC+
+                violationD+
+                violationE+
+                violationF+
+//                violationE1 +
+//                violationE2 +
+//                violationE3 +
+//                violationE4 +
+//                violationF1 +
+//                violationF2 +
+//                violationF3 +
+//                violationF4 +
+//                violationG1 +
+//                violationG2 +
+//                violationG3 +
+//                violationG4 +
+//                violationH1 +
+//                violationH2 +
+//                violationH3 +
+//                violationH4 +
+                violationG+
+                violationH+
                 vca +
                 vcb +
                 vcc +

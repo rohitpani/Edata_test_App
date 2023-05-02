@@ -185,8 +185,8 @@ public class ActivitySignature extends AppCompatActivity {
 
 
         //VIOLATION MISC
-        IssueDate = sessionManager.getViolationMiscSession().get(SessionManager.ISSUE_DATE);
-        Time = sessionManager.getViolationMiscSession().get(SessionManager.TIME);
+        IssueDate = sessionManager.getViolationMiscSession().get(SessionManager.ISSUE_DATE_TOBE_UPLOADED);
+        Time = sessionManager.getViolationMiscSession().get(SessionManager.TIME_TOBE_UPLOADED);
         AMPM = sessionManager.getViolationMiscSession().get(SessionManager.AMPM);
         SchoolZone = sessionManager.getViolationMiscSession().get(SessionManager.SCHOOL_ZONE);
         ViolCity = sessionManager.getViolationMiscSession().get(SessionManager.VIOLATIONCITY);
@@ -203,7 +203,7 @@ public class ActivitySignature extends AppCompatActivity {
         NightCourt = sessionManager.getViolationMiscSession().get(SessionManager.NIGHT_COURT);
         CAToBeNotified = sessionManager.getViolationMiscSession().get(SessionManager.CA_TOBENOTIFIED);
         CACiteNotSignedByDriver = sessionManager.getViolationMiscSession().get(SessionManager.CA_CITENOTSIGNEDBYDRIVER);
-        AppearanceTime = sessionManager.getViolationMiscSession().get(SessionManager.COURT_TIME);
+        AppearanceTime = sessionManager.getViolationMiscSession().get(SessionManager.COURT_TIME_TOBE_UPLOADED);
 
 
         //VIOLATION

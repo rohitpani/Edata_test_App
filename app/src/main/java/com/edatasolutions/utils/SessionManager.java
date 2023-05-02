@@ -597,7 +597,11 @@ public class SessionManager {
 
 
     public static final String ISSUE_DATE = "issuedate";
+
+    public static final String ISSUE_DATE_TOBE_UPLOADED = "issuedatobeuploaded";    //Another parameter created as the format of issue date to be uploaded is different from the issue date to be shown
     public static final String TIME = "time";
+
+    public static final String TIME_TOBE_UPLOADED = "timetobeuploaded";
     public static final String AMPM = "ampm";
     public static final String OFFBADGENO = "offbadgeno";
     public static final String OFFLNAME = "offlname";
@@ -605,7 +609,6 @@ public class SessionManager {
     public static final String AREACODE_ID = "areacode_id";
     public static final String DIVISION = "division";
     public static final String DIVISION_ID = "division_id";
-
     public static final String DIVISION_VALUE = "division_value";
     public static final String DETAIL = "detail";
     public static final String SCHOOL_ZONE = "schoolzone";
@@ -623,12 +626,16 @@ public class SessionManager {
     public static final String APPEAR_DATE = "appeardate";
     public static final String COURT_TIME = "courttime";
 
-    public void createViolationMiscSession(String issuedate, String time, String ampm,  String schoolzome, String violationcity,String violationcity_id, String violationst,
-                                           String violationsttyp,String violationsttyp_id, String violationcst, String violationcsttyp,String violationcsttyp_id, String appeardate,String courttime, String offbadgeno,
+    public static final String COURT_TIME_TOBE_UPLOADED = "courttimetobeuploaded";
+
+    public void createViolationMiscSession(String issuedate,String issuedatetobeuploaded, String time, String timetobeuploaded, String ampm,  String schoolzome, String violationcity,String violationcity_id, String violationst,
+                                           String violationsttyp,String violationsttyp_id, String violationcst, String violationcsttyp,String violationcsttyp_id, String appeardate,String courttime,String courttimetobeuploaded, String offbadgeno,
                                            String offlname, String areacode,String areacode_id,String division,String divisionvalue,String division_id, String detail, String night_court, String ca_tobenotified, String ca_citenotsignedbydriver) {
 
         editor.putString(ISSUE_DATE, issuedate);
+        editor.putString(ISSUE_DATE_TOBE_UPLOADED, issuedatetobeuploaded);
         editor.putString(TIME, time);
+        editor.putString(TIME_TOBE_UPLOADED, timetobeuploaded);
         editor.putString(AMPM, ampm);
         editor.putString(SCHOOL_ZONE, schoolzome);
         editor.putString(VIOLATIONCITY, violationcity);
@@ -641,6 +648,7 @@ public class SessionManager {
         editor.putString(VIOLATIONCSTTYP_ID, violationcsttyp_id);
         editor.putString(APPEAR_DATE, appeardate);
         editor.putString(COURT_TIME, courttime);
+        editor.putString(COURT_TIME_TOBE_UPLOADED, courttimetobeuploaded);
         editor.putString(OFFBADGENO, offbadgeno);
         editor.putString(OFFLNAME, offlname);
         editor.putString(AREACODE, areacode);
@@ -664,7 +672,9 @@ public class SessionManager {
 
 
         user.put(ISSUE_DATE, pref.getString(ISSUE_DATE, ""));
+        user.put(ISSUE_DATE_TOBE_UPLOADED, pref.getString(ISSUE_DATE_TOBE_UPLOADED, ""));
         user.put(TIME, pref.getString(TIME, ""));
+        user.put(TIME_TOBE_UPLOADED, pref.getString(TIME_TOBE_UPLOADED, ""));
         user.put(AMPM, pref.getString(AMPM, ""));
         user.put(SCHOOL_ZONE, pref.getString(SCHOOL_ZONE, ""));
         user.put(VIOLATIONCITY, pref.getString(VIOLATIONCITY, ""));
@@ -677,6 +687,7 @@ public class SessionManager {
         user.put(VIOLATIONCSTTYP_ID, pref.getString(VIOLATIONCSTTYP_ID, ""));
         user.put(APPEAR_DATE, pref.getString(APPEAR_DATE, ""));
         user.put(COURT_TIME, pref.getString(COURT_TIME, ""));
+        user.put(COURT_TIME_TOBE_UPLOADED, pref.getString(COURT_TIME_TOBE_UPLOADED, ""));
         user.put(OFFBADGENO, pref.getString(OFFBADGENO, ""));
         user.put(OFFLNAME, pref.getString(OFFLNAME, ""));
         user.put(AREACODE, pref.getString(AREACODE, ""));
@@ -695,7 +706,9 @@ public class SessionManager {
     public void ClearViolationMiscEntery() {
 
         pref.edit().remove(ISSUE_DATE).commit();
+        pref.edit().remove(ISSUE_DATE_TOBE_UPLOADED).commit();
         pref.edit().remove(TIME).commit();
+        pref.edit().remove(TIME_TOBE_UPLOADED).commit();
         pref.edit().remove(AMPM).commit();
         pref.edit().remove(SCHOOL_ZONE).commit();
         pref.edit().remove(VIOLATIONCITY).commit();
@@ -708,6 +721,7 @@ public class SessionManager {
         pref.edit().remove(VIOLATIONCSTTYP_ID).commit();
         pref.edit().remove(APPEAR_DATE).commit();
         pref.edit().remove(COURT_TIME).commit();
+        pref.edit().remove(COURT_TIME_TOBE_UPLOADED).commit();
         pref.edit().remove(OFFBADGENO).commit();
         pref.edit().remove(OFFLNAME).commit();
         pref.edit().remove(AREACODE).commit();

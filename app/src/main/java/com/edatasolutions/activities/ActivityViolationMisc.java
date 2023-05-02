@@ -57,12 +57,12 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
     private SessionManager sessionManager;
     private RadioGroup schoolzone,night_court,ca_tobenotified,ca_citenotsignedbydriver;
     private RadioButton r_schoolzone, r_night_court,r_ca_tobenotified,r_ca_citenotsignedbydriver;
-    private String seleced_appeardate="",seleced_time="",selected_issuedate="",selected_issuetime="";
+    private String seleced_appeardate="",seleced_time="",selected_courttime_tobe_shown="",selected_issuedate="",selected_issuetime="";
     private TextView issuedate, time, courttime,appeardate,ampm_txt;
     private EditText offbadgeno, offlname,violationst,violationcst;
     private Spinner violationcity, violationsttyp,ampm,areacode,violationcsttyp,detail,division;
     private String s_schoolzone="N",s_night_court="N",s_ca_tobenotified="N",s_ca_citenotsignedbydriver="N", s_violationcity="",s_violationcityid="",s_violationsttyp="",s_violationsttypid="",s_violationcsttypid="",s_violationst="",s_violationcst="",s_violationcsttyp="";
-    private String s_issuedate="", s_time="", s_ampm="",s_offbadgeno="", s_offlname="",s_areacode="",s_areacodeid="", s_division="", s_divisionvalue = "", s_divisionid="", s_detail="", s_appeardate="",s_courttime="";
+    private String s_issuedate="",s_issuedatetobeuploaded="", s_time="",s_timetobeuploaded="", s_ampm="",s_offbadgeno="", s_offlname="",s_areacode="",s_areacodeid="", s_division="", s_divisionvalue = "", s_divisionid="", s_detail="", s_appeardate="",s_courttime="",s_courttimetobeuploaded="";
 
     private ArrayList<String> violationcityList = new ArrayList<>();
     private ArrayList<String> violationsttypList = new ArrayList<>();
@@ -279,6 +279,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
                             minutes = String.valueOf(selectedMinute);
                         }
                         String time = hour+":"+minutes;
+                        selected_courttime_tobe_shown = time;
                         seleced_time = hour+minutes;
 //                        seleced_time = time;
                         courttime.setText(time);
@@ -665,7 +666,8 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
 
         ampm_txt.setText(localTime3);
         s_ampm = ampm_txt.getText().toString().trim();
-        selected_issuetime = localTime;
+        s_timetobeuploaded = localTime;
+        s_time = localTime2;
         time.setText(localTime2);
 
 
@@ -679,7 +681,8 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
         String date1 = dateFormat1.format(calendar.getTime());
         String date2 = dateFormat2.format(calendar.getTime());
 
-        s_issuedate = date1;
+        s_issuedate = date2;
+        s_issuedatetobeuploaded = date1;
         issuedate.setText(date2);
 
     }
@@ -879,7 +882,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
     private void checkValidation(){
 
  //       s_issuedate = issuedate.getText().toString().trim();
-        s_time= selected_issuetime;
+ //       s_time= selected_issuetime;
 
 
         s_offbadgeno= offbadgeno.getText().toString().trim();
@@ -896,12 +899,15 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
       //  s_courttime = courttime.getText().toString().trim();
         if(courttime.getText().toString().trim().equals("COURTTIME")){
             s_courttime="";
+            s_courttimetobeuploaded="";
         }else {
 
             if (seleced_time.equals("")){
                 s_courttime=courttime.getText().toString().trim();
+                s_courttimetobeuploaded = courttime.getText().toString().trim();
             }else {
-                s_courttime = seleced_time;
+                s_courttime = selected_courttime_tobe_shown;
+                s_courttimetobeuploaded = seleced_time;
             }
         }
 
@@ -1009,7 +1015,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
 
                 sessionManager.saveViolationMisc("Y");
                 sessionManager.ClearViolationMiscEntery();
-                sessionManager.createViolationMiscSession(s_issuedate, s_time, s_ampm, s_schoolzone,s_violationcity,s_violationcityid,s_violationst,s_violationsttyp,s_violationsttypid,s_violationcst,s_violationcsttyp,s_violationcsttypid,s_appeardate,s_courttime, s_offbadgeno,s_offlname,s_areacode,s_areacodeid,s_division,s_divisionvalue,s_divisionid,s_detail,s_night_court,s_ca_tobenotified,s_ca_citenotsignedbydriver);
+                sessionManager.createViolationMiscSession(s_issuedate, s_issuedatetobeuploaded, s_time, s_timetobeuploaded, s_ampm, s_schoolzone,s_violationcity,s_violationcityid,s_violationst,s_violationsttyp,s_violationsttypid,s_violationcst,s_violationcsttyp,s_violationcsttypid,s_appeardate,s_courttime, s_courttimetobeuploaded, s_offbadgeno,s_offlname,s_areacode,s_areacodeid,s_division,s_divisionvalue,s_divisionid,s_detail,s_night_court,s_ca_tobenotified,s_ca_citenotsignedbydriver);
                 Intent i =new Intent(ActivityViolationMisc.this, ActivityPreview.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.enter,R.anim.exit);
@@ -1047,7 +1053,7 @@ public class ActivityViolationMisc extends AppCompatActivity implements DatePick
 
                     sessionManager.saveViolationMisc("Y");
                     sessionManager.ClearViolationMiscEntery();
-                    sessionManager.createViolationMiscSession(s_issuedate, s_time, s_ampm, s_schoolzone, s_violationcity, s_violationcityid, s_violationst, s_violationsttyp, s_violationsttypid, s_violationcst, s_violationcsttyp, s_violationcsttypid, s_appeardate, s_courttime, s_offbadgeno, s_offlname, s_areacode, s_areacodeid, s_division, s_divisionvalue, s_divisionid, s_detail, s_night_court, s_ca_tobenotified, s_ca_citenotsignedbydriver);
+                    sessionManager.createViolationMiscSession(s_issuedate, s_issuedatetobeuploaded, s_time, s_timetobeuploaded, s_ampm, s_schoolzone, s_violationcity, s_violationcityid, s_violationst, s_violationsttyp, s_violationsttypid, s_violationcst, s_violationcsttyp, s_violationcsttypid, s_appeardate, s_courttime, s_courttimetobeuploaded, s_offbadgeno, s_offlname, s_areacode, s_areacodeid, s_division, s_divisionvalue, s_divisionid, s_detail, s_night_court, s_ca_tobenotified, s_ca_citenotsignedbydriver);
                     Intent i = new Intent(ActivityViolationMisc.this, ActivityPreview.class);
                     startActivity(i);
                     overridePendingTransition(R.anim.enter, R.anim.exit);
