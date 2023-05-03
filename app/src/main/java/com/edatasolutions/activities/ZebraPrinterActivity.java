@@ -455,7 +455,7 @@ public class ZebraPrinterActivity extends AppCompatActivity {
         DemoSleeper.sleep(1000);
     }*/
 
-//    private void enablePrintButton(final boolean enabled) {
+    //    private void enablePrintButton(final boolean enabled) {
 //        runOnUiThread(new Runnable() {
 //            public void run() {
 //                print_data.setEnabled(enabled);
